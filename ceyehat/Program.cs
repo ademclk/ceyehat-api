@@ -1,4 +1,5 @@
 using Ceyehat.Application;
+using ceyehat.Filters;
 using Ceyehat.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
 
-    builder.Services.AddControllers();
+    builder.Services.AddControllers(options => options.Filters.Add<ErrorHandlingFilterAttribute>());
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 }
