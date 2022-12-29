@@ -6,7 +6,6 @@ namespace ceyehat.Controllers;
 
 [ApiController]
 [Route("auth")]
-
 public class AuthenticationController : ControllerBase
 {
     private readonly IAuthService _authService;
@@ -20,21 +19,21 @@ public class AuthenticationController : ControllerBase
     public IActionResult Login(LoginRequest request)
     {
         var authResult = _authService.Login(
-            request.Email, 
+            request.Email,
             request.Password
-            );
-        
-        var authResponse = new AuthResponse(
-            authResult.Id,
-            authResult.Email,
-            authResult.Token,
-            authResult.FirstName,
-            authResult.LastName
         );
-        
+
+        var authResponse = new AuthResponse(
+            authResult.User.UserId,
+            authResult.User.Email,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.Token
+        );
+
         return Ok(authResponse);
     }
-    
+
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
@@ -43,16 +42,16 @@ public class AuthenticationController : ControllerBase
             request.Password,
             request.FirstName,
             request.LastName
-            );
-         
+        );
+
         var authResponse = new AuthResponse(
-            authResult.Id,
-            authResult.Email,
-            authResult.Token,
-            authResult.FirstName,
-            authResult.LastName
-            );
-        
+            authResult.User.UserId,
+            authResult.User.Email,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.Token
+        );
+
         return Ok(authResponse);
     }
 }

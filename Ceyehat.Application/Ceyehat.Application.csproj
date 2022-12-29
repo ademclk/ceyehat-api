@@ -8,6 +8,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Ceyehat.Contracts\Ceyehat.Contracts.csproj" />
+      <ProjectReference Include="..\Ceyehat.Domain\Ceyehat.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>

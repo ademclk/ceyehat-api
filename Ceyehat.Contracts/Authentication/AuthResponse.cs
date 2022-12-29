@@ -4,7 +4,7 @@ public record AuthResponse
 (
     Guid Id,
     string Email,
-    string Token,
     string FirstName,
-    string LastName
+    string LastName,
+    string Token
 );
