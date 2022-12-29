@@ -1,5 +1,6 @@
 using Ceyehat.Application;
 using Ceyehat.Infrastructure;
+using ceyehat.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -12,6 +13,8 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddControllers();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    builder.Services.AddTransient<CeyehatExceptionHandlingMiddleware>();
 }
 
 var app = builder.Build();
@@ -23,11 +26,13 @@ var app = builder.Build();
     }
 
     // Middleware approach for exception handling
-    // app.UseMiddleware<ErrorHandlingMiddleware>();
+    //app.UseMiddleware<ErrorHandlingMiddleware>();
 
     app.UseHttpsRedirection();
 
     app.UseAuthorization();
+
+    app.UseMiddleware<CeyehatExceptionHandlingMiddleware>();
 
     app.MapControllers();
 
