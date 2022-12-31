@@ -24,11 +24,11 @@ public class AuthenticationController : ControllerBase
         );
 
         var authResponse = new AuthResponse(
-            authResult.User.UserId,
-            authResult.User.Email,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.Token
+            authResult.Result.User.UserId,
+            authResult.Result.User.Email,
+            authResult.Result.User.FirstName,
+            authResult.Result.User.LastName,
+            authResult.Result.Token
         );
 
         return Ok(authResponse);
@@ -45,11 +45,11 @@ public class AuthenticationController : ControllerBase
         );
 
         var authResponse = new AuthResponse(
-            authResult.User.UserId,
-            authResult.User.Email,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.Token
+            authResult.Result.User.UserId,
+            authResult.Result.User.Email,
+            authResult.Result.User.FirstName,
+            authResult.Result.User.LastName,
+            authResult.Result.Token
         );
 
         return Ok(authResponse);

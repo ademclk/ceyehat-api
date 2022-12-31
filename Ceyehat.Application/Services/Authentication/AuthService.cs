@@ -16,12 +16,14 @@ public class AuthService : IAuthService
         _userRepository = userRepository;
     }
 
-    public AuthResult Login(string email, string password)
+    public async Task<AuthResult> Login(string email, string password)
     {
         // 1. Validate user exists
-        if (_userRepository.GetUserByEmail(email) is not { } user)
+        var user = await _userRepository.GetUserByEmail(email);
+
+        if (user == null)
         {
-            throw new Exception("User with this email does not exist.");
+            throw new Exception("User with this email does not exist");
         }
 
         // 2. Validate password
@@ -39,12 +41,13 @@ public class AuthService : IAuthService
         );
     }
 
-    public AuthResult Register(string email, string password, string firstName, string lastName)
+    public async Task<AuthResult> Register(string email, string password, string firstName, string lastName)
     {
         // Checking if user exists
-        if (_userRepository.GetUserByEmail(email) != null)
+        var registeredUser = await _userRepository.GetUserByEmail(email);
+        if (registeredUser != null)
         {
-            throw new Exception("User already exists.");
+            throw new Exception("User with this email already exists");
         }
 
         // Creating user
@@ -56,7 +59,7 @@ public class AuthService : IAuthService
             LastName = lastName
         };
 
-        _userRepository.Add(user);
+        await _userRepository.Add(user);
 
         // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);

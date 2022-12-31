@@ -4,6 +4,6 @@ namespace Ceyehat.Application.Services.Authentication;
 
 public record AuthResult
 (
-    User User,
+    User? User,
     string Token
 );
