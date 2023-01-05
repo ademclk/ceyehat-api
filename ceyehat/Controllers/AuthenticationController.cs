@@ -24,7 +24,7 @@ public class AuthenticationController : ControllerBase
         );
 
         var authResponse = new AuthResponse(
-            authResult.Result.User.UserId,
+            authResult.Result.User!.UserId,
             authResult.Result.User.Email,
             authResult.Result.User.FirstName,
             authResult.Result.User.LastName,
@@ -45,7 +45,7 @@ public class AuthenticationController : ControllerBase
         );
 
         var authResponse = new AuthResponse(
-            authResult.Result.User.UserId,
+            authResult.Result.User!.UserId,
             authResult.Result.User.Email,
             authResult.Result.User.FirstName,
             authResult.Result.User.LastName,

@@ -43,11 +43,11 @@ public class AuthService : IAuthService
 
     public async Task<AuthResult> Register(string email, string password, string firstName, string lastName)
     {
-        // Checking if user exists
+        // Check if user already exists
         var registeredUser = await _userRepository.GetUserByEmail(email);
         if (registeredUser != null)
         {
-            throw new Exception("User with this email already exists");
+            throw new Exception("A user with this email already exists.");
         }
 
         // Creating user
