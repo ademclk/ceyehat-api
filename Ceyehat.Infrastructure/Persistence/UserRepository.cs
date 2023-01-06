@@ -7,9 +7,6 @@ namespace Ceyehat.Infrastructure.Persistence;
 
 public class UserRepository : IUserRepository
 {
-    // Just for testing purposes, not for implementation
-    // private static readonly List<User> _users = new();
-
     private readonly CeyehatDbContext _dbContext;
 
     public UserRepository(CeyehatDbContext context)

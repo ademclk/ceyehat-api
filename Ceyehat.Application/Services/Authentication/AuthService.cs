@@ -47,7 +47,7 @@ public class AuthService : IAuthService
         var registeredUser = await _userRepository.GetUserByEmail(email);
         if (registeredUser != null)
         {
-            throw new Exception("A user with this email already exists.");
+            throw new Exception("An user with this email already exists.");
         }
 
         // Creating user
