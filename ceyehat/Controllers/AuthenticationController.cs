@@ -16,28 +16,28 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login(LoginRequest request)
+    public async Task<IActionResult> Login(LoginRequest request)
     {
-        var authResult = _authService.Login(
+        var authResult = await _authService.Login(
             request.Email,
             request.Password
         );
 
         var authResponse = new AuthResponse(
-            authResult.Result.User!.UserId,
-            authResult.Result.User.Email,
-            authResult.Result.User.FirstName,
-            authResult.Result.User.LastName,
-            authResult.Result.Token
+            authResult.User!.UserId,
+            authResult.User.Email,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.Token
         );
 
         return Ok(authResponse);
     }
 
     [HttpPost("register")]
-    public IActionResult Register(RegisterRequest request)
+    public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var authResult = _authService.Register(
+        var authResult = await _authService.Register(
             request.Email,
             request.Password,
             request.FirstName,
@@ -45,11 +45,11 @@ public class AuthenticationController : ControllerBase
         );
 
         var authResponse = new AuthResponse(
-            authResult.Result.User!.UserId,
-            authResult.Result.User.Email,
-            authResult.Result.User.FirstName,
-            authResult.Result.User.LastName,
-            authResult.Result.Token
+            authResult.User!.UserId,
+            authResult.User.Email,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.Token
         );
 
         return Ok(authResponse);

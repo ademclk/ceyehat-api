@@ -1,3 +1,4 @@
+using Ceyehat.Application.Common.Errors;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,8 +10,13 @@ public class ErrorsController : ControllerBase
 {
     public IActionResult Error()
     {
-        Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
+        var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
-        return Problem();
+        var (statusCode, message) = exception switch
+        {
+            DuplicateEmailException => (StatusCodes.Status409Conflict, "An user with this email already exists."),
+            _ => (StatusCodes.Status500InternalServerError, "Internal Server Error")
+        };
+        return Problem(statusCode: statusCode, title: message);
     }
 }

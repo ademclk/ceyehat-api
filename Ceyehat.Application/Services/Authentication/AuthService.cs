@@ -1,3 +1,4 @@
+using Ceyehat.Application.Common.Errors;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Services.Authentication.Interfaces;
@@ -47,7 +48,7 @@ public class AuthService : IAuthService
         var registeredUser = await _userRepository.GetUserByEmail(email);
         if (registeredUser != null)
         {
-            throw new Exception("An user with this email already exists.");
+            throw new DuplicateEmailException();
         }
 
         // Creating user
