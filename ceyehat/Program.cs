@@ -3,7 +3,6 @@ using ceyehat.Errors;
 using Ceyehat.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using ChefApi.Core.DbOperations;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -17,19 +16,12 @@ var builder = WebApplication.CreateBuilder(args);
 
     builder.Services.AddSingleton<ProblemDetailsFactory, CeyehatProblemDetailsFactory>();
 
-    builder.Services.AddDbContext<CeyehatDbContext>(opt => opt.UseInMemoryDatabase("ceyehat"));
-    // builder.Services.AddDbContext<CeyehatDbContext>(opt => opt.UseNpgsql(
-    //     builder.Configuration.GetConnectionString("DefaultConnection")));
+    builder.Services.AddDbContext<CeyehatDbContext>(opt => opt.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 }
 
 var app = builder.Build();
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var services = scope.ServiceProvider;
-        DataGenerator.Initialize(services);
-    }
-
     if (app.Environment.IsDevelopment())
     {
         app.UseSwagger();

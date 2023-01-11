@@ -22,7 +22,16 @@ public class AuthenticationController : ControllerBase
             request.Email,
             request.Password
         );
-        return Ok(authResult);
+
+        var authResponse = new AuthResponse(
+            authResult.User!.UserId,
+            authResult.User.Email,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.Token
+        );
+
+        return Ok(authResponse);
     }
 
     [HttpPost("register")]
@@ -35,6 +44,14 @@ public class AuthenticationController : ControllerBase
             request.LastName
         );
 
-        return Ok(authResult);
+        var authResponse = new AuthResponse(
+            authResult.User!.UserId,
+            authResult.User.Email,
+            authResult.User.FirstName,
+            authResult.User.LastName,
+            authResult.Token
+        );
+
+        return Ok(authResponse);
     }
 }
