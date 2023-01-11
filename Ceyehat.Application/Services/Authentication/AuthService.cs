@@ -2,6 +2,7 @@ using Ceyehat.Application.Common.Errors;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Services.Authentication.Interfaces;
+using Ceyehat.Contracts.Authentication;
 using Ceyehat.Domain.Entities;
 
 namespace Ceyehat.Application.Services.Authentication;
@@ -17,7 +18,7 @@ public class AuthService : IAuthService
         _userRepository = userRepository;
     }
 
-    public async Task<AuthResult> Login(string email, string password)
+    public async Task<Token> Login(string email, string password)
     {
         // 1. Validate user exists
         var user = await _userRepository.GetUserByEmail(email);
@@ -36,13 +37,10 @@ public class AuthService : IAuthService
         // 3. Generate JWT token
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthResult(
-            user,
-            token
-        );
+        return token;
     }
 
-    public async Task<AuthResult> Register(string email, string password, string firstName, string lastName)
+    public async Task<Token> Register(string email, string password, string firstName, string lastName)
     {
         // Check if user already exists
         var registeredUser = await _userRepository.GetUserByEmail(email);
@@ -65,9 +63,6 @@ public class AuthService : IAuthService
         // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthResult(
-            user,
-            token
-        );
+        return token;
     }
 }

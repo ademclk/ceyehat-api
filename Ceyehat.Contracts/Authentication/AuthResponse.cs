@@ -1,10 +1,8 @@
 namespace Ceyehat.Contracts.Authentication;
 
-public record AuthResponse
-(
-    Guid Id,
-    string Email,
-    string FirstName,
-    string LastName,
-    string Token
-);
+public class Token
+{
+    public string AccessToken { get; set; } = null!;
+    public DateTime ExpireDate { get; set; }
+    public string RefreshToken { get; set; } = null!;
+}
