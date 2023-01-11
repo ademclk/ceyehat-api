@@ -3,6 +3,7 @@ using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Services.Authentication.Interfaces;
 using Ceyehat.Domain.Entities;
+using OneOf;
 
 namespace Ceyehat.Application.Services.Authentication;
 
@@ -42,13 +43,13 @@ public class AuthService : IAuthService
         );
     }
 
-    public async Task<AuthResult> Register(string email, string password, string firstName, string lastName)
+    public OneOf<AuthResult, DuplicateEmailError> Register(string email, string password, string firstName, string lastName)
     {
         // Check if user already exists
-        var registeredUser = await _userRepository.GetUserByEmail(email);
+        var registeredUser =  _userRepository.GetUserByEmail(email);
         if (registeredUser != null)
         {
-            throw new DuplicateEmailException();
+            return new DuplicateEmailError();
         }
 
         // Creating user
@@ -60,7 +61,7 @@ public class AuthService : IAuthService
             LastName = lastName
         };
 
-        await _userRepository.Add(user);
+         _userRepository.Add(user);
 
         // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);

@@ -1,6 +1,9 @@
+using Ceyehat.Application.Common.Errors;
+using Ceyehat.Application.Services.Authentication;
 using Ceyehat.Application.Services.Authentication.Interfaces;
 using Ceyehat.Contracts.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using OneOf;
 
 namespace ceyehat.Controllers;
 
@@ -35,15 +38,22 @@ public class AuthenticationController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequest request)
+    public IActionResult Register(RegisterRequest request)
     {
-        var authResult = await _authService.Register(
+        OneOf<AuthResult, DuplicateEmailError> registerResult = _authService.Register(
             request.Email,
             request.Password,
             request.FirstName,
             request.LastName
         );
+        
+        return registerResult.Match(
+            authResult => Ok(MapAuthResult(authResult)),
+            _ => Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exists."));
+    }
 
+    private static AuthResponse MapAuthResult(AuthResult authResult)
+    {
         var authResponse = new AuthResponse(
             authResult.User!.UserId,
             authResult.User.Email,
@@ -51,7 +61,6 @@ public class AuthenticationController : ControllerBase
             authResult.User.LastName,
             authResult.Token
         );
-
-        return Ok(authResponse);
+        return authResponse;
     }
 }

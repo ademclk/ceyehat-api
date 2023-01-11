@@ -8,12 +8,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Ceyehat.Contracts\Ceyehat.Contracts.csproj" />
-      <ProjectReference Include="..\Ceyehat.Domain\Ceyehat.Domain.csproj"/>
+      <ProjectReference Include="..\Ceyehat.Domain\Ceyehat.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
+        <PackageReference Include="OneOf" Version="3.0.223" />
     </ItemGroup>
 
 </Project>
