@@ -1,6 +1,5 @@
 using Ceyehat.Application.Common.Errors;
 using Ceyehat.Application.Services.Authentication;
-using Ceyehat.Application.Services.Authentication.Interfaces;
 using Ceyehat.Contracts.Authentication;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;

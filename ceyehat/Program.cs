@@ -1,5 +1,5 @@
 using Ceyehat.Application;
-using ceyehat.Errors;
+using ceyehat.Common.Errors;
 using Ceyehat.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;

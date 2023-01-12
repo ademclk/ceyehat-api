@@ -1,7 +1,6 @@
-using Ceyehat.Application.Common.Errors;
 using FluentResults;
 
-namespace Ceyehat.Application.Services.Authentication.Interfaces;
+namespace Ceyehat.Application.Services.Authentication;
 
 public interface IAuthService
 {

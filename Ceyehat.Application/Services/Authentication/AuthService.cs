@@ -1,7 +1,6 @@
 using Ceyehat.Application.Common.Errors;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Application.Services.Authentication.Interfaces;
 using Ceyehat.Domain.Entities;
 using FluentResults;
 

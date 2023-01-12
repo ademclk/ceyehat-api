@@ -1,5 +1,4 @@
 using Ceyehat.Application.Services.Authentication;
-using Ceyehat.Application.Services.Authentication.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Ceyehat.Application;

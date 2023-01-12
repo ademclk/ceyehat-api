@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Options;
 
-namespace ceyehat.Errors;
+namespace ceyehat.Common.Errors;
 
 public class CeyehatProblemDetailsFactory : ProblemDetailsFactory
 {
