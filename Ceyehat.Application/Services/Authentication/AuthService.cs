@@ -3,7 +3,7 @@ using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Services.Authentication.Interfaces;
 using Ceyehat.Domain.Entities;
-using OneOf;
+using FluentResults;
 
 namespace Ceyehat.Application.Services.Authentication;
 
@@ -43,13 +43,13 @@ public class AuthService : IAuthService
         );
     }
 
-    public OneOf<AuthResult, DuplicateEmailError> Register(string email, string password, string firstName, string lastName)
+    public Result<AuthResult> Register(string email, string password, string firstName, string lastName)
     {
         // Check if user already exists
         var registeredUser =  _userRepository.GetUserByEmail(email);
         if (registeredUser != null)
         {
-            return new DuplicateEmailError();
+            return Result.Fail<AuthResult>(new []{ new DuplicateEmailError() });
         }
 
         // Creating user

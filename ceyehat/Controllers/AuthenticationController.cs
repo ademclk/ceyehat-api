@@ -2,8 +2,8 @@ using Ceyehat.Application.Common.Errors;
 using Ceyehat.Application.Services.Authentication;
 using Ceyehat.Application.Services.Authentication.Interfaces;
 using Ceyehat.Contracts.Authentication;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
-using OneOf;
 
 namespace ceyehat.Controllers;
 
@@ -40,16 +40,26 @@ public class AuthenticationController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        OneOf<AuthResult, DuplicateEmailError> registerResult = _authService.Register(
+        Result<AuthResult> registerResult = _authService.Register(
             request.Email,
             request.Password,
             request.FirstName,
             request.LastName
         );
         
-        return registerResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
-            _ => Problem(statusCode: StatusCodes.Status409Conflict, title: "Email already exists."));
+        if (registerResult.IsSuccess)
+        {
+            return Ok(MapAuthResult(registerResult.Value));
+        }
+        
+        var firstError = registerResult.Errors.First();
+        
+        if (firstError is DuplicateEmailError)
+        {
+            return BadRequest(new {message = firstError.Message});
+        }
+
+        return Problem();
     }
 
     private static AuthResponse MapAuthResult(AuthResult authResult)
