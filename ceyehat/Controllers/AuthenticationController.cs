@@ -1,13 +1,13 @@
 using Ceyehat.Application.Services.Authentication;
 using Ceyehat.Contracts.Authentication;
+using Ceyehat.Domain.Common.Errors;
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
     private readonly IAuthenticationService _authService;
 
@@ -24,9 +24,16 @@ public class AuthenticationController : ControllerBase
             request.Password
         );
 
-        return loginResult.MatchFirst(
+        if (loginResult.IsError && loginResult.FirstError == Errors.Authentication.InvalidCredentials)
+        {
+            return Problem(
+                statusCode: StatusCodes.Status401Unauthorized, 
+                title: loginResult.FirstError.Description);
+        }
+        
+        return loginResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
-            firstError => Problem(statusCode: StatusCodes.Status400BadRequest, title: firstError.Description )
+            errors => Problem(errors)
         );
     }
 
@@ -40,9 +47,9 @@ public class AuthenticationController : ControllerBase
             request.LastName
         );
 
-        return registerResult.MatchFirst(
+        return registerResult.Match(
             authResult => Ok(MapAuthResult(authResult)),
-             firstError => Problem(statusCode: StatusCodes.Status409Conflict, title: firstError.Description)
+             errors => Problem(errors)
         );
     }
 
