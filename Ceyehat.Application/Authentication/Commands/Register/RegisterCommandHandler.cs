@@ -1,27 +1,29 @@
+using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Application.Services.Authentication.Common;
 using Ceyehat.Domain.Common.Errors;
 using Ceyehat.Domain.Entities;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Services.Authentication.Commands;
+namespace Ceyehat.Application.Authentication.Commands.Register;
 
-public class AuthenticationCommandService : IAuthenticationCommandService
+public class RegisterCommandHandler : 
+    IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
 
-    public AuthenticationCommandService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
+    public RegisterCommandHandler(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
     }
-    public ErrorOr<AuthenticationResult> Register(string email, string password, string firstName, string lastName)
+
+    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         // Check if user already exists
-        var registeredUser =  _userRepository.GetUserByEmail(email);
-        if (registeredUser.Result != null)
+        if (await _userRepository.GetUserByEmail(command.Email) is not null)
         {
             return Errors.User.DuplicateEmail;
         }
@@ -29,13 +31,13 @@ public class AuthenticationCommandService : IAuthenticationCommandService
         // Creating user
         var user = new User
         {
-            Email = email,
-            Password = password,
-            FirstName = firstName,
-            LastName = lastName
+            Email = command.Email,
+            Password = command.Password,
+            FirstName = command.FirstName,
+            LastName = command.LastName
         };
 
-        _userRepository.Add(user);
+        await _userRepository.Add(user);
 
         // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);
