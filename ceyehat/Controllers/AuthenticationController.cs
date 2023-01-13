@@ -1,7 +1,6 @@
-using Ceyehat.Application.Common.Errors;
 using Ceyehat.Application.Services.Authentication;
 using Ceyehat.Contracts.Authentication;
-using FluentResults;
+using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
@@ -10,65 +9,51 @@ namespace ceyehat.Controllers;
 [Route("auth")]
 public class AuthenticationController : ControllerBase
 {
-    private readonly IAuthService _authService;
+    private readonly IAuthenticationService _authService;
 
-    public AuthenticationController(IAuthService authService)
+    public AuthenticationController(IAuthenticationService authenticationService)
     {
-        _authService = authService;
+        _authService = authenticationService;
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginRequest request)
+    public IActionResult Login(LoginRequest request)
     {
-        var authResult = await _authService.Login(
+        var loginResult = _authService.Login(
             request.Email,
             request.Password
         );
 
-        var authResponse = new AuthResponse(
-            authResult.User!.UserId,
-            authResult.User.Email,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.Token
+        return loginResult.MatchFirst(
+            authResult => Ok(MapAuthResult(authResult)),
+            firstError => Problem(statusCode: StatusCodes.Status400BadRequest, title: firstError.Description )
         );
-
-        return Ok(authResponse);
     }
 
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        Result<AuthResult> registerResult = _authService.Register(
+        ErrorOr<AuthenticationResult> registerResult = _authService.Register(
             request.Email,
             request.Password,
             request.FirstName,
             request.LastName
         );
-        
-        if (registerResult.IsSuccess)
-        {
-            return Ok(MapAuthResult(registerResult.Value));
-        }
-        
-        var firstError = registerResult.Errors.First();
-        
-        if (firstError is DuplicateEmailError)
-        {
-            return BadRequest(new {message = firstError.Message});
-        }
 
-        return Problem();
+        return registerResult.MatchFirst(
+            authResult => Ok(MapAuthResult(authResult)),
+             firstError => Problem(statusCode: StatusCodes.Status409Conflict, title: firstError.Description)
+        );
     }
 
-    private static AuthResponse MapAuthResult(AuthResult authResult)
+    private static AuthResponse MapAuthResult(AuthenticationResult registerResult)
     {
         var authResponse = new AuthResponse(
-            authResult.User!.UserId,
-            authResult.User.Email,
-            authResult.User.FirstName,
-            authResult.User.LastName,
-            authResult.Token
+            registerResult.User!.UserId,
+            registerResult.User.Email,
+            registerResult.User.FirstName,
+            registerResult.User.LastName,
+            registerResult.Token
         );
         return authResponse;
     }
