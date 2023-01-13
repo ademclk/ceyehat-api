@@ -1,4 +1,7 @@
 using Ceyehat.Application.Services.Authentication;
+using Ceyehat.Application.Services.Authentication.Commands;
+using Ceyehat.Application.Services.Authentication.Common;
+using Ceyehat.Application.Services.Authentication.Queries;
 using Ceyehat.Contracts.Authentication;
 using Ceyehat.Domain.Common.Errors;
 using ErrorOr;
@@ -9,17 +12,21 @@ namespace ceyehat.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private readonly IAuthenticationService _authService;
+    private readonly IAuthenticationCommandService _authenticationCommandService;
+    private readonly IAuthenticationQueryService _authenticationQueryService;
 
-    public AuthenticationController(IAuthenticationService authenticationService)
+    public AuthenticationController(
+        IAuthenticationCommandService authenticationCommandService, 
+        IAuthenticationQueryService authenticationQueryService)
     {
-        _authService = authenticationService;
+        _authenticationCommandService = authenticationCommandService;
+        _authenticationQueryService = authenticationQueryService;
     }
 
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
-        var loginResult = _authService.Login(
+        var loginResult = _authenticationQueryService.Login(
             request.Email,
             request.Password
         );
@@ -40,7 +47,7 @@ public class AuthenticationController : ApiController
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        ErrorOr<AuthenticationResult> registerResult = _authService.Register(
+        ErrorOr<AuthenticationResult> registerResult = _authenticationCommandService.Register(
             request.Email,
             request.Password,
             request.FirstName,

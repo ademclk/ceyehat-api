@@ -1,51 +1,27 @@
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
+using Ceyehat.Application.Services.Authentication.Common;
 using Ceyehat.Domain.Common.Errors;
 using Ceyehat.Domain.Entities;
 using ErrorOr;
 
-namespace Ceyehat.Application.Services.Authentication;
+namespace Ceyehat.Application.Services.Authentication.Commands;
 
-public class AuthenticationService : IAuthenticationService
+public class AuthenticationCommandService : IAuthenticationCommandService
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
 
-    public AuthenticationService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
+    public AuthenticationCommandService(IJwtTokenGenerator jwtTokenGenerator, IUserRepository userRepository)
     {
         _jwtTokenGenerator = jwtTokenGenerator;
         _userRepository = userRepository;
     }
-
-    public ErrorOr<AuthenticationResult> Login(string email, string password)
-    {
-        // Validate if user exists
-        var user = _userRepository.GetUserByEmail(email);
-        
-        if (user.Result == null)
-        {
-            return Errors.Authentication.InvalidCredentials;
-        }
-
-        // Validate if password is correct
-        if (user.Result!.Password != password)
-        { 
-            return Errors.Authentication.InvalidCredentials;
-        }
-        
-        // Generate JWT token
-        var token = _jwtTokenGenerator.GenerateToken(user.Result!);
-
-        return new AuthenticationResult(
-            user.Result!,
-            token);
-    }
-
     public ErrorOr<AuthenticationResult> Register(string email, string password, string firstName, string lastName)
     {
         // Check if user already exists
         var registeredUser =  _userRepository.GetUserByEmail(email);
-        if (registeredUser != null)
+        if (registeredUser.Result != null)
         {
             return Errors.User.DuplicateEmail;
         }
@@ -59,7 +35,7 @@ public class AuthenticationService : IAuthenticationService
             LastName = lastName
         };
 
-         _userRepository.Add(user);
+        _userRepository.Add(user);
 
         // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);
