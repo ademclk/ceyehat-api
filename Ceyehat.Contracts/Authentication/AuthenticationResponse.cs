@@ -1,10 +1,8 @@
 namespace Ceyehat.Contracts.Authentication;
 
-public record AuthResponse
-(
+public record AuthenticationResponse(
     Guid Id,
     string Email,
     string FirstName,
     string LastName,
-    string Token
-);
+    string Token);

@@ -1,21 +1,16 @@
+using ceyehat;
 using Ceyehat.Application;
-using ceyehat.Common.Errors;
 using Ceyehat.Infrastructure;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-
-    builder.Services.AddControllers();
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
-
-    builder.Services.AddSingleton<ProblemDetailsFactory, CeyehatProblemDetailsFactory>();
-
+    
     builder.Services.AddDbContext<CeyehatDbContext>(opt => opt.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 }

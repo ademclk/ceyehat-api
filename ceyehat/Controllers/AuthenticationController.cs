@@ -4,6 +4,7 @@ using Ceyehat.Application.Authentication.Queries.Login;
 using Ceyehat.Contracts.Authentication;
 using Ceyehat.Domain.Common.Errors;
 using ErrorOr;
+using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,16 +14,18 @@ namespace ceyehat.Controllers;
 public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;
+    private readonly IMapper _mapper;
 
-    public AuthenticationController(ISender mediator)
+    public AuthenticationController(ISender mediator, IMapper mapper)
     {
         _mediator = mediator;
+        _mapper = mapper;
     }
 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
-        var query = new LoginQuery(request.Email, request.Password);
+        var query = _mapper.Map<LoginQuery>(request);
         ErrorOr<AuthenticationResult> loginResult = await _mediator.Send(query);
 
         if (loginResult.IsError && loginResult.FirstError == Errors.Authentication.InvalidCredentials)
@@ -33,31 +36,19 @@ public class AuthenticationController : ApiController
         }
 
         return loginResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
             errors => Problem(errors));
     }
 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
-        var command = new RegisterCommand(request.Email, request.Password, request.FirstName, request.LastName);
+        var command = _mapper.Map<RegisterCommand>(request);
         ErrorOr<AuthenticationResult> registerResult = await _mediator.Send(command);
         
         return registerResult.Match(
-            authResult => Ok(MapAuthResult(authResult)),
+            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
              errors => Problem(errors)
         );
-    }
-
-    private static AuthResponse MapAuthResult(AuthenticationResult registerResult)
-    {
-        var authResponse = new AuthResponse(
-            registerResult.User!.UserId,
-            registerResult.User.Email,
-            registerResult.User.FirstName,
-            registerResult.User.LastName,
-            registerResult.Token
-        );
-        return authResponse;
     }
 }
