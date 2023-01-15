@@ -21,25 +21,24 @@ public class LoginQueryHandler :
 
     public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
+        var userResponse = await _userRepository.GetUserByEmail(query.Email);
         // Validate if user exists
-        var user = _userRepository.GetUserByEmail(query.Email);
-        
-        if (user.Result == null)
+        if (userResponse == null)
         {
             return Errors.Authentication.InvalidCredentials;
         }
 
         // Validate if password is correct
-        if (user.Result!.Password != query.Password)
+        if (userResponse.Password != query.Password)
         { 
             return Errors.Authentication.InvalidCredentials;
         }
         
         // Generate JWT token
-        var token = _jwtTokenGenerator.GenerateToken(user.Result!);
+        var token = _jwtTokenGenerator.GenerateToken(userResponse);
 
         return new AuthenticationResult(
-            user.Result!,
+            userResponse,
             token);
     }
 }
