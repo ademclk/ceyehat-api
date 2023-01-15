@@ -1,0 +1,3 @@
+````
+POST  auth/register
+````
