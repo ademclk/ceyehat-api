@@ -15,11 +15,10 @@ public static class DependencyInjection
     {
         services.AddMediatR(typeof(DependencyInjection).Assembly);
         
-        services.AddScoped<
-            IPipelineBehavior<RegisterCommand, 
-            ErrorOr<AuthenticationResult>>, 
-            ValidateRegisterCommandBehaviour>();
-
+        services.AddScoped(
+            typeof(IPipelineBehavior<,>),
+            typeof(ValidationBehaviour<,>));
+        
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         
         return services;
