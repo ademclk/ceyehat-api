@@ -15,7 +15,7 @@ public partial class CeyehatDbContext : DbContext
     {
     }
 
-    public virtual DbSet<User?> Users { get; set; } = null!;
+    public virtual DbSet<User> Users { get; set; } = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
