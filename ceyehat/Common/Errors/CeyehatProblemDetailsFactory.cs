@@ -95,10 +95,8 @@ public class CeyehatProblemDetailsFactory : ProblemDetailsFactory
         {
             problemDetails.Extensions["traceId"] = traceId;
         }
-        
-        var errors = httpContext?.Items[HttpContextItemKeys.Errors] as List<Error>;
-        
-        if (errors is not null)
+
+        if (httpContext?.Items[HttpContextItemKeys.Errors] is List<Error> errors)
         {
             problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
         }
