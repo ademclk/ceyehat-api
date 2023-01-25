@@ -1,0 +1,2 @@
+GET http://localhost:5228/api/aircrafts
+Content-Type: application/json
