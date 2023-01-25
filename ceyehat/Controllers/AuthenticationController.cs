@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 
-[Route("auth")]
+[Route("api/auth")]
 public class AuthenticationController : ApiController
 {
     private readonly ISender _mediator;

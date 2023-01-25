@@ -1,4 +1,4 @@
-POST http://localhost:5228/auth/login
+POST http://localhost:5228/api/auth/login
 Content-Type: application/json
 
 {
