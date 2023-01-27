@@ -7,7 +7,7 @@ using MediatR;
 
 namespace Ceyehat.Application.Authentication.Queries.Login;
 
-public class LoginQueryHandler : 
+public class LoginQueryHandler :
     IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
@@ -30,10 +30,10 @@ public class LoginQueryHandler :
 
         // Validate if password is correct
         if (userResponse.Password != query.Password)
-        { 
+        {
             return Errors.Authentication.InvalidCredentials;
         }
-        
+
         // Generate JWT token
         var token = _jwtTokenGenerator.GenerateToken(userResponse);
 
