@@ -13,7 +13,7 @@ public static class DependencyInjection
         services.AddSwaggerGen();
         services.AddSingleton<ProblemDetailsFactory, CeyehatProblemDetailsFactory>();
         services.AddMappings();
-        
+
         return services;
     }
 }

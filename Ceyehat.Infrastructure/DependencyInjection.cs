@@ -33,7 +33,7 @@ public static class DependencyInjection
     {
         var jwtSettings = new JwtSettings();
         builderConfiguration.Bind(JwtSettings.Section, jwtSettings);
-        
+
         services.AddSingleton(Options.Create(jwtSettings));
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
@@ -49,7 +49,7 @@ public static class DependencyInjection
                 IssuerSigningKey = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(jwtSettings.Secret))
             });
-        
+
         return services;
     }
 }

@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Ceyehat.Application.Authentication.Commands.Register;
 
-public class RegisterCommandHandler : 
+public class RegisterCommandHandler :
     IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;

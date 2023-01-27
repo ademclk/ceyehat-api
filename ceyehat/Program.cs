@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
         .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-    
+
     builder.Services.AddDbContext<CeyehatDbContext>(opt => opt.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 }
