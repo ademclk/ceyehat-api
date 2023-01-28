@@ -1,8 +1,4 @@
-using System.Reflection;
-using Ceyehat.Application.Authentication.Commands.Register;
-using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Behaviours;
-using ErrorOr;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +15,7 @@ public static class DependencyInjection
             typeof(IPipelineBehavior<,>),
             typeof(ValidationBehaviour<,>));
 
-        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+        services.AddValidatorsFromAssembly(typeof(DependencyInjection).Assembly);
 
         return services;
     }
