@@ -25,7 +25,7 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login(LoginRequest request)
+    public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
         var query = _mapper.Map<LoginQuery>(request);
         ErrorOr<AuthenticationResult> loginResult = await _mediator.Send(query);
@@ -43,7 +43,7 @@ public class AuthenticationController : ApiController
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(RegisterRequest request)
+    public async Task<IActionResult> RegisterAsync(RegisterRequest request)
     {
         var command = _mapper.Map<RegisterCommand>(request);
         ErrorOr<AuthenticationResult> registerResult = await _mediator.Send(command);

@@ -13,27 +13,15 @@ public class UserRepository : IUserRepository
     {
         _dbContext = context;
     }
-
-    public async Task Add(User? user)
-    {
-        await _dbContext.Users.AddAsync(user);
-        await _dbContext.SaveChangesAsync();
-    }
-
-    public async Task<User?> GetUserByEmail(string email)
+    
+    public async Task<User?> GetUserByEmailAsync(string email)
     {
         return await _dbContext.Users.FirstOrDefaultAsync(u => u!.Email == email);
     }
 
-    private static User MapUser(NpgsqlDataReader reader)
+    public async Task AddUserAsync(User? user)
     {
-        return new User
-        {
-            UserId = reader.GetGuid(0),
-            Email = reader.GetString(1),
-            Password = reader.GetString(2),
-            FirstName = reader.GetString(3),
-            LastName = reader.GetString(4)
-        };
+        await _dbContext.Users.AddAsync(user!);
+        await _dbContext.SaveChangesAsync();
     }
 }
