@@ -27,7 +27,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         {
             ExpireDate = _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
         };
-        
+
         var signingKey = new SigningCredentials(
             new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
@@ -47,7 +47,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
             claims: claims,
             signingCredentials: signingKey);
-        
+
         token.AccessToken = new JwtSecurityTokenHandler().WriteToken(securityToken);
         token.RefreshToken = GenerateRefreshToken();
 
