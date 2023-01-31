@@ -1,6 +1,6 @@
 namespace Ceyehat.Domain.Common.Models;
 
-public abstract class Entity<TId> : IEquatable<Entity<TId>>
+public abstract sealed class Entity<TId> : IEquatable<Entity<TId>>
     where TId : notnull
 {
     public TId Id { get; protected set; }
