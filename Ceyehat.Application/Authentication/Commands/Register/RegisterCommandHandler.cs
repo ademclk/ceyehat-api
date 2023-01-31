@@ -9,7 +9,7 @@ using MediatR;
 namespace Ceyehat.Application.Authentication.Commands.Register;
 
 public class RegisterCommandHandler :
-    IRequestHandler<RegisterCommand, ErrorOr<AuthenticationResult>>
+    IRequestHandler<RegisterCommand, ErrorOr<Token>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
@@ -20,7 +20,7 @@ public class RegisterCommandHandler :
         _userRepository = userRepository;
     }
 
-    public async Task<ErrorOr<AuthenticationResult>> Handle(RegisterCommand command, CancellationToken cancellationToken)
+    public async Task<ErrorOr<Token>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         var userResponse = await _userRepository.GetUserByEmailAsync(command.Email);
         // Check if user already exists
@@ -43,9 +43,6 @@ public class RegisterCommandHandler :
         // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return new AuthenticationResult(
-            user,
-            token
-        );
+        return token;
     }
 }

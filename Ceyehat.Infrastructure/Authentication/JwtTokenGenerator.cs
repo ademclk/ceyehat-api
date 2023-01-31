@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Services;
 using Ceyehat.Domain.Entities;
@@ -20,8 +21,13 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         _jwtSettings = jwtOptions.Value;
     }
 
-    public string GenerateToken(User? user)
+    public Token GenerateToken(User? user)
     {
+        var token = new Token()
+        {
+            ExpireDate = _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
+        };
+        
         var signingKey = new SigningCredentials(
             new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
@@ -41,7 +47,14 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             expires: _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
             claims: claims,
             signingCredentials: signingKey);
+        
+        token.AccessToken = new JwtSecurityTokenHandler().WriteToken(securityToken);
+        token.RefreshToken = GenerateRefreshToken();
 
-        return new JwtSecurityTokenHandler().WriteToken(securityToken);
+        return token;
+    }
+    private static string GenerateRefreshToken()
+    {
+        return Guid.NewGuid().ToString();
     }
 }

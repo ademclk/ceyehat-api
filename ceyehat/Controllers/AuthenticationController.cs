@@ -28,7 +28,7 @@ public class AuthenticationController : ApiController
     public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
         var query = _mapper.Map<LoginQuery>(request);
-        ErrorOr<AuthenticationResult> loginResult = await _mediator.Send(query);
+        ErrorOr<Token> loginResult = await _mediator.Send(query);
 
         if (loginResult.IsError && loginResult.FirstError == Errors.Authentication.InvalidCredentials)
         {
@@ -38,7 +38,7 @@ public class AuthenticationController : ApiController
         }
 
         return loginResult.Match(
-            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+            authResult => Ok(loginResult.Value),
             errors => Problem(errors));
     }
 
@@ -46,10 +46,10 @@ public class AuthenticationController : ApiController
     public async Task<IActionResult> RegisterAsync(RegisterRequest request)
     {
         var command = _mapper.Map<RegisterCommand>(request);
-        ErrorOr<AuthenticationResult> registerResult = await _mediator.Send(command);
+        ErrorOr<Token> registerResult = await _mediator.Send(command);
 
         return registerResult.Match(
-            authResult => Ok(_mapper.Map<AuthenticationResponse>(authResult)),
+            authResult => Ok(registerResult.Value),
              errors => Problem(errors)
         );
     }

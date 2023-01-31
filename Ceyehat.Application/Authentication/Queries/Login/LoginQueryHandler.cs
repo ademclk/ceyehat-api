@@ -8,7 +8,7 @@ using MediatR;
 namespace Ceyehat.Application.Authentication.Queries.Login;
 
 public class LoginQueryHandler :
-    IRequestHandler<LoginQuery, ErrorOr<AuthenticationResult>>
+    IRequestHandler<LoginQuery, ErrorOr<Token>>
 {
     private readonly IJwtTokenGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
@@ -19,7 +19,7 @@ public class LoginQueryHandler :
         _userRepository = userRepository;
     }
 
-    public async Task<ErrorOr<AuthenticationResult>> Handle(LoginQuery query, CancellationToken cancellationToken)
+    public async Task<ErrorOr<Token>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         var userResponse = await _userRepository.GetUserByEmailAsync(query.Email);
         // Validate if user exists
@@ -37,8 +37,6 @@ public class LoginQueryHandler :
         // Generate JWT token
         var token = _jwtTokenGenerator.GenerateToken(userResponse);
 
-        return new AuthenticationResult(
-            userResponse,
-            token);
+        return token;
     }
 }
