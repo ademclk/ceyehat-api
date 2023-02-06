@@ -9,9 +9,9 @@ public class Airport
     public double Latitude { get; set; }
     public double Longitude { get; set; }
     public string TimeZone { get; set; } = null!;
-    
+
     public Neighbourhood Neighbourhood { get; set; } = null!;
-    
+
     public ICollection<Flight> FlightsDeparture { get; set; } = new List<Flight>();
     public ICollection<Flight> FlightsArrival { get; set; } = new List<Flight>();
 }

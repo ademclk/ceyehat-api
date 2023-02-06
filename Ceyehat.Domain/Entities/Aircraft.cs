@@ -9,10 +9,10 @@ public class Aircraft
     public string Icao24 { get; set; } = null!;
     public string Model { get; set; } = null!;
     public string AirlineCode { get; set; } = null!;
-    
+
     public Country Country { get; set; } = null!;
     public Airline Airline { get; set; } = null!;
-    
+
     public ICollection<Flight> Flights { get; set; } = null!;
     public ICollection<Seat> Seats { get; set; } = null!;
 }

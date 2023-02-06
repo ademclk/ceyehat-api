@@ -8,7 +8,7 @@ public class Booking
     public Guid SeatId { get; set; }
     public DateTime BookingDate { get; set; }
     public decimal Price { get; set; }
-    
+
     public Flight Flight { get; set; } = null!;
     public Passenger Passenger { get; set; } = null!;
     public Seat Seat { get; set; } = null!;
