@@ -8,6 +8,6 @@ public class City
     public string CityCode { get; set; } = null!;
 
     public Country Country { get; set; } = null!;
-    
+
     public ICollection<Airport> Airports { get; set; } = null!;
 }

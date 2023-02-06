@@ -14,7 +14,7 @@ public class Flight
     public DateTime? ActualDeparture { get; set; }
     public DateTime? ActualArrival { get; set; }
     public FlightStatus Status { get; set; }
-    
+
     public Aircraft Aircraft { get; set; } = null!;
     public Airport DepartureAirport { get; set; } = null!;
     public Airport ArrivalAirport { get; set; } = null!;
