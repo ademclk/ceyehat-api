@@ -2,8 +2,8 @@ POST http://localhost:5228/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "test1@ceyehat.com",
-  "password": "Test123",
+  "email": "adem@ceyehat.com",
+  "password": "Test12345",
   "firstname": "Test",
   "lastname":"User"
 }

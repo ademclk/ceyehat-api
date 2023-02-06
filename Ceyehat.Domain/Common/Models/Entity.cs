@@ -1,3 +1,5 @@
+using Ceyehat.Domain.Entities;
+
 namespace Ceyehat.Domain.Common.Models;
 
 public abstract class Entity<TId> : IEquatable<Entity<TId>>
@@ -34,5 +36,4 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
     {
         return Id.GetHashCode();
     }
-
 }
