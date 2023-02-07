@@ -15,7 +15,7 @@ public sealed class Country : AggregateRoot<CountryId>
     public string? Name { get; }
     public string? Iso2 { get; }
     public string? Iso3 { get; }
-    
+
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
     public IReadOnlyList<AirlineId> AirlineIds => _airlineIds.AsReadOnly();
     public IReadOnlyList<CityId> CityIds => _cityIds.AsReadOnly();
@@ -32,7 +32,7 @@ public sealed class Country : AggregateRoot<CountryId>
         Iso2 = iso2;
         Iso3 = iso3;
     }
-    
+
     public static Country Create(
         string? unLocode,
         string? name,
@@ -46,17 +46,17 @@ public sealed class Country : AggregateRoot<CountryId>
             iso2,
             iso3);
     }
-    
+
     public void AddAircraft(AircraftId aircraftId)
     {
         _aircraftIds.Add(aircraftId);
     }
-    
+
     public void AddAirline(AirlineId airlineId)
     {
         _airlineIds.Add(airlineId);
     }
-    
+
     public void AddCity(CityId cityId)
     {
         _cityIds.Add(cityId);
