@@ -67,7 +67,7 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
             faaRegistration,
             countryId,
             airlineId,
-            DateTime.UtcNow, 
+            DateTime.UtcNow,
             DateTime.UtcNow);
     }
 

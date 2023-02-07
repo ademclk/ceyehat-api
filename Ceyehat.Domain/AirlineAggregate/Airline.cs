@@ -14,7 +14,7 @@ public sealed class Airline : AggregateRoot<AirlineId>
     public string? Callsign { get; }
     public string? Code { get; }
     public string? Website { get; }
-    
+
     public AirlineAddress AirlineAddress { get; }
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
 
@@ -22,13 +22,13 @@ public sealed class Airline : AggregateRoot<AirlineId>
     public DateTime UpdatedAt { get; }
 
     private Airline(
-        AirlineId airlineId, 
-        string? name, 
-        string? iataCode, 
-        string? icaoCode, 
-        string? callsign, 
-        string? code, 
-        string? website, 
+        AirlineId airlineId,
+        string? name,
+        string? iataCode,
+        string? icaoCode,
+        string? callsign,
+        string? code,
+        string? website,
         AirlineAddress airlineAddress,
         DateTime createdAt,
         DateTime updatedAt) : base(airlineId)
@@ -43,24 +43,24 @@ public sealed class Airline : AggregateRoot<AirlineId>
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
-    
+
     public static Airline Create(
-        string? name, 
-        string? iataCode, 
-        string? icaoCode, 
-        string? callsign, 
-        string? code, 
-        string? website, 
+        string? name,
+        string? iataCode,
+        string? icaoCode,
+        string? callsign,
+        string? code,
+        string? website,
         AirlineAddress airlineAddress)
     {
         return new(
-            AirlineId.CreateUnique(), 
-            name, 
-            iataCode, 
-            icaoCode, 
-            callsign, 
-            code, 
-            website, 
+            AirlineId.CreateUnique(),
+            name,
+            iataCode,
+            icaoCode,
+            callsign,
+            code,
+            website,
             airlineAddress,
             DateTime.UtcNow,
             DateTime.UtcNow);
@@ -70,7 +70,7 @@ public sealed class Airline : AggregateRoot<AirlineId>
     {
         _aircraftIds.Add(aircraftId);
     }
-    
+
     public void RemoveAircraft(AircraftId aircraftId)
     {
         _aircraftIds.Remove(aircraftId);
