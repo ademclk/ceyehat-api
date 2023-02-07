@@ -9,18 +9,18 @@ public sealed class AirlineAddress : Entity<AirlineAddressId>
     public CityId CityId { get; }
 
     private AirlineAddress(
-        AirlineAddressId airlineAddressId, 
+        AirlineAddressId airlineAddressId,
         CityId cityId) : base(airlineAddressId)
     {
         CityId = cityId;
     }
-    
+
     public static AirlineAddress Create(
-        AirlineAddressId airlineAddressId, 
+        AirlineAddressId airlineAddressId,
         CityId cityId)
     {
         return new(
-            AirlineAddressId.CreateUnique(), 
+            AirlineAddressId.CreateUnique(),
             cityId);
     }
 }
