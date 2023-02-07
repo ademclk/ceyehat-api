@@ -7,7 +7,7 @@ public class Customer
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string PhoneNumber { get; set; } = null!;
-    
+
     public Passenger Passenger { get; set; } = null!;
     public User User { get; set; } = null!;
     public List<Booking> Bookings { get; set; } = null!;
