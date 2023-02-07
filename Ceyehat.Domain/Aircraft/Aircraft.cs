@@ -11,7 +11,7 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
 {
     private readonly List<FlightId> _flightIds = new();
     private readonly List<SeatId> _seatIds = new();
-    
+
     public string? RegistrationNumber { get; }
     public string? Icao24Code { get; }
     public string? Model { get; }
@@ -19,23 +19,23 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
     public string? FaaRegistration { get; }
     public CountryId CountryId { get; }
     public AirlineId AirlineId { get; }
-    
+
     public IReadOnlyList<FlightId> FlightIds => _flightIds.AsReadOnly();
     public IReadOnlyList<SeatId> SeatIds => _seatIds.AsReadOnly();
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
-    
+
     private Aircraft(
-        AircraftId id, 
-        string? registrationNumber, 
-        string? icao24Code, 
+        AircraftId id,
+        string? registrationNumber,
+        string? icao24Code,
         string? model,
-        string? manufacturerSerialNumber, 
+        string? manufacturerSerialNumber,
         string? faaRegistration,
         CountryId countryId,
         AirlineId airlineId,
-        DateTime createdAt, 
+        DateTime createdAt,
         DateTime updatedAt) : base(id)
     {
         RegistrationNumber = registrationNumber;

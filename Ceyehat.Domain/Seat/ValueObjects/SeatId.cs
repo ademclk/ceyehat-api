@@ -10,7 +10,7 @@ public sealed class SeatId : ValueObject
     {
         Value = value;
     }
-    
+
     public static SeatId CreateUnique()
     {
         return new(Guid.NewGuid());
