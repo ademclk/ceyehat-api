@@ -1,9 +1,9 @@
 using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirlineAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
-using Ceyehat.Domain.Country.ValueObjects;
-using Ceyehat.Domain.Flight.ValueObjects;
-using Ceyehat.Domain.Seat.ValueObjects;
+using Ceyehat.Domain.CountryAggregate.ValueObjects;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
+using Ceyehat.Domain.SeatAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.AircraftAggregate;
 
@@ -47,5 +47,47 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
         AirlineId = airlineId;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
+    }
+    
+    public static Aircraft Create(
+        AircraftId id,
+        string? registrationNumber,
+        string? icao24Code,
+        string? model,
+        string? manufacturerSerialNumber,
+        string? faaRegistration,
+        CountryId countryId,
+        AirlineId airlineId,
+        DateTime createdAt,
+        DateTime updatedAt)
+    {
+        return new(
+            id, 
+            registrationNumber, 
+            icao24Code, 
+            model, 
+            manufacturerSerialNumber, 
+            faaRegistration, 
+            countryId,
+            airlineId, 
+            createdAt, 
+            updatedAt);
+    }
+    
+    public void AddFlight(FlightId flightId)
+    {
+        _flightIds.Add(flightId);
+    }
+    public void AddSeat(SeatId seatId)
+    {
+        _seatIds.Add(seatId);
+    }
+    public void RemoveFlight(FlightId flightId)
+    {
+        _flightIds.Remove(flightId);
+    }
+    public void RemoveSeat(SeatId seatId)
+    {
+        _seatIds.Remove(seatId);
     }
 }

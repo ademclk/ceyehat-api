@@ -1,6 +1,6 @@
 using Ceyehat.Domain.Common.Models;
 
-namespace Ceyehat.Domain.Country.ValueObjects;
+namespace Ceyehat.Domain.CountryAggregate.ValueObjects;
 
 public sealed class CountryId : ValueObject
 {

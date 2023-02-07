@@ -1,6 +1,6 @@
 using Ceyehat.Domain.Common.Models;
 
-namespace Ceyehat.Domain.Seat.ValueObjects;
+namespace Ceyehat.Domain.SeatAggregate.ValueObjects;
 
 public sealed class SeatId : ValueObject
 {
