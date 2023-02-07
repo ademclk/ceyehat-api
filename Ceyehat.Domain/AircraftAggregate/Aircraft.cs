@@ -48,7 +48,7 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
-    
+
     public static Aircraft Create(
         AircraftId id,
         string? registrationNumber,
@@ -62,18 +62,18 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
         DateTime updatedAt)
     {
         return new(
-            id, 
-            registrationNumber, 
-            icao24Code, 
-            model, 
-            manufacturerSerialNumber, 
-            faaRegistration, 
+            id,
+            registrationNumber,
+            icao24Code,
+            model,
+            manufacturerSerialNumber,
+            faaRegistration,
             countryId,
-            airlineId, 
-            createdAt, 
+            airlineId,
+            createdAt,
             updatedAt);
     }
-    
+
     public void AddFlight(FlightId flightId)
     {
         _flightIds.Add(flightId);
