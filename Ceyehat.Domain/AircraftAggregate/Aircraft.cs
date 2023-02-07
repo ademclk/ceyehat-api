@@ -1,11 +1,11 @@
-using Ceyehat.Domain.Aircraft.ValueObjects;
-using Ceyehat.Domain.Airline.ValueObjects;
+using Ceyehat.Domain.AircraftAggregate.ValueObjects;
+using Ceyehat.Domain.AirlineAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.Country.ValueObjects;
 using Ceyehat.Domain.Flight.ValueObjects;
 using Ceyehat.Domain.Seat.ValueObjects;
 
-namespace Ceyehat.Domain.Aircraft;
+namespace Ceyehat.Domain.AircraftAggregate;
 
 public sealed class Aircraft : AggregateRoot<AircraftId>
 {

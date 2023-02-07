@@ -1,6 +1,6 @@
 using Ceyehat.Domain.Common.Models;
 
-namespace Ceyehat.Domain.Airline.ValueObjects;
+namespace Ceyehat.Domain.AirlineAggregate.ValueObjects;
 
 public sealed class AirlineId : ValueObject
 {
