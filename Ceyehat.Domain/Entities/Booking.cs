@@ -1,3 +1,5 @@
+using Ceyehat.Domain.User;
+
 namespace Ceyehat.Domain.Entities;
 
 public class Booking

@@ -1,4 +1,6 @@
-namespace Ceyehat.Domain.Entities;
+using Ceyehat.Domain.Entities;
+
+namespace Ceyehat.Domain.User;
 
 public class User
 {

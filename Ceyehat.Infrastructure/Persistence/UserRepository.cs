@@ -1,5 +1,5 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Domain.Entities;
+using Ceyehat.Domain.User;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 

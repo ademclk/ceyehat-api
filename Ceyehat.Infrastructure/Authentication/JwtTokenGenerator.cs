@@ -4,7 +4,7 @@ using System.Text;
 using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Services;
-using Ceyehat.Domain.Entities;
+using Ceyehat.Domain.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 

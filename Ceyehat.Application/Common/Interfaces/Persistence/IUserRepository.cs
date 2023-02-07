@@ -1,4 +1,4 @@
-using Ceyehat.Domain.Entities;
+using Ceyehat.Domain.User;
 
 namespace Ceyehat.Application.Common.Interfaces.Persistence;
 
