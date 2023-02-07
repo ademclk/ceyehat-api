@@ -11,7 +11,4 @@ public class Airport
     public string TimeZone { get; set; } = null!;
 
     public Neighbourhood Neighbourhood { get; set; } = null!;
-
-    public List<Flight> FlightsDeparture { get; set; } = new List<Flight>();
-    public List<Flight> FlightsArrival { get; set; } = new List<Flight>();
 }
