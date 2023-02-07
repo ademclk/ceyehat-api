@@ -10,7 +10,7 @@ public sealed class AirlineId : ValueObject
     {
         Value = value;
     }
-    
+
     public static AirlineId CreateUnique()
     {
         return new(Guid.NewGuid());
