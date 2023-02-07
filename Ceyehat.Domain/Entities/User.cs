@@ -8,5 +8,5 @@ public class User
     public string Email { get; init; } = null!;
     public string Password { get; init; } = null!;
 
-    public ICollection<FlightTicket> FlightTickets { get; set; } = null!;
+    public List<FlightTicket> FlightTickets { get; set; } = null!;
 }

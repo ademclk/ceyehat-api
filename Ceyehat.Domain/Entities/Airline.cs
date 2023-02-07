@@ -9,6 +9,7 @@ public class Airline
     public string Website { get; set; } = null!;
     public string CallSign { get; set; } = null!;
 
-    public ICollection<Aircraft> Aircrafts { get; set; } = null!;
     public AirlineAddress AirlineAddress { get; set; } = null!;
+    
+    public List<Aircraft> Aircrafts { get; set; } = null!;
 }

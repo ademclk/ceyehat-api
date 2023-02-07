@@ -10,9 +10,8 @@ public class FlightTicket
     public decimal Price { get; set; }
 
     public User? User { get; set; } = null!;
+    public BoardingPass? BoardingPass { get; set; } = null!;
     public Flight Flight { get; set; } = null!;
     public Passenger Passenger { get; set; } = null!;
     public Seat Seat { get; set; } = null!;
-
-    public BoardingPass? BoardingPass { get; set; } = null!;
 }

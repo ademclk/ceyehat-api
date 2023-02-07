@@ -9,5 +9,5 @@ public class City
 
     public Country Country { get; set; } = null!;
 
-    public ICollection<Airport> Airports { get; set; } = null!;
+    public List<Airport> Airports { get; set; } = null!;
 }

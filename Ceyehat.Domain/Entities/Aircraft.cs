@@ -13,6 +13,6 @@ public class Aircraft
     public Country Country { get; set; } = null!;
     public Airline Airline { get; set; } = null!;
 
-    public ICollection<Flight> Flights { get; set; } = null!;
-    public ICollection<Seat> Seats { get; set; } = null!;
+    public List<Flight> Flights { get; set; } = null!;
+    public List<Seat> Seats { get; set; } = null!;
 }

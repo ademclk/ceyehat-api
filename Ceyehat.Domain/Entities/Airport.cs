@@ -12,6 +12,6 @@ public class Airport
 
     public Neighbourhood Neighbourhood { get; set; } = null!;
 
-    public ICollection<Flight> FlightsDeparture { get; set; } = new List<Flight>();
-    public ICollection<Flight> FlightsArrival { get; set; } = new List<Flight>();
+    public List<Flight> FlightsDeparture { get; set; } = new List<Flight>();
+    public List<Flight> FlightsArrival { get; set; } = new List<Flight>();
 }

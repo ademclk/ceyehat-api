@@ -9,7 +9,7 @@ public class Passenger
     public string Password { get; set; } = null!;
     public string PhoneNumber { get; set; } = null!;
 
-    public ICollection<BoardingPass> BoardingPasses { get; set; } = null!;
-    public ICollection<Relationship> Relationships { get; set; } = null!;
-    public ICollection<FlightTicket> FlightTickets { get; set; } = null!;
+    public List<BoardingPass> BoardingPasses { get; set; } = null!;
+    public List<Relationship> Relationships { get; set; } = null!;
+    public List<FlightTicket> FlightTickets { get; set; } = null!;
 }
