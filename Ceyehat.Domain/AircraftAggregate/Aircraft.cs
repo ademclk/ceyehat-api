@@ -27,7 +27,7 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
     public DateTime UpdatedAt { get; }
 
     private Aircraft(
-        AircraftId id,
+        AircraftId aircraftId,
         string? registrationNumber,
         string? icao24Code,
         string? model,
@@ -36,7 +36,7 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
         CountryId countryId,
         AirlineId airlineId,
         DateTime createdAt,
-        DateTime updatedAt) : base(id)
+        DateTime updatedAt) : base(aircraftId)
     {
         RegistrationNumber = registrationNumber;
         Icao24Code = icao24Code;
@@ -50,19 +50,16 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
     }
 
     public static Aircraft Create(
-        AircraftId id,
         string? registrationNumber,
         string? icao24Code,
         string? model,
         string? manufacturerSerialNumber,
         string? faaRegistration,
         CountryId countryId,
-        AirlineId airlineId,
-        DateTime createdAt,
-        DateTime updatedAt)
+        AirlineId airlineId)
     {
         return new(
-            id,
+            AircraftId.CreateUnique(),
             registrationNumber,
             icao24Code,
             model,
@@ -70,8 +67,8 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
             faaRegistration,
             countryId,
             airlineId,
-            createdAt,
-            updatedAt);
+            DateTime.UtcNow, 
+            DateTime.UtcNow);
     }
 
     public void AddFlight(FlightId flightId)
