@@ -17,11 +17,11 @@ public sealed class Customer : AggregateRoot<CustomerId>
     public Title Title { get; }
     public DateTime BirthDate { get; }
     public PassengerType PassengerType { get; }
-    
+
     public UserId? UserId { get; }
     public IReadOnlyCollection<PassengerId> PassengerIds => _passengerIds.AsReadOnly();
     public IReadOnlyCollection<BookingId> BookingIds => _bookingIds.AsReadOnly();
-    
+
     private Customer(
         CustomerId customerId,
         string? name,
@@ -40,7 +40,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
         PassengerType = passengerType;
         UserId = userId;
     }
-    
+
     public static Customer Create(
         string? name,
         string? surname,
@@ -60,27 +60,27 @@ public sealed class Customer : AggregateRoot<CustomerId>
             passengerType,
             userId);
     }
-    
+
     public void AddPassenger(PassengerId passengerId)
     {
         _passengerIds.Add(passengerId);
     }
-    
+
     public void RemovePassenger(PassengerId passengerId)
     {
         _passengerIds.Remove(passengerId);
     }
-    
+
     public void AddBooking(BookingId bookingId)
     {
         _bookingIds.Add(bookingId);
     }
-    
+
     public void RemoveBooking(BookingId bookingId)
     {
         _bookingIds.Remove(bookingId);
     }
-    
-    
+
+
 
 }

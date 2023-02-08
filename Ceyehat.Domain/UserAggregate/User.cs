@@ -6,11 +6,11 @@ namespace Ceyehat.Domain.UserAggregate;
 
 public sealed class User : AggregateRoot<UserId>
 {
-    public string? FirstName { get; } 
-    public string? LastName { get; } 
-    public string? Email { get; } 
+    public string? FirstName { get; }
+    public string? LastName { get; }
+    public string? Email { get; }
     public string? Password { get; }
-    
+
     public CustomerId CustomerId { get; }
 
     private User(
@@ -27,7 +27,7 @@ public sealed class User : AggregateRoot<UserId>
         Password = password;
         CustomerId = customerId;
     }
-    
+
     public static User Create(
         string? firstName,
         string? lastName,
@@ -36,11 +36,11 @@ public sealed class User : AggregateRoot<UserId>
         CustomerId customerId)
     {
         return new(
-            UserId.CreateUnique(), 
-            firstName, 
-            lastName, 
-            email, 
-            password, 
+            UserId.CreateUnique(),
+            firstName,
+            lastName,
+            email,
+            password,
             customerId);
     }
 }
