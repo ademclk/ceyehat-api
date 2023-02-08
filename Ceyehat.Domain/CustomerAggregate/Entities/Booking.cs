@@ -9,7 +9,7 @@ public sealed class Booking : Entity<BookingId>
 {
     public SeatId? SeatId { get; }
     public FlightId? FlightId { get; }
-    
+
     public Booking(
         BookingId bookingId,
         SeatId seatId,
@@ -18,7 +18,7 @@ public sealed class Booking : Entity<BookingId>
         SeatId = seatId;
         FlightId = flightId;
     }
-    
+
     public static Booking Create(
         SeatId seatId,
         FlightId flightId)
