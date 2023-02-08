@@ -8,10 +8,10 @@ namespace Ceyehat.Domain.CityAggregate.Entities;
 public sealed class Neighborhood : Entity<NeighborhoodId>
 {
     public string? Name { get; }
-    
+
     public AirlineId? AirlineId { get; }
     public AirportId? AirportId { get; }
-    
+
     public Neighborhood(
         NeighborhoodId neighborhoodId,
         string? name,
@@ -22,7 +22,7 @@ public sealed class Neighborhood : Entity<NeighborhoodId>
         AirlineId = airlineId;
         AirportId = airportId;
     }
-    
+
     public static Neighborhood Create(
         string? name,
         AirlineId? airlineId,
