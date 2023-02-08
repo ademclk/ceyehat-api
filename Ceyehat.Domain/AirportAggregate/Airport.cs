@@ -15,7 +15,7 @@ public sealed class Airport : AggregateRoot<AirportId>
     public double Latitude { get; }
     public double Longitude { get; }
     public string? TimeZone { get; }
-    
+
     public CityId CityId { get; }
     public IReadOnlyList<FlightId> DepartureFlights => _departureFlights.AsReadOnly();
     public IReadOnlyList<FlightId> ArrivalFlights => _arrivalFlights.AsReadOnly();
@@ -38,7 +38,7 @@ public sealed class Airport : AggregateRoot<AirportId>
         TimeZone = timeZone;
         CityId = cityId;
     }
-    
+
     public static Airport Create(
         string? iataCode,
         string? icaoCode,
@@ -58,27 +58,28 @@ public sealed class Airport : AggregateRoot<AirportId>
             timeZone,
             cityId);
     }
-    
+
     public void AddDepartureFlight(FlightId flightId)
     {
         _departureFlights.Add(flightId);
     }
-    
+
     public void RemoveDepartureFlight(FlightId flightId)
     {
         _departureFlights.Remove(flightId);
     }
-    
+
     public void AddArrivalFlight(FlightId flightId)
     {
         _arrivalFlights.Add(flightId);
     }
-    
+
     public void RemoveArrivalFlight(FlightId flightId)
     {
         _arrivalFlights.Remove(flightId);
     }
 }
-    
+
+
 
 
