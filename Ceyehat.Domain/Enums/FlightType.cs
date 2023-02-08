@@ -4,5 +4,5 @@ public enum FlightType
 {
     RoundTrip,
     OneWay,
-    MultiCity,  
+    MultiCity,
 }
