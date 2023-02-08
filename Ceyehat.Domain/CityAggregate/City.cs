@@ -8,11 +8,11 @@ public sealed class City : AggregateRoot<CityId>
 {
     private readonly List<District> _districts = new();
     public string? Name { get; }
-    
+
     public CountryId CountryId { get; }
     public IReadOnlyList<District> Districts => _districts.AsReadOnly();
-    
-    public DateTime CreatedAt { get; } 
+
+    public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
 
     private City(

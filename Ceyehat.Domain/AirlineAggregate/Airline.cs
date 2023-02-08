@@ -14,10 +14,10 @@ public sealed class Airline : AggregateRoot<AirlineId>
     public string? Callsign { get; }
     public string? Code { get; }
     public string? Website { get; }
-    
+
     public AirlineAddress AirlineAddress { get; }
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
 

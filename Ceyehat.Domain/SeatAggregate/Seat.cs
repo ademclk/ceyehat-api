@@ -12,7 +12,7 @@ public sealed class Seat : AggregateRoot<SeatId>
     public SeatStatus SeatStatus { get; }
 
     public AircraftId AircraftId { get; }
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
 

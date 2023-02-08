@@ -19,7 +19,7 @@ public sealed class Country : AggregateRoot<CountryId>
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
     public IReadOnlyList<AirlineId> AirlineIds => _airlineIds.AsReadOnly();
     public IReadOnlyList<CityId> CityIds => _cityIds.AsReadOnly();
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
 

@@ -24,7 +24,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
 
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
-    
+
     private Customer(
         CustomerId customerId,
         string? name,

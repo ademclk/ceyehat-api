@@ -10,13 +10,13 @@ public sealed class Passenger : AggregateRoot<PassengerId>
 
     public CustomerId CustomerId { get; private set; }
     public IReadOnlyCollection<FlightTicketId> FlightTicketIds => _flightTicketIds.AsReadOnly();
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
 
     private Passenger(
         PassengerId passengerId,
-        CustomerId customerId, 
+        CustomerId customerId,
         DateTime createdAt,
         DateTime updatedAt) : base(passengerId)
     {
