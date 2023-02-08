@@ -7,11 +7,11 @@ namespace Ceyehat.Domain.PassengerAggregate;
 public sealed class Passenger : AggregateRoot<PassengerId>
 {
     private readonly List<FlightTicketId> _flightTicketIds = new();
-    
+
     public CustomerId CustomerId { get; private set; }
-    
+
     public IReadOnlyCollection<FlightTicketId> FlightTicketIds => _flightTicketIds.AsReadOnly();
-    
+
     private Passenger(
         PassengerId passengerId,
         CustomerId customerId)
@@ -19,7 +19,7 @@ public sealed class Passenger : AggregateRoot<PassengerId>
     {
         CustomerId = customerId;
     }
-    
+
     public static Passenger Create(
         CustomerId customerId)
     {
@@ -27,12 +27,12 @@ public sealed class Passenger : AggregateRoot<PassengerId>
             PassengerId.CreateUnique(),
             customerId);
     }
-    
+
     public void AddFlightTicket(FlightTicketId flightTicketId)
     {
         _flightTicketIds.Add(flightTicketId);
     }
-    
+
     public void RemoveFlightTicket(FlightTicketId flightTicketId)
     {
         _flightTicketIds.Remove(flightTicketId);

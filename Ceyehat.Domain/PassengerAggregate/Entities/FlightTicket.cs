@@ -10,7 +10,7 @@ public sealed class FlightTicket : Entity<FlightTicketId>
     public FlightId FlightId { get; }
     public SeatId SeatId { get; }
     public BoardingPass BoardingPass { get; }
-    
+
     private FlightTicket(
         FlightTicketId flightTicketId,
         FlightId flightId,
@@ -22,7 +22,7 @@ public sealed class FlightTicket : Entity<FlightTicketId>
         SeatId = seatId;
         BoardingPass = boardingPass;
     }
-    
+
     public static FlightTicket Create(
         FlightId flightId,
         SeatId seatId,
