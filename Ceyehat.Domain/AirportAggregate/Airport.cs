@@ -19,10 +19,10 @@ public sealed class Airport : AggregateRoot<AirportId>
     public CityId CityId { get; }
     public IReadOnlyList<FlightId> DepartureFlights => _departureFlights.AsReadOnly();
     public IReadOnlyList<FlightId> ArrivalFlights => _arrivalFlights.AsReadOnly();
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
-    
+
     private Airport(
         AirportId airportId,
         string? iataCode,

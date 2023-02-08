@@ -14,7 +14,7 @@ public sealed class User : AggregateRoot<UserId>
 
     public CustomerId CustomerId { get; }
     public IReadOnlyCollection<RelationshipId> RelationshipIds => _relationshipIds.AsReadOnly();
-    
+
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
 
