@@ -6,12 +6,14 @@ namespace Ceyehat.Domain.UserAggregate;
 
 public sealed class User : AggregateRoot<UserId>
 {
+    private readonly List<RelationshipId> _relationshipIds = new();
     public string? FirstName { get; }
     public string? LastName { get; }
     public string? Email { get; }
     public string? Password { get; }
 
     public CustomerId CustomerId { get; }
+    public IReadOnlyCollection<RelationshipId> RelationshipIds => _relationshipIds.AsReadOnly();
 
     private User(
         UserId userId,
@@ -42,5 +44,15 @@ public sealed class User : AggregateRoot<UserId>
             email,
             password,
             customerId);
+    }
+    
+    public void AddRelationship(RelationshipId relationshipId)
+    {
+        _relationshipIds.Add(relationshipId);
+    }
+    
+    public void RemoveRelationship(RelationshipId relationshipId)
+    {
+        _relationshipIds.Remove(relationshipId);
     }
 }
