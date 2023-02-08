@@ -11,7 +11,7 @@ public sealed class BoardingPass : Entity<BoardingPassId>
     public DateTime BoardingTime { get; }
     public FlightId FlightId { get; }
     public PassengerId PassengerId { get; }
-    
+
     private BoardingPass(
         BoardingPassId boardingPassId,
         string? gate,
@@ -25,7 +25,7 @@ public sealed class BoardingPass : Entity<BoardingPassId>
         FlightId = flightId;
         PassengerId = passengerId;
     }
-    
+
     public static BoardingPass Create(
         string? gate,
         DateTime boardingTime,
