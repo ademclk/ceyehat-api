@@ -45,12 +45,12 @@ public sealed class User : AggregateRoot<UserId>
             password,
             customerId);
     }
-    
+
     public void AddRelationship(RelationshipId relationshipId)
     {
         _relationshipIds.Add(relationshipId);
     }
-    
+
     public void RemoveRelationship(RelationshipId relationshipId)
     {
         _relationshipIds.Remove(relationshipId);

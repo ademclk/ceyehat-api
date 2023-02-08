@@ -9,7 +9,7 @@ public class Relationship : Entity<RelationshipId>
 {
     public RelationshipType Type { get; }
     public CustomerId CustomerId { get; }
-    
+
     public Relationship(
         RelationshipId relationshipId,
         CustomerId customerId,
@@ -18,9 +18,9 @@ public class Relationship : Entity<RelationshipId>
         Type = type;
         CustomerId = customerId;
     }
-    
+
     public static Relationship Create(
-        RelationshipType type, 
+        RelationshipType type,
         CustomerId customerId)
     {
         return new(
