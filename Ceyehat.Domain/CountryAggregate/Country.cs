@@ -64,12 +64,12 @@ public sealed class Country : AggregateRoot<CountryId>
     {
         _airlineIds.Remove(airlineId);
     }
-    
+
     public void AddCity(CityId cityId)
     {
         _cityIds.Add(cityId);
     }
-    
+
     public void RemoveCity(CityId cityId)
     {
         _cityIds.Remove(cityId);
