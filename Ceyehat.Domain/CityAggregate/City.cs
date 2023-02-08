@@ -9,9 +9,9 @@ public sealed class City : AggregateRoot<CityId>
     private readonly List<District> _districts = new();
     public string? Name { get; }
     public CountryId CountryId { get; }
-    
+
     public IReadOnlyList<District> Districts => _districts.AsReadOnly();
-     
+
     public City(
         CityId cityId,
         CountryId countryId,
@@ -20,7 +20,7 @@ public sealed class City : AggregateRoot<CityId>
         Name = name;
         CountryId = countryId;
     }
-    
+
     public static City Create(
         CountryId countryId,
         string? name)
@@ -30,12 +30,12 @@ public sealed class City : AggregateRoot<CityId>
             countryId,
             name);
     }
-    
+
     public void AddDistrict(District district)
     {
         _districts.Add(district);
     }
-    
+
     public void RemoveDistrict(District district)
     {
         _districts.Remove(district);
