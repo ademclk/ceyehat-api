@@ -8,17 +8,24 @@ public sealed class City : AggregateRoot<CityId>
 {
     private readonly List<District> _districts = new();
     public string? Name { get; }
+    
     public CountryId CountryId { get; }
-
     public IReadOnlyList<District> Districts => _districts.AsReadOnly();
+    
+    public DateTime CreatedAt { get; } 
+    public DateTime UpdatedAt { get; }
 
-    public City(
+    private City(
         CityId cityId,
         CountryId countryId,
-        string? name) : base(cityId)
+        string? name,
+        DateTime createdAt,
+        DateTime updatedAt) : base(cityId)
     {
         Name = name;
         CountryId = countryId;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static City Create(
@@ -28,7 +35,9 @@ public sealed class City : AggregateRoot<CityId>
         return new(
             CityId.CreateUnique(),
             countryId,
-            name);
+            name,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 
     public void AddDistrict(District district)

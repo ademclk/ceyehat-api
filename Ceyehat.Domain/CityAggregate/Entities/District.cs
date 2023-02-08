@@ -10,7 +10,7 @@ public sealed class District : Entity<DistrictId>
 
     public IReadOnlyList<Neighborhood> Neighborhoods => _neighborhoods.AsReadOnly();
 
-    public District(
+    private District(
         DistrictId districtId,
         string? name) : base(districtId)
     {

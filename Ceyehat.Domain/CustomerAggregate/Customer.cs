@@ -22,6 +22,9 @@ public sealed class Customer : AggregateRoot<CustomerId>
     public IReadOnlyCollection<PassengerId> PassengerIds => _passengerIds.AsReadOnly();
     public IReadOnlyCollection<BookingId> BookingIds => _bookingIds.AsReadOnly();
 
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
+    
     private Customer(
         CustomerId customerId,
         string? name,
@@ -30,7 +33,9 @@ public sealed class Customer : AggregateRoot<CustomerId>
         Title title,
         DateTime birthDate,
         PassengerType passengerType,
-        UserId? userId) : base(customerId)
+        UserId? userId,
+        DateTime createdAt,
+        DateTime updatedAt) : base(customerId)
     {
         Name = name;
         Surname = surname;
@@ -39,6 +44,8 @@ public sealed class Customer : AggregateRoot<CustomerId>
         BirthDate = birthDate;
         PassengerType = passengerType;
         UserId = userId;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Customer Create(
@@ -58,7 +65,9 @@ public sealed class Customer : AggregateRoot<CustomerId>
             title,
             birthDate,
             passengerType,
-            userId);
+            userId,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 
     public void AddPassenger(PassengerId passengerId)
@@ -80,7 +89,4 @@ public sealed class Customer : AggregateRoot<CustomerId>
     {
         _bookingIds.Remove(bookingId);
     }
-
-
-
 }

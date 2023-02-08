@@ -10,7 +10,7 @@ public class Relationship : Entity<RelationshipId>
     public RelationshipType Type { get; }
     public CustomerId CustomerId { get; }
 
-    public Relationship(
+    private Relationship(
         RelationshipId relationshipId,
         CustomerId customerId,
         RelationshipType type) : base(relationshipId)

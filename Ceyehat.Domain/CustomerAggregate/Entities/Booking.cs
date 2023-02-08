@@ -10,7 +10,7 @@ public sealed class Booking : Entity<BookingId>
     public SeatId? SeatId { get; }
     public FlightId? FlightId { get; }
 
-    public Booking(
+    private Booking(
         BookingId bookingId,
         SeatId seatId,
         FlightId flightId) : base(bookingId)

@@ -75,13 +75,13 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
     {
         _flightIds.Add(flightId);
     }
-    public void AddSeat(SeatId seatId)
-    {
-        _seatIds.Add(seatId);
-    }
     public void RemoveFlight(FlightId flightId)
     {
         _flightIds.Remove(flightId);
+    }
+    public void AddSeat(SeatId seatId)
+    {
+        _seatIds.Add(seatId);
     }
     public void RemoveSeat(SeatId seatId)
     {

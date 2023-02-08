@@ -19,8 +19,11 @@ public sealed class Airport : AggregateRoot<AirportId>
     public CityId CityId { get; }
     public IReadOnlyList<FlightId> DepartureFlights => _departureFlights.AsReadOnly();
     public IReadOnlyList<FlightId> ArrivalFlights => _arrivalFlights.AsReadOnly();
-
-    public Airport(
+    
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
+    
+    private Airport(
         AirportId airportId,
         string? iataCode,
         string? icaoCode,
@@ -28,7 +31,9 @@ public sealed class Airport : AggregateRoot<AirportId>
         double latitude,
         double longitude,
         string? timeZone,
-        CityId cityId) : base(airportId)
+        CityId cityId,
+        DateTime createdAt,
+        DateTime updatedAt) : base(airportId)
     {
         IataCode = iataCode;
         IcaoCode = icaoCode;
@@ -37,6 +42,8 @@ public sealed class Airport : AggregateRoot<AirportId>
         Longitude = longitude;
         TimeZone = timeZone;
         CityId = cityId;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Airport Create(
@@ -56,7 +63,9 @@ public sealed class Airport : AggregateRoot<AirportId>
             latitude,
             longitude,
             timeZone,
-            cityId);
+            cityId,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 
     public void AddDepartureFlight(FlightId flightId)

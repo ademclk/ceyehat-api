@@ -12,18 +12,25 @@ public sealed class Seat : AggregateRoot<SeatId>
     public SeatStatus SeatStatus { get; }
 
     public AircraftId AircraftId { get; }
+    
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
 
     private Seat(
         SeatId seatId,
         string? seatNumber,
         SeatClass seatClass,
         SeatStatus seatStatus,
-        AircraftId aircraftId) : base(seatId)
+        AircraftId aircraftId,
+        DateTime createdAt,
+        DateTime updatedAt) : base(seatId)
     {
         SeatNumber = seatNumber;
         SeatClass = seatClass;
         SeatStatus = seatStatus;
         AircraftId = aircraftId;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Seat Create(
@@ -37,6 +44,8 @@ public sealed class Seat : AggregateRoot<SeatId>
             seatNumber,
             seatClass,
             seatStatus,
-            aircraftId);
+            aircraftId,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 }

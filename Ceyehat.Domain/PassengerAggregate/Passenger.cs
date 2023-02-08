@@ -9,15 +9,20 @@ public sealed class Passenger : AggregateRoot<PassengerId>
     private readonly List<FlightTicketId> _flightTicketIds = new();
 
     public CustomerId CustomerId { get; private set; }
-
     public IReadOnlyCollection<FlightTicketId> FlightTicketIds => _flightTicketIds.AsReadOnly();
+    
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
 
     private Passenger(
         PassengerId passengerId,
-        CustomerId customerId)
-        : base(passengerId)
+        CustomerId customerId, 
+        DateTime createdAt,
+        DateTime updatedAt) : base(passengerId)
     {
         CustomerId = customerId;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Passenger Create(
@@ -25,7 +30,9 @@ public sealed class Passenger : AggregateRoot<PassengerId>
     {
         return new(
             PassengerId.CreateUnique(),
-            customerId);
+            customerId,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 
     public void AddFlightTicket(FlightTicketId flightTicketId)

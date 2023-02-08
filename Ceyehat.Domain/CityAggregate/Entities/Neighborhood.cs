@@ -12,7 +12,7 @@ public sealed class Neighborhood : Entity<NeighborhoodId>
     public AirlineId? AirlineId { get; }
     public AirportId? AirportId { get; }
 
-    public Neighborhood(
+    private Neighborhood(
         NeighborhoodId neighborhoodId,
         string? name,
         AirlineId? airlineId,

@@ -14,6 +14,9 @@ public sealed class User : AggregateRoot<UserId>
 
     public CustomerId CustomerId { get; }
     public IReadOnlyCollection<RelationshipId> RelationshipIds => _relationshipIds.AsReadOnly();
+    
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
 
     private User(
         UserId userId,
@@ -21,13 +24,17 @@ public sealed class User : AggregateRoot<UserId>
         string? lastName,
         string? email,
         string? password,
-        CustomerId customerId) : base(userId)
+        CustomerId customerId,
+        DateTime createdAt,
+        DateTime updatedAt) : base(userId)
     {
         FirstName = firstName;
         LastName = lastName;
         Email = email;
         Password = password;
         CustomerId = customerId;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static User Create(
@@ -43,7 +50,9 @@ public sealed class User : AggregateRoot<UserId>
             lastName,
             email,
             password,
-            customerId);
+            customerId,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 
     public void AddRelationship(RelationshipId relationshipId)

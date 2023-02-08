@@ -19,9 +19,12 @@ public sealed class Flight : AggregateRoot<FlightId>
     public Aircraft Aircraft { get; }
     public Airport DepartureAirport { get; }
     public Airport ArrivalAirport { get; }
+    
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
 
     private Flight(
-        FlightId id,
+        FlightId flightId,
         string flightNumber,
         DateTime scheduledDeparture,
         DateTime scheduledArrival,
@@ -31,7 +34,9 @@ public sealed class Flight : AggregateRoot<FlightId>
         DateTime? actualArrival,
         Aircraft aircraft,
         Airport departureAirport,
-        Airport arrivalAirport) : base(id)
+        Airport arrivalAirport,
+        DateTime createdAt,
+        DateTime updatedAt) : base(flightId)
     {
         FlightNumber = flightNumber;
         ScheduledDeparture = scheduledDeparture;
@@ -43,6 +48,8 @@ public sealed class Flight : AggregateRoot<FlightId>
         Aircraft = aircraft;
         DepartureAirport = departureAirport;
         ArrivalAirport = arrivalAirport;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Flight Create(
@@ -69,6 +76,8 @@ public sealed class Flight : AggregateRoot<FlightId>
             actualArrival,
             aircraft,
             departureAirport,
-            arrivalAirport);
+            arrivalAirport,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 }

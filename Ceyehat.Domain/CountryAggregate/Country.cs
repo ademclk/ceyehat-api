@@ -19,18 +19,25 @@ public sealed class Country : AggregateRoot<CountryId>
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
     public IReadOnlyList<AirlineId> AirlineIds => _airlineIds.AsReadOnly();
     public IReadOnlyList<CityId> CityIds => _cityIds.AsReadOnly();
+    
+    public DateTime CreatedAt { get; }
+    public DateTime UpdatedAt { get; }
 
-    public Country(
+    private Country(
         CountryId countryId,
         string? unLocode,
         string? name,
         string? iso2,
-        string? iso3) : base(countryId)
+        string? iso3,
+        DateTime createdAt,
+        DateTime updatedAt) : base(countryId)
     {
         UnLocode = unLocode;
         Name = name;
         Iso2 = iso2;
         Iso3 = iso3;
+        CreatedAt = createdAt;
+        UpdatedAt = updatedAt;
     }
 
     public static Country Create(
@@ -44,7 +51,9 @@ public sealed class Country : AggregateRoot<CountryId>
             unLocode,
             name,
             iso2,
-            iso3);
+            iso3,
+            DateTime.UtcNow,
+            DateTime.UtcNow);
     }
 
     public void AddAircraft(AircraftId aircraftId)
