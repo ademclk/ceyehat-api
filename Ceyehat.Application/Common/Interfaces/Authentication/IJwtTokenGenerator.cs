@@ -1,5 +1,5 @@
 using Ceyehat.Application.Authentication.Common;
-using Ceyehat.Domain.User;
+using Ceyehat.Domain.UserAggregate;
 
 namespace Ceyehat.Application.Common.Interfaces.Authentication;
 

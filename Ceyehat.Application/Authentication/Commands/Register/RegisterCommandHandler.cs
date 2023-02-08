@@ -2,7 +2,7 @@ using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.Common.Errors;
-using Ceyehat.Domain.User;
+using Ceyehat.Domain.UserAggregate;
 using ErrorOr;
 using MediatR;
 

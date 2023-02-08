@@ -1,5 +1,5 @@
 using System.Configuration;
-using Ceyehat.Domain.User;
+using Ceyehat.Domain.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ceyehat.Infrastructure;

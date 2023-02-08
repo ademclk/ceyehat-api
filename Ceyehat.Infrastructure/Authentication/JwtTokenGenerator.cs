@@ -4,7 +4,7 @@ using System.Text;
 using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Services;
-using Ceyehat.Domain.User;
+using Ceyehat.Domain.UserAggregate;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
@@ -19,6 +19,11 @@ public class JwtTokenGenerator : IJwtTokenGenerator
     {
         _dateTimeProvider = dateTimeProvider;
         _jwtSettings = jwtOptions.Value;
+    }
+
+    private static string GenerateRefreshToken()
+    {
+        return Guid.NewGuid().ToString();
     }
 
     public Token GenerateToken(User? user)
@@ -52,9 +57,5 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         token.RefreshToken = GenerateRefreshToken();
 
         return token;
-    }
-    private static string GenerateRefreshToken()
-    {
-        return Guid.NewGuid().ToString();
     }
 }

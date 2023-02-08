@@ -51,14 +51,27 @@ public sealed class Country : AggregateRoot<CountryId>
     {
         _aircraftIds.Add(aircraftId);
     }
+    public void RemoveAircraft(AircraftId aircraftId)
+    {
+        _aircraftIds.Remove(aircraftId);
+    }
 
     public void AddAirline(AirlineId airlineId)
     {
         _airlineIds.Add(airlineId);
     }
-
+    public void RemoveAirline(AirlineId airlineId)
+    {
+        _airlineIds.Remove(airlineId);
+    }
+    
     public void AddCity(CityId cityId)
     {
         _cityIds.Add(cityId);
+    }
+    
+    public void RemoveCity(CityId cityId)
+    {
+        _cityIds.Remove(cityId);
     }
 }
