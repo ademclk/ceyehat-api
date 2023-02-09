@@ -19,7 +19,7 @@ public class CreateAircraftCommandHandler : IRequestHandler<CreateAircraftComman
     public async Task<ErrorOr<Aircraft>> Handle(CreateAircraftCommand request, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
-        
+
         var aircraft = Aircraft.Create(
             request.RegistrationNumber,
             request.Icao24Code,
@@ -28,9 +28,9 @@ public class CreateAircraftCommandHandler : IRequestHandler<CreateAircraftComman
             request.FaaRegistration,
             CountryId.CreateUnique(),
             AirlineId.CreateUnique());
-        
+
         _aircraftRepository.Add(aircraft);
-        
+
         return aircraft;
     }
 }
