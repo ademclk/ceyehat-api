@@ -23,10 +23,10 @@ public static class DependencyInjection
             AddAuth(builderConfiguration)
             .AddPersistence();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-        
+
         return services;
     }
-    
+
     private static IServiceCollection AddPersistence(
         this IServiceCollection services)
     {

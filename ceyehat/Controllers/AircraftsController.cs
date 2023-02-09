@@ -23,9 +23,9 @@ public class AircraftsController : ApiController
         CreateAircraftRequest request)
     {
         var command = _mapper.Map<CreateAircraftCommand>(request);
-        
+
         var createAircraftResult = await _mediator.Send(command);
-        
+
         return createAircraftResult.Match<IActionResult>(
             aircraft => Ok(_mapper.Map<AircraftResponse>(aircraft)),
             error => Problem(error));

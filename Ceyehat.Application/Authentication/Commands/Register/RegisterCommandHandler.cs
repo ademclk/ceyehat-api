@@ -37,7 +37,7 @@ public class RegisterCommandHandler :
             command.Email,
             command.Password,
             CustomerId.CreateUnique());
-        
+
         await _userRepository.AddUserAsync(user);
 
         // Creating token
