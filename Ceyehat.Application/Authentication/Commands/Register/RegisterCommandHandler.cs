@@ -2,7 +2,9 @@ using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.Common.Errors;
+using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.UserAggregate;
+using Ceyehat.Domain.UserAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -29,15 +31,13 @@ public class RegisterCommandHandler :
             return Errors.User.DuplicateEmail;
         }
 
-        // Creating user
-        var user = new User
-        {
-            Email = command.Email,
-            Password = command.Password,
-            FirstName = command.FirstName,
-            LastName = command.LastName
-        };
-
+        var user = User.Create(
+            command.FirstName,
+            command.LastName,
+            command.Email,
+            command.Password,
+            CustomerId.CreateUnique());
+        
         await _userRepository.AddUserAsync(user);
 
         // Creating token

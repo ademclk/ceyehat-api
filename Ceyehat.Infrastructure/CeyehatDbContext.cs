@@ -33,7 +33,7 @@ public partial class CeyehatDbContext : DbContext
         {
             entity.ToTable("users");
 
-            entity.Property(e => e.UserId)
+            entity.Property(e => e.Id)
                 .HasColumnName("user_id")
                 .HasDefaultValueSql("uuid_generate_v4()");
 

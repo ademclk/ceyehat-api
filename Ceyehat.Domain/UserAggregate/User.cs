@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
@@ -17,7 +18,6 @@ public sealed class User : AggregateRoot<UserId>
 
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
-
     private User(
         UserId userId,
         string? firstName,
