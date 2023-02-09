@@ -1,3 +1,7 @@
+using Ceyehat.Application.Aircrafts.Commands.CreateAircraft;
+using Ceyehat.Contracts.Aircrafts;
+using MapsterMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
@@ -5,9 +9,25 @@ namespace ceyehat.Controllers;
 [Route("api/[controller]")]
 public class AircraftsController : ApiController
 {
-    [HttpGet]
-    public IActionResult ListAircrafts()
+    private readonly IMapper _mapper;
+    private readonly ISender _mediator;
+
+    public AircraftsController(IMapper mapper, ISender mediator)
     {
-        return Ok(Array.Empty<string>());
+        _mapper = mapper;
+        _mediator = mediator;
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateAircraft(
+        CreateAircraftRequest request)
+    {
+        var command = _mapper.Map<CreateAircraftCommand>(request);
+        
+        var createAircraftResult = await _mediator.Send(command);
+        
+        return createAircraftResult.Match<IActionResult>(
+            aircraft => Ok(_mapper.Map<AircraftResponse>(aircraft)),
+            error => Problem(error));
     }
 }

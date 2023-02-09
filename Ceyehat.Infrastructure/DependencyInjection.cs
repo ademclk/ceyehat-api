@@ -19,10 +19,19 @@ public static class DependencyInjection
         this IServiceCollection services,
         ConfigurationManager builderConfiguration)
     {
-        services.AddAuth(builderConfiguration);
+        services.
+            AddAuth(builderConfiguration)
+            .AddPersistence();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
-
+        
+        return services;
+    }
+    
+    private static IServiceCollection AddPersistence(
+        this IServiceCollection services)
+    {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IAircraftRepository, AircraftRepository>();
 
         return services;
     }
