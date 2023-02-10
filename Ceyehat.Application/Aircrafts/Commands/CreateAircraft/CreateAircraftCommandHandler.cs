@@ -24,9 +24,9 @@ public class CreateAircraftCommandHandler : IRequestHandler<CreateAircraftComman
             request.FaaRegistration,
             request.CountryId,
             request.AirlineId);
-        
+
         await _aircraftRepository.AddAircraftAsync(aircraft);
-        
+
         return aircraft;
     }
 }

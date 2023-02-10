@@ -18,7 +18,7 @@ public class AircraftsController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateAircraft(
         CreateAircraftRequest request)
