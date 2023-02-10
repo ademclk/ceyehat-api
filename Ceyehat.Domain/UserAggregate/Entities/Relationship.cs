@@ -7,9 +7,9 @@ namespace Ceyehat.Domain.UserAggregate.Entities;
 
 public class Relationship : Entity<RelationshipId>
 {
-    public RelationshipType Type { get; }
-    public CustomerId CustomerId { get; }
-
+    public RelationshipType Type { get; private set; }
+    public CustomerId CustomerId { get; private set; }
+    
     private Relationship(
         RelationshipId relationshipId,
         CustomerId customerId,
@@ -28,4 +28,10 @@ public class Relationship : Entity<RelationshipId>
             customerId,
             type);
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Relationship()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

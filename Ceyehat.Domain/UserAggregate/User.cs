@@ -1,23 +1,24 @@
 using System.ComponentModel.DataAnnotations;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
+using Ceyehat.Domain.UserAggregate.Entities;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.UserAggregate;
 
 public sealed class User : AggregateRoot<UserId>
 {
-    private readonly List<RelationshipId> _relationshipIds = new();
-    public string? FirstName { get; }
-    public string? LastName { get; }
-    public string? Email { get; }
-    public string? Password { get; }
+    private readonly List<Relationship> _relationships = new();
+    public string? FirstName { get; private set; }
+    public string? LastName { get; private set; }
+    public string? Email { get; private set; }
+    public string? Password { get; private set; }
 
-    public CustomerId CustomerId { get; }
-    public IReadOnlyCollection<RelationshipId> RelationshipIds => _relationshipIds.AsReadOnly();
+    public CustomerId CustomerId { get; private set; }
+    public IReadOnlyCollection<Relationship> Relationships => _relationships.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
     private User(
         UserId userId,
         string? firstName,
@@ -55,13 +56,19 @@ public sealed class User : AggregateRoot<UserId>
             DateTime.UtcNow);
     }
 
-    public void AddRelationship(RelationshipId relationshipId)
+    public void AddRelationship(Relationship relationship)
     {
-        _relationshipIds.Add(relationshipId);
+        _relationships.Add(relationship);
     }
-
-    public void RemoveRelationship(RelationshipId relationshipId)
+    
+    public void RemoveRelationship(Relationship relationship)
     {
-        _relationshipIds.Remove(relationshipId);
+        _relationships.Remove(relationship);
     }
-}
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private User()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+}   
