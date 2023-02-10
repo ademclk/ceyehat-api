@@ -15,7 +15,7 @@ public sealed class AirlineId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static AirlineId Create(Guid value)
     {
         return new(value);

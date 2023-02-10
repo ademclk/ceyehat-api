@@ -15,7 +15,7 @@ public sealed class CountryId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static CountryId Create(Guid value)
     {
         return new(value);
