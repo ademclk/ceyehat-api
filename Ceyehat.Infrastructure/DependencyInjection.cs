@@ -3,7 +3,7 @@ using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Common.Interfaces.Services;
 using Ceyehat.Infrastructure.Authentication;
-using Ceyehat.Infrastructure.Persistence;
+using Ceyehat.Infrastructure.Persistence.Repositories;
 using Ceyehat.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +31,6 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
-        services.AddScoped<IAircraftRepository, AircraftRepository>();
 
         return services;
     }

@@ -1,6 +1,7 @@
 using ceyehat;
 using Ceyehat.Application;
 using Ceyehat.Infrastructure;
+using Ceyehat.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 

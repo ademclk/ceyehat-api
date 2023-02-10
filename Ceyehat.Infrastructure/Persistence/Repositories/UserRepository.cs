@@ -3,7 +3,7 @@ using Ceyehat.Domain.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
-namespace Ceyehat.Infrastructure.Persistence;
+namespace Ceyehat.Infrastructure.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
