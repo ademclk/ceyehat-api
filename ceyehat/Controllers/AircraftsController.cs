@@ -20,7 +20,7 @@ public class AircraftsController : ApiController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAircraft(
+    public async Task<IActionResult> CreateAircraftAsync(
         CreateAircraftRequest request)
     {
         var command = _mapper.Map<CreateAircraftCommand>(request);
