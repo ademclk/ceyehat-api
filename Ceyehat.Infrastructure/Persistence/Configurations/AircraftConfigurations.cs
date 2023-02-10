@@ -21,7 +21,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
         builder.OwnsMany(a => a.SeatIds, sib =>
         {
             sib.ToTable("AircraftSeatIds");
-            
+
             sib.WithOwner().HasForeignKey("AircraftId");
 
             sib.HasKey("Id");
@@ -30,7 +30,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
                 .HasColumnName("SeatId")
                 .ValueGeneratedNever();
         });
-        
+
         builder.Metadata.FindNavigation(nameof(Aircraft.SeatIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
@@ -40,7 +40,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
         builder.OwnsMany(a => a.FlightIds, fib =>
         {
             fib.ToTable("AircraftFlightIds");
-            
+
             fib.WithOwner().HasForeignKey("AircraftId");
 
             fib.HasKey("Id");
@@ -49,7 +49,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
                 .HasColumnName("FlightId")
                 .ValueGeneratedNever();
         });
-        
+
         builder.Metadata.FindNavigation(nameof(Aircraft.FlightIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
@@ -59,7 +59,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
         builder.ToTable("Aircrafts");
 
         builder.HasKey(a => a.Id);
-        
+
         builder.Property(a => a.Id)
             .ValueGeneratedNever()
             .HasConversion(
@@ -77,21 +77,21 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
 
         builder.Property(a => a.ManufacturerSerialNumber)
             .HasMaxLength(32);
-        
+
         builder.Property(a => a.FaaRegistration)
             .HasMaxLength(32);
-        
+
         builder.Property(a => a.CountryId)
             .ValueGeneratedNever()
             .HasConversion(
                 id => id.Value,
                 value => CountryId.Create(value));
-        
+
         builder.Property(a => a.AirlineId)
             .ValueGeneratedNever()
             .HasConversion(
                 id => id.Value,
                 value => AirlineId.Create(value));
-        
+
     }
 }
