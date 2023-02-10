@@ -25,7 +25,7 @@ public class RegisterCommandHandler :
     public async Task<ErrorOr<Token>> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
         var userResponse = await _userRepository.GetUserByEmailAsync(command.Email);
-        // Check if user already exists
+
         if (userResponse is not null)
         {
             return Errors.User.DuplicateEmail;
@@ -40,7 +40,6 @@ public class RegisterCommandHandler :
 
         await _userRepository.AddUserAsync(user);
 
-        // Creating token
         var token = _jwtTokenGenerator.GenerateToken(user);
 
         return token;

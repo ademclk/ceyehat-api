@@ -2,6 +2,6 @@ POST http://localhost:5228/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "test@ceyehat.com",
-  "password": "Test123"
+  "email": "adem@ceyehat.com",
+  "password": "Test12345"
 }

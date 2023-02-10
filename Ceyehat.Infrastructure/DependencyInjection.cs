@@ -31,6 +31,7 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IAircraftRepository, AircraftRepository>();
 
         return services;
     }
