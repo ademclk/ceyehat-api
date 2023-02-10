@@ -12,19 +12,19 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
     private readonly List<FlightId> _flightIds = new();
     private readonly List<SeatId> _seatIds = new();
 
-    public string? RegistrationNumber { get; }
-    public string? Icao24Code { get; }
-    public string? Model { get; }
-    public string? ManufacturerSerialNumber { get; }
-    public string? FaaRegistration { get; }
-    public CountryId CountryId { get; }
-    public AirlineId AirlineId { get; }
+    public string? RegistrationNumber { get; private set; }
+    public string? Icao24Code { get; private set; }
+    public string? Model { get; private set; }
+    public string? ManufacturerSerialNumber { get; private set; }
+    public string? FaaRegistration { get; private set; }
+    public CountryId CountryId { get; private set; }
+    public AirlineId AirlineId { get; private set; }
 
     public IReadOnlyList<FlightId> FlightIds => _flightIds.AsReadOnly();
     public IReadOnlyList<SeatId> SeatIds => _seatIds.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Aircraft(
         AircraftId aircraftId,
@@ -87,4 +87,10 @@ public sealed class Aircraft : AggregateRoot<AircraftId>
     {
         _seatIds.Remove(seatId);
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Aircraft()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

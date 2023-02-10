@@ -4,5 +4,5 @@ namespace Ceyehat.Application.Common.Interfaces.Persistence;
 
 public interface IAircraftRepository
 {
-    void Add(Aircraft aircraft);
+    Task AddAircraftAsync(Aircraft aircraft);
 }

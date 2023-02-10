@@ -12,4 +12,8 @@
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Ceyehat.Domain\Ceyehat.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
