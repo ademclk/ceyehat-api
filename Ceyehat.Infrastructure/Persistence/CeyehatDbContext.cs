@@ -17,7 +17,7 @@ public partial class CeyehatDbContext : DbContext
     {
         modelBuilder
             .ApplyConfigurationsFromAssembly(typeof(CeyehatDbContext).Assembly);
-            
+
         base.OnModelCreating(modelBuilder);
     }
 }

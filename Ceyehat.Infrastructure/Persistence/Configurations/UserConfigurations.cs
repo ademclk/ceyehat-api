@@ -30,7 +30,7 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
                 .HasConversion(
                     id => id.Value,
                     value => RelationshipId.Create(value));
-            
+
             rb.Property(r => r.Type)
                 .HasConversion(
                     type => (int)type,
@@ -42,10 +42,10 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
                     id => id.Value,
                     value => CustomerId.Create(value));
         });
-        
+
         builder.Metadata.FindNavigation(nameof(User.Relationships))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
-    } 
+    }
 
     private void ConfigureUsersTable(EntityTypeBuilder<User> builder)
     {
@@ -76,7 +76,7 @@ public class UserConfigurations : IEntityTypeConfiguration<User>
             .HasConversion(
                 id => id.Value,
                 value => CustomerId.Create(value));
-        
+
         builder.Navigation(u => u.Relationships)
             .UsePropertyAccessMode(PropertyAccessMode.Field);
     }

@@ -60,12 +60,12 @@ public sealed class User : AggregateRoot<UserId>
     {
         _relationships.Add(relationship);
     }
-    
+
     public void RemoveRelationship(Relationship relationship)
     {
         _relationships.Remove(relationship);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private User()
     {
