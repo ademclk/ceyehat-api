@@ -92,6 +92,5 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
             .HasConversion(
                 id => id.Value,
                 value => AirlineId.Create(value));
-
     }
 }

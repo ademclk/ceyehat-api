@@ -8,20 +8,20 @@ namespace Ceyehat.Domain.FlightAggregate;
 
 public sealed class Flight : AggregateRoot<FlightId>
 {
-    public string? FlightNumber { get; }
-    public DateTime ScheduledDeparture { get; }
-    public DateTime ScheduledArrival { get; }
-    public FlightStatus Status { get; }
-    public FlightType Type { get; }
-    public DateTime? ActualDeparture { get; }
-    public DateTime? ActualArrival { get; }
+    public string? FlightNumber { get; private set; }
+    public DateTime ScheduledDeparture { get; private set; }
+    public DateTime ScheduledArrival { get; private set; }
+    public FlightStatus Status { get; private set; }
+    public FlightType Type { get; private set; }
+    public DateTime? ActualDeparture { get; private set; }
+    public DateTime? ActualArrival { get; private set; }
 
-    public AircraftId AircraftId { get; }
-    public AirportId DepartureAirportId { get; }
-    public AirportId ArrivalAirportId { get; }
+    public AircraftId AircraftId { get; private set; }
+    public AirportId DepartureAirportId { get; private set; }
+    public AirportId ArrivalAirportId { get; private set; }
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Flight(
         FlightId flightId,
@@ -79,4 +79,9 @@ public sealed class Flight : AggregateRoot<FlightId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Flight()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }
