@@ -1,6 +1,3 @@
-using Ceyehat.Domain.AirlineAggregate.ValueObjects;
-using Ceyehat.Domain.CountryAggregate.ValueObjects;
-
 namespace Ceyehat.Contracts.Aircrafts;
 
 public record CreateAircraftRequest(

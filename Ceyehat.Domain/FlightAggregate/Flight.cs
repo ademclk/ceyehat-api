@@ -1,5 +1,5 @@
-using Ceyehat.Domain.AircraftAggregate;
-using Ceyehat.Domain.AirportAggregate;
+using Ceyehat.Domain.AircraftAggregate.ValueObjects;
+using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
@@ -16,9 +16,9 @@ public sealed class Flight : AggregateRoot<FlightId>
     public DateTime? ActualDeparture { get; }
     public DateTime? ActualArrival { get; }
 
-    public Aircraft Aircraft { get; }
-    public Airport DepartureAirport { get; }
-    public Airport ArrivalAirport { get; }
+    public AircraftId AircraftId { get; }
+    public AirportId DepartureAirportId { get; }
+    public AirportId ArrivalAirportId { get; }
 
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
@@ -32,9 +32,9 @@ public sealed class Flight : AggregateRoot<FlightId>
         FlightType type,
         DateTime? actualDeparture,
         DateTime? actualArrival,
-        Aircraft aircraft,
-        Airport departureAirport,
-        Airport arrivalAirport,
+        AircraftId aircraftId,
+        AirportId departureAirportId,
+        AirportId arrivalAirportId,
         DateTime createdAt,
         DateTime updatedAt) : base(flightId)
     {
@@ -45,36 +45,35 @@ public sealed class Flight : AggregateRoot<FlightId>
         Type = type;
         ActualDeparture = actualDeparture;
         ActualArrival = actualArrival;
-        Aircraft = aircraft;
-        DepartureAirport = departureAirport;
-        ArrivalAirport = arrivalAirport;
+        AircraftId = aircraftId;
+        DepartureAirportId = departureAirportId;
+        ArrivalAirportId = arrivalAirportId;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
 
     public static Flight Create(
-        FlightId id,
-        string flightNumber,
+        string? flightNumber,
         DateTime scheduledDeparture,
         DateTime scheduledArrival,
         FlightStatus status,
         FlightType type,
         DateTime? actualDeparture,
         DateTime? actualArrival,
-        Aircraft aircraft,
-        Airport departureAirport,
-        Airport arrivalAirport)
+        AircraftId aircraftId,
+        AirportId departureAirport,
+        AirportId arrivalAirport)
     {
         return new Flight(
-            id,
-            flightNumber,
+            FlightId.CreateUnique(),
+            flightNumber!,
             scheduledDeparture,
             scheduledArrival,
             status,
             type,
             actualDeparture,
             actualArrival,
-            aircraft,
+            aircraftId,
             departureAirport,
             arrivalAirport,
             DateTime.UtcNow,

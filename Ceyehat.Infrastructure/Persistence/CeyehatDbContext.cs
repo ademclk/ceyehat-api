@@ -1,5 +1,6 @@
 using System.Configuration;
 using Ceyehat.Domain.AircraftAggregate;
+using Ceyehat.Domain.FlightAggregate;
 using Ceyehat.Domain.UserAggregate;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ public partial class CeyehatDbContext : DbContext
 
     public DbSet<User> Users { get; set; } = null!;
     public DbSet<Aircraft> Aircrafts { get; set; } = null!;
+    public DbSet<Flight> Flights { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
