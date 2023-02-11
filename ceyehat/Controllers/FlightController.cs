@@ -17,7 +17,7 @@ public class FlightController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateFlightAsync(
         CreateFlightRequest request)
