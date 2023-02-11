@@ -15,17 +15,17 @@ public sealed class FlightId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static FlightId Create(Guid value)
     {
         return new(value);
     }
-    
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private FlightId()
     {

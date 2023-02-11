@@ -17,7 +17,7 @@ public class FlightConfigurations : IEntityTypeConfiguration<Flight>
     private void ConfigureFlightsTable(EntityTypeBuilder<Flight> builder)
     {
         builder.ToTable("Flights");
-        
+
         builder.HasKey(f => f.Id);
 
         builder.Property(f => f.Id)
@@ -46,7 +46,7 @@ public class FlightConfigurations : IEntityTypeConfiguration<Flight>
 
         builder.Property(f => f.ActualArrival)
             .HasMaxLength(256);
-        
+
         builder.Property(f => f.AircraftId)
             .ValueGeneratedNever()
             .HasConversion(
@@ -58,11 +58,11 @@ public class FlightConfigurations : IEntityTypeConfiguration<Flight>
             .HasConversion(
                 f => f.Value,
                 value => AirportId.Create(value));
-        
-        builder.Property(f=> f.ArrivalAirportId)
+
+        builder.Property(f => f.ArrivalAirportId)
             .ValueGeneratedNever()
             .HasConversion(
-                f => f.Value, 
+                f => f.Value,
                 value => AirportId.Create(value));
     }
 }
