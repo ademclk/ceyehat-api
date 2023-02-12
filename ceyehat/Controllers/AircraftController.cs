@@ -11,7 +11,7 @@ public class AircraftController : ApiController
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
-    
+
     public AircraftController(IMapper mapper, IMediator mediator)
     {
         _mapper = mapper;
