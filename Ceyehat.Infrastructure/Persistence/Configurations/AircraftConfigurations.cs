@@ -12,11 +12,11 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
     public void Configure(EntityTypeBuilder<Aircraft> builder)
     {
         ConfigureAircraftsTable(builder);
-        ConfigureAircraftFlightsTable(builder);
-        ConfigureAircraftSeatsTable(builder);
+        ConfigureAircraftFlightIdsTable(builder);
+        ConfigureAircraftSeatIdsTable(builder);
     }
 
-    private void ConfigureAircraftSeatsTable(EntityTypeBuilder<Aircraft> builder)
+    private void ConfigureAircraftSeatIdsTable(EntityTypeBuilder<Aircraft> builder)
     {
         builder.OwnsMany(a => a.SeatIds, sib =>
         {
@@ -35,7 +35,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
-    private void ConfigureAircraftFlightsTable(EntityTypeBuilder<Aircraft> builder)
+    private void ConfigureAircraftFlightIdsTable(EntityTypeBuilder<Aircraft> builder)
     {
         builder.OwnsMany(a => a.FlightIds, fib =>
         {

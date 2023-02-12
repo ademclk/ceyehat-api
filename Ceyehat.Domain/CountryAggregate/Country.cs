@@ -12,18 +12,18 @@ public sealed class Country : AggregateRoot<CountryId>
     private readonly List<AircraftId> _aircraftIds = new();
     private readonly List<AirlineId> _airlineIds = new();
     private readonly List<CityId> _cityIds = new();
-    public string? UnLocode { get; }
-    public string? Name { get; }
-    public string? Iso2 { get; }
-    public string? Iso3 { get; }
-    public Currency Currency { get; }
+    public string? UnLocode { get; private set; }
+    public string? Name { get; private set; }
+    public string? Iso2 { get; private set; }
+    public string? Iso3 { get; private set; }
+    public Currency Currency { get; private set; }
 
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
     public IReadOnlyList<AirlineId> AirlineIds => _airlineIds.AsReadOnly();
     public IReadOnlyList<CityId> CityIds => _cityIds.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Country(
         CountryId countryId,
@@ -89,4 +89,10 @@ public sealed class Country : AggregateRoot<CountryId>
     {
         _cityIds.Remove(cityId);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Country()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+
 }
