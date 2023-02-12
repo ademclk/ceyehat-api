@@ -7,13 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace ceyehat.Controllers;
 
 [Route("api/[controller]")]
-public class AircraftsController : ApiController
+public class AircraftController : ApiController
 {
     private readonly IMapper _mapper;
     private readonly IMediator _mediator;
-
-
-    public AircraftsController(IMapper mapper, IMediator mediator)
+    
+    public AircraftController(IMapper mapper, IMediator mediator)
     {
         _mapper = mapper;
         _mediator = mediator;

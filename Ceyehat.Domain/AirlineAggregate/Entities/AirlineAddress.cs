@@ -16,7 +16,6 @@ public sealed class AirlineAddress : Entity<AirlineAddressId>
     }
 
     public static AirlineAddress Create(
-        AirlineAddressId airlineAddressId,
         CityId cityId)
     {
         return new(
