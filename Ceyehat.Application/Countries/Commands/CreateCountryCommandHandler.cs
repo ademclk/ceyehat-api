@@ -22,9 +22,9 @@ public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand,
             request.IsoCode,
             request.Iso3Code,
             request.Currency);
-        
+
         await _countryRepository.AddCountryAsync(country);
-        
+
         return country;
     }
 }

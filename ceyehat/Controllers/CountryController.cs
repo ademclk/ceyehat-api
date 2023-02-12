@@ -17,7 +17,7 @@ public class CountryController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateCountryAsync(
         CreateCountryRequest request)
