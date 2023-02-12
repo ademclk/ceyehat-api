@@ -3,6 +3,7 @@ using Ceyehat.Domain.AirlineAggregate.ValueObjects;
 using Ceyehat.Domain.CityAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.CountryAggregate.ValueObjects;
+using Ceyehat.Domain.Enums;
 
 namespace Ceyehat.Domain.CountryAggregate;
 
@@ -15,6 +16,7 @@ public sealed class Country : AggregateRoot<CountryId>
     public string? Name { get; }
     public string? Iso2 { get; }
     public string? Iso3 { get; }
+    public Currency Currency { get; }
 
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
     public IReadOnlyList<AirlineId> AirlineIds => _airlineIds.AsReadOnly();
@@ -29,6 +31,7 @@ public sealed class Country : AggregateRoot<CountryId>
         string? name,
         string? iso2,
         string? iso3,
+        Currency currency,
         DateTime createdAt,
         DateTime updatedAt) : base(countryId)
     {
@@ -36,6 +39,7 @@ public sealed class Country : AggregateRoot<CountryId>
         Name = name;
         Iso2 = iso2;
         Iso3 = iso3;
+        Currency = currency;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
@@ -44,7 +48,8 @@ public sealed class Country : AggregateRoot<CountryId>
         string? unLocode,
         string? name,
         string? iso2,
-        string? iso3)
+        string? iso3,
+        Currency currency)
     {
         return new(
             CountryId.CreateUnique(),
@@ -52,6 +57,7 @@ public sealed class Country : AggregateRoot<CountryId>
             name,
             iso2,
             iso3,
+            currency,
             DateTime.UtcNow,
             DateTime.UtcNow);
     }

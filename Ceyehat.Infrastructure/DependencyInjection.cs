@@ -33,6 +33,7 @@ public static class DependencyInjection
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAircraftRepository, AircraftRepository>();
         services.AddScoped<IFlightRepository, FlightRepository>();
+        services.AddScoped<ICountryRepository, CountryRepository>();
 
         return services;
     }
