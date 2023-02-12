@@ -27,7 +27,7 @@ public class CreateAirlineCommandHandler : IRequestHandler<CreateAirlineCommand,
             AirlineAddress.Create(request.Address.City));
 
         await _airlineRepository.AddAirlineAsync(airline);
-        
+
         return airline;
     }
 }

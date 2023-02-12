@@ -2,7 +2,7 @@ using Ceyehat.Domain.CityAggregate.ValueObjects;
 
 namespace Ceyehat.Contracts.Airlines;
 
-public record AirlineResponse (
+public record AirlineResponse(
     string Id,
     string? Name,
     string? IataCode,
@@ -13,5 +13,5 @@ public record AirlineResponse (
     AirlineAddress Address,
     List<string> AircraftIds);
 
-public record AirlineAddress (
+public record AirlineAddress(
     CityId City);
