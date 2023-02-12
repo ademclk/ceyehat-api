@@ -24,16 +24,16 @@ public class CountryConfigurations : IEntityTypeConfiguration<Country>
             cib =>
             {
                 cib.ToTable("CountryCityIds");
-                
+
                 cib.WithOwner().HasForeignKey("CountryId");
-                
+
                 cib.HasKey("Id");
-                
+
                 cib.Property(c => c.Value)
                     .HasColumnName("CityId")
                     .ValueGeneratedNever();
             });
-        
+
         builder.Metadata.FindNavigation(nameof(Country.CityIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
@@ -45,16 +45,16 @@ public class CountryConfigurations : IEntityTypeConfiguration<Country>
             aib =>
             {
                 aib.ToTable("CountryAirlineIds");
-                
+
                 aib.WithOwner().HasForeignKey("CountryId");
-                
+
                 aib.HasKey("Id");
-                
+
                 aib.Property(a => a.Value)
                     .HasColumnName("AirlineId")
                     .ValueGeneratedNever();
             });
-        
+
         builder.Metadata.FindNavigation(nameof(Country.AirlineIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
@@ -62,7 +62,7 @@ public class CountryConfigurations : IEntityTypeConfiguration<Country>
     private void ConfigureCountryAircraftIdsTable(EntityTypeBuilder<Country> builder)
     {
         builder.OwnsMany(
-            c => c.AircraftIds, 
+            c => c.AircraftIds,
             aib =>
         {
             aib.ToTable("CountryAircraftIds");
@@ -83,7 +83,7 @@ public class CountryConfigurations : IEntityTypeConfiguration<Country>
     private void ConfigureCountriesTable(EntityTypeBuilder<Country> builder)
     {
         builder.ToTable("Countries");
-        
+
         builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Id)
