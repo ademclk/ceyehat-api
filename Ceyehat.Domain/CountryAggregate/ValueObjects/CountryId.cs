@@ -25,7 +25,7 @@ public sealed class CountryId : ValueObject
     {
         yield return Value;
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private CountryId()
     {
