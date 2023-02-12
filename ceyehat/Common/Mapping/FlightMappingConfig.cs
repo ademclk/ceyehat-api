@@ -10,7 +10,7 @@ public class FlightMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<CreateFlightRequest, CreateFlightCommand>();
-        
+
         config.NewConfig<Flight, FlightResponse>()
             .Map(dest => dest.Id, src => src.Id.Value);
     }

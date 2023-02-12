@@ -6,7 +6,7 @@ namespace Ceyehat.Infrastructure.Persistence.Repositories;
 public class CountryRepository : ICountryRepository
 {
     private readonly CeyehatDbContext _dbContext;
-    
+
     public CountryRepository(CeyehatDbContext dbContext)
     {
         _dbContext = dbContext;
