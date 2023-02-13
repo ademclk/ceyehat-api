@@ -21,9 +21,9 @@ public class CreateSeatCommandHandler : IRequestHandler<CreateSeatCommand, Error
             request.SeatClass,
             request.SeatStatus,
             request.AircraftId);
-        
+
         await _seatRepository.AddSeatAsync(seat);
-        
+
         return seat;
     }
 }
