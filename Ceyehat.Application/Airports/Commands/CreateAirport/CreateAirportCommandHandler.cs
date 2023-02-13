@@ -24,9 +24,9 @@ public class CreateAirportCommandHandler : IRequestHandler<CreateAirportCommand,
             request.Longitude,
             request.Timezone,
             request.CityId);
-        
+
         await _airportRepository.AddAirportAsync(airport);
-        
+
         return airport;
     }
 }
