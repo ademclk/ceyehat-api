@@ -17,7 +17,7 @@ public class SeatController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateSeatAsync(CreateSeatRequest request)
     {

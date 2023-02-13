@@ -10,7 +10,7 @@ public class SeatMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<CreateSeatRequest, CreateSeatCommand>();
-        
+
         config.NewConfig<Seat, SeatResponse>()
             .Map(dest => dest.Id, src => src.Id.Value);
     }
