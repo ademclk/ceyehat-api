@@ -17,7 +17,7 @@ public class AirportController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateAirport(CreateAirportRequest request)
     {
