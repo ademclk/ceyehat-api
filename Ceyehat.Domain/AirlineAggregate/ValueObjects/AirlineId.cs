@@ -4,7 +4,7 @@ namespace Ceyehat.Domain.AirlineAggregate.ValueObjects;
 
 public sealed class AirlineId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     private AirlineId(Guid value)
     {
@@ -25,4 +25,10 @@ public sealed class AirlineId : ValueObject
     {
         yield return Value;
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private AirlineId()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

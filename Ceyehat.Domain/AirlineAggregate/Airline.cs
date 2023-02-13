@@ -8,18 +8,18 @@ namespace Ceyehat.Domain.AirlineAggregate;
 public sealed class Airline : AggregateRoot<AirlineId>
 {
     private readonly List<AircraftId> _aircraftIds = new();
-    public string? Name { get; }
-    public string? IataCode { get; }
-    public string? IcaoCode { get; }
-    public string? Callsign { get; }
-    public string? Code { get; }
-    public string? Website { get; }
+    public string? Name { get; private set; }
+    public string? IataCode { get; private set; }
+    public string? IcaoCode { get; private set; }
+    public string? Callsign { get; private set; }
+    public string? Code { get; private set; }
+    public string? Website { get; private set; }
 
-    public AirlineAddress AirlineAddress { get; }
+    public AirlineAddress AirlineAddress { get; private set; }
     public IReadOnlyList<AircraftId> AircraftIds => _aircraftIds.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Airline(
         AirlineId airlineId,
@@ -75,4 +75,10 @@ public sealed class Airline : AggregateRoot<AirlineId>
     {
         _aircraftIds.Remove(aircraftId);
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Airline()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

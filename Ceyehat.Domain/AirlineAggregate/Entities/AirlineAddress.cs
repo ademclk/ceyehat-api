@@ -6,7 +6,7 @@ namespace Ceyehat.Domain.AirlineAggregate.Entities;
 
 public sealed class AirlineAddress : Entity<AirlineAddressId>
 {
-    public CityId CityId { get; }
+    public CityId CityId { get; private set; }
 
     private AirlineAddress(
         AirlineAddressId airlineAddressId,
@@ -22,4 +22,9 @@ public sealed class AirlineAddress : Entity<AirlineAddressId>
             AirlineAddressId.CreateUnique(),
             cityId);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private AirlineAddress()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }
