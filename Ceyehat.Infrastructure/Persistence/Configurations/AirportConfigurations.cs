@@ -22,11 +22,11 @@ public class AirportConfigurations : IEntityTypeConfiguration<Airport>
             afb =>
             {
                 afb.ToTable("AirportArrivalFlightIds");
-                
+
                 afb.WithOwner().HasForeignKey("AirportId");
-                
+
                 afb.HasKey("Id");
-                
+
                 afb.Property(f => f.Value)
                     .HasColumnName("FlightId")
                     .ValueGeneratedNever();
@@ -41,13 +41,13 @@ public class AirportConfigurations : IEntityTypeConfiguration<Airport>
             a => a.DepartureFlights,
             dfb =>
             {
-                
+
                 dfb.ToTable("AirportDepartureFlightIds");
-                
+
                 dfb.WithOwner().HasForeignKey("AirportId");
-                
+
                 dfb.HasKey("Id");
-                
+
                 dfb.Property(f => f.Value)
                     .HasColumnName("FlightId")
                     .ValueGeneratedNever();
@@ -60,9 +60,9 @@ public class AirportConfigurations : IEntityTypeConfiguration<Airport>
     {
 
         builder.ToTable("Airports");
-        
+
         builder.HasKey(a => a.Id);
-        
+
         builder.Property(a => a.Id)
             .ValueGeneratedNever()
             .HasConversion(
@@ -77,10 +77,10 @@ public class AirportConfigurations : IEntityTypeConfiguration<Airport>
 
         builder.Property(a => a.IcaoCode)
             .HasMaxLength(16);
-        
+
         builder.Property(a => a.Latitude)
             .HasColumnType("decimal(6, 16)");
-        
+
         builder.Property(a => a.Longitude)
             .HasColumnType("decimal(6, 16)");
 
