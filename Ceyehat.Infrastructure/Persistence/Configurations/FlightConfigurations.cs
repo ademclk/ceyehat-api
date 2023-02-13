@@ -1,5 +1,6 @@
 using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
+using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -39,7 +40,10 @@ public class FlightConfigurations : IEntityTypeConfiguration<Flight>
             .HasMaxLength(32);
 
         builder.Property(f => f.Type)
-            .HasMaxLength(32);
+            .HasMaxLength(32)
+            .HasConversion(
+                type => (int)type,
+                intValue => (FlightType)intValue);
 
         builder.Property(f => f.ActualDeparture)
             .HasMaxLength(256);

@@ -7,14 +7,14 @@ namespace Ceyehat.Domain.SeatAggregate;
 
 public sealed class Seat : AggregateRoot<SeatId>
 {
-    public string? SeatNumber { get; }
-    public SeatClass SeatClass { get; }
-    public SeatStatus SeatStatus { get; }
+    public string? SeatNumber { get; private set; }
+    public SeatClass SeatClass { get; private set; }
+    public SeatStatus SeatStatus { get; private set; }
 
-    public AircraftId AircraftId { get; }
+    public AircraftId AircraftId { get; private set; }
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Seat(
         SeatId seatId,
@@ -48,4 +48,10 @@ public sealed class Seat : AggregateRoot<SeatId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Seat()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable. 
+    
 }
