@@ -9,19 +9,19 @@ public sealed class Airport : AggregateRoot<AirportId>
 {
     private readonly List<FlightId> _departureFlights = new();
     private readonly List<FlightId> _arrivalFlights = new();
-    public string? Name { get; }
-    public string? IataCode { get; }
-    public string? IcaoCode { get; }
-    public double Latitude { get; }
-    public double Longitude { get; }
-    public string? TimeZone { get; }
+    public string? Name { get; private set; }
+    public string? IataCode { get; private set; }
+    public string? IcaoCode { get; private set; }
+    public double Latitude { get; private set; }
+    public double Longitude { get; private set; }
+    public string? TimeZone { get; private set; }
 
-    public CityId CityId { get; }
+    public CityId CityId { get; private set; }
     public IReadOnlyList<FlightId> DepartureFlights => _departureFlights.AsReadOnly();
     public IReadOnlyList<FlightId> ArrivalFlights => _arrivalFlights.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Airport(
         AirportId airportId,
@@ -87,6 +87,11 @@ public sealed class Airport : AggregateRoot<AirportId>
     {
         _arrivalFlights.Remove(flightId);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Airport()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }
 
 
