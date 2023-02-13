@@ -9,9 +9,9 @@ public sealed class Airport : AggregateRoot<AirportId>
 {
     private readonly List<FlightId> _departureFlights = new();
     private readonly List<FlightId> _arrivalFlights = new();
+    public string? Name { get; }
     public string? IataCode { get; }
     public string? IcaoCode { get; }
-    public string? Name { get; }
     public double Latitude { get; }
     public double Longitude { get; }
     public string? TimeZone { get; }

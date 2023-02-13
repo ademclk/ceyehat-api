@@ -11,7 +11,9 @@ public record AirlineResponse(
     string? Code,
     string? Website,
     AirlineAddress Address,
-    List<string> AircraftIds);
+    List<string> AircraftIds,
+    DateTime CreatedAt,
+    DateTime UpdatedAt);
 
 public record AirlineAddress(
     CityId City);
