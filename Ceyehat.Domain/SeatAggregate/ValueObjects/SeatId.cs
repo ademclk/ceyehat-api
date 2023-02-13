@@ -15,12 +15,12 @@ public sealed class SeatId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static SeatId Create(Guid value)
     {
         return new(value);
     }
-    
+
     public override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
