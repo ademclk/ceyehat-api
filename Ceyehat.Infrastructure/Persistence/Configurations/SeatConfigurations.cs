@@ -17,7 +17,7 @@ public class SeatConfigurations : IEntityTypeConfiguration<Seat>
     private void ConfigureSeatsTable(EntityTypeBuilder<Seat> builder)
     {
         builder.ToTable("Seats");
-        
+
         builder.HasKey(s => s.Id);
 
         builder.Property(s => s.Id)
@@ -28,12 +28,12 @@ public class SeatConfigurations : IEntityTypeConfiguration<Seat>
 
         builder.Property(s => s.SeatNumber)
             .HasMaxLength(4);
-        
+
         builder.Property(s => s.SeatClass)
             .HasConversion(
                 type => (int)type,
                 intValue => (SeatClass)intValue);
-        
+
         builder.Property(s => s.SeatStatus)
             .HasConversion(
                 type => (int)type,
