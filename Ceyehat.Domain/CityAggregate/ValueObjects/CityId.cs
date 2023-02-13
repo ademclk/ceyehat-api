@@ -15,7 +15,7 @@ public sealed class CityId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static CityId Create(Guid value)
     {
         return new(value);

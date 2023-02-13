@@ -22,16 +22,16 @@ public class AirlineConfigurations : IEntityTypeConfiguration<Airline>
             ab =>
             {
                 ab.ToTable("AirlineAircraftIds");
-                
+
                 ab.WithOwner().HasForeignKey("AirlineId");
 
                 ab.HasKey("Id");
-                
+
                 ab.Property(a => a.Value)
                     .HasColumnName("AircraftId")
                     .ValueGeneratedNever();
             });
-        
+
         builder.Metadata.FindNavigation(nameof(Airline.AircraftIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
@@ -43,11 +43,11 @@ public class AirlineConfigurations : IEntityTypeConfiguration<Airline>
             ab =>
             {
                 ab.ToTable("AirlineAddresses");
-                
+
                 ab.WithOwner().HasForeignKey("AirlineId");
-                
+
                 ab.HasKey("Id", "AirlineId");
-                
+
                 ab.Property(a => a.Id)
                     .ValueGeneratedNever()
                     .HasConversion(
@@ -60,7 +60,7 @@ public class AirlineConfigurations : IEntityTypeConfiguration<Airline>
                         id => id.Value,
                         value => CityId.Create(value));
             });
-        
+
         builder.Metadata.FindNavigation(nameof(Airline.AirlineAddress))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
