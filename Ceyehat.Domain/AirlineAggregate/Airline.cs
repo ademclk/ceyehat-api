@@ -75,7 +75,7 @@ public sealed class Airline : AggregateRoot<AirlineId>
     {
         _aircraftIds.Remove(aircraftId);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private Airline()
     {
