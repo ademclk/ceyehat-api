@@ -22,13 +22,13 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
     private void ConfigureCustomerBookingsTable(EntityTypeBuilder<Customer> builder)
     {
         builder.OwnsMany(
-            c=> c.Bookings,
+            c => c.Bookings,
             bb =>
             {
-bb.ToTable("CustomerBookings");
-                
+                bb.ToTable("CustomerBookings");
+
                 bb.WithOwner().HasForeignKey("CustomerId");
-                
+
                 bb.HasKey(b => b.Id);
 
                 bb.Property(b => b.Id)
@@ -44,7 +44,7 @@ bb.ToTable("CustomerBookings");
                     .HasConversion(
                         b => b!.Value,
                         value => SeatId.Create(value));
-                
+
                 bb.Property(b => b.FlightId)
                     .HasColumnName("FlightId")
                     .ValueGeneratedNever()
@@ -61,16 +61,16 @@ bb.ToTable("CustomerBookings");
             pb =>
             {
                 pb.ToTable("CustomerPassengerIds");
-                
+
                 pb.WithOwner().HasForeignKey("CustomerId");
-                
+
                 pb.HasKey("Id");
-                
+
                 pb.Property(p => p.Value)
                     .HasColumnName("PassengerId")
                     .ValueGeneratedNever();
             });
-        
+
         builder.Metadata.FindNavigation(nameof(Customer.PassengerIds))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
@@ -113,7 +113,7 @@ bb.ToTable("CustomerBookings");
             .HasConversion(
                 passengerType => (int)passengerType,
                 intValue => (PassengerType)intValue);
-        
+
         builder.Property(c => c.UserId)
             .ValueGeneratedNever()
             .HasConversion(
