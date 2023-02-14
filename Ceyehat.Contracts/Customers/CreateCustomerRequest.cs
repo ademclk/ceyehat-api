@@ -12,7 +12,7 @@ public record CreateCustomerRequest(
     PassengerType PassengerType,
     string? UserId,
     List<BookingRequest> BookingIds);
-    
+
 public record BookingRequest(
     string? SeatId,
     string? FlightId);
