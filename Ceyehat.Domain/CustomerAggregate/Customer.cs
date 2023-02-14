@@ -85,17 +85,17 @@ public sealed class Customer : AggregateRoot<CustomerId>
     {
         _passengerIds.Remove(passengerId);
     }
-    
+
     public void AddBooking(Booking booking)
     {
         _bookings.Add(booking);
     }
-    
+
     public void RemoveBooking(Booking booking)
     {
         _bookings.Remove(booking);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     protected Customer()
     {

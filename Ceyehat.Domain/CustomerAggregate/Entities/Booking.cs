@@ -28,7 +28,7 @@ public sealed class Booking : Entity<BookingId>
             seatId,
             flightId);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     protected Booking()
     {

@@ -15,7 +15,7 @@ public sealed class BookingId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static BookingId Create(Guid value)
     {
         return new(value);
@@ -25,7 +25,7 @@ public sealed class BookingId : ValueObject
     {
         yield return Value;
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     protected BookingId()
     {
