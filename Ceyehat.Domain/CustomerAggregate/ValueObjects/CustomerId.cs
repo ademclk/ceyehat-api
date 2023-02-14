@@ -4,7 +4,7 @@ namespace Ceyehat.Domain.CustomerAggregate.ValueObjects;
 
 public sealed class CustomerId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     private CustomerId(Guid value)
     {
@@ -25,4 +25,10 @@ public sealed class CustomerId : ValueObject
     {
         yield return Value;
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    protected CustomerId()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

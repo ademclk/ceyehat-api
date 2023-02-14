@@ -1,4 +1,5 @@
 using Ceyehat.Domain.Common.Models;
+using Ceyehat.Domain.CustomerAggregate.Entities;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.PassengerAggregate.ValueObjects;
@@ -9,22 +10,22 @@ namespace Ceyehat.Domain.CustomerAggregate;
 public sealed class Customer : AggregateRoot<CustomerId>
 {
     private readonly List<PassengerId> _passengerIds = new();
-    private readonly List<BookingId> _bookingIds = new();
+    private readonly List<Booking> _bookings = new();
 
-    public string? Name { get; }
-    public string? Surname { get; }
-    public string? Email { get; }
-    public string? PhoneNumber { get; }
-    public Title Title { get; }
-    public DateTime BirthDate { get; }
-    public PassengerType PassengerType { get; }
+    public string? Name { get; private set; }
+    public string? Surname { get; private set; }
+    public string? Email { get; private set; }
+    public string? PhoneNumber { get; private set; }
+    public Title Title { get; private set; }
+    public DateTime BirthDate { get; private set; }
+    public PassengerType PassengerType { get; private set; }
 
-    public UserId? UserId { get; }
+    public UserId? UserId { get; private set; }
     public IReadOnlyCollection<PassengerId> PassengerIds => _passengerIds.AsReadOnly();
-    public IReadOnlyCollection<BookingId> BookingIds => _bookingIds.AsReadOnly();
+    public IReadOnlyCollection<Booking> Bookings => _bookings.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Customer(
         CustomerId customerId,
@@ -84,14 +85,20 @@ public sealed class Customer : AggregateRoot<CustomerId>
     {
         _passengerIds.Remove(passengerId);
     }
-
-    public void AddBooking(BookingId bookingId)
+    
+    public void AddBooking(Booking booking)
     {
-        _bookingIds.Add(bookingId);
+        _bookings.Add(booking);
     }
-
-    public void RemoveBooking(BookingId bookingId)
+    
+    public void RemoveBooking(Booking booking)
     {
-        _bookingIds.Remove(bookingId);
+        _bookings.Remove(booking);
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    protected Customer()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }
