@@ -7,11 +7,11 @@ public record CreateCityRequest(
     string? Name,
     CountryId CountryId,
     List<District> Districts);
-    
+
 public record District(
     string? Name,
     List<Neighborhood> Neighborhoods);
-    
+
 public record Neighborhood(
     string? Name,
     string? AirlineId,
