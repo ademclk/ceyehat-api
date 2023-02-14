@@ -26,9 +26,9 @@ public class CityConfigurations : IEntityTypeConfiguration<City>
             db =>
             {
                 db.ToTable("Districts");
-                
+
                 db.HasKey(d => d.Id);
-                
+
                 db.Property(d => d.Id)
                     .ValueGeneratedNever()
                     .HasConversion(
@@ -43,7 +43,7 @@ public class CityConfigurations : IEntityTypeConfiguration<City>
                     db.ToTable("Neighborhoods");
 
                     db.HasKey(n => n.Id);
-                    
+
                     db.Property(n => n.Id)
                         .ValueGeneratedNever()
                         .HasConversion(
@@ -84,7 +84,7 @@ public class CityConfigurations : IEntityTypeConfiguration<City>
 
         builder.Property(c => c.Name)
             .HasMaxLength(128);
-        
+
         builder.Property(c => c.CountryId)
             .ValueGeneratedNever()
             .HasConversion(
