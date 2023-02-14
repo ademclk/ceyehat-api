@@ -14,6 +14,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
     public string? Name { get; }
     public string? Surname { get; }
     public string? Email { get; }
+    public string? PhoneNumber { get; }
     public Title Title { get; }
     public DateTime BirthDate { get; }
     public PassengerType PassengerType { get; }
@@ -30,6 +31,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
         string? name,
         string? surname,
         string? email,
+        string? phoneNumber,
         Title title,
         DateTime birthDate,
         PassengerType passengerType,
@@ -40,6 +42,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
         Name = name;
         Surname = surname;
         Email = email;
+        PhoneNumber = phoneNumber;
         Title = title;
         BirthDate = birthDate;
         PassengerType = passengerType;
@@ -52,6 +55,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
         string? name,
         string? surname,
         string? email,
+        string? phoneNumber,
         Title title,
         DateTime birthDate,
         PassengerType passengerType,
@@ -62,6 +66,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
             name,
             surname,
             email,
+            phoneNumber,
             title,
             birthDate,
             passengerType,

@@ -4,6 +4,7 @@ using Ceyehat.Domain.AirlineAggregate;
 using Ceyehat.Domain.AirportAggregate;
 using Ceyehat.Domain.CityAggregate;
 using Ceyehat.Domain.CountryAggregate;
+using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.FlightAggregate;
 using Ceyehat.Domain.SeatAggregate;
 using Ceyehat.Domain.UserAggregate;
@@ -26,6 +27,7 @@ public partial class CeyehatDbContext : DbContext
     public DbSet<Airport> Airports { get; set; } = null!;
     public DbSet<Seat> Seats { get; set; } = null!;
     public DbSet<City> Cities { get; set; } = null!;
+    public DbSet<Customer> Customers { get; set; } = null!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder

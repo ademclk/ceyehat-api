@@ -1,20 +1,20 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.CustomerAggregate;
 
 namespace Ceyehat.Infrastructure.Persistence.Repositories;
 
-public class FlightRepository : IFlightRepository
+public class CustomerRepository : ICustomerRepository
 {
     private readonly CeyehatDbContext _dbContext;
 
-    public FlightRepository(CeyehatDbContext dbContext)
+    public CustomerRepository(CeyehatDbContext dbContext)
     {
         _dbContext = dbContext;
     }
 
-    public async Task AddFlightAsync(Flight flight)
+    public async Task AddCustomerAsync(Customer customer)
     {
-        await _dbContext.Flights.AddAsync(flight);
+        await _dbContext.Customers.AddAsync(customer);
         await _dbContext.SaveChangesAsync();
     }
 }
