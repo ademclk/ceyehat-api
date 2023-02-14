@@ -8,7 +8,7 @@ namespace Ceyehat.Application.Customers.Commands;
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, ErrorOr<Customer>>
 {
     private readonly ICustomerRepository _customerRepository;
-    
+
     public CreateCustomerCommandHandler(ICustomerRepository customerRepository)
     {
         _customerRepository = customerRepository;
@@ -25,9 +25,9 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             request.BirthDate,
             request.PassengerType,
             request.UserId);
-        
+
         await _customerRepository.AddCustomerAsync(customer);
-        
+
         return customer;
     }
 }

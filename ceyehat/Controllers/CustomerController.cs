@@ -17,7 +17,7 @@ public class CustomerController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateCustomerAsync(
         CreateCustomerRequest request)
