@@ -10,13 +10,13 @@ public class CityMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<CreateCityRequest, CreateCityCommand>();
-        
+
         config.NewConfig<City, CityResponse>()
             .Map(dest => dest.Id, src => src.Id.Value);
-        
+
         config.NewConfig<DistrictCommand, District>();
-        
+
         config.NewConfig<NeighborhoodCommand, Neighborhood>();
-        
+
     }
 }

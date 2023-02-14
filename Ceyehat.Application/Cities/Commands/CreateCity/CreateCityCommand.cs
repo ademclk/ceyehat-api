@@ -11,11 +11,11 @@ public record CreateCityCommand(
     string? Name,
     CountryId CountryId,
     List<DistrictCommand> Districts) : IRequest<ErrorOr<City>>;
-    
+
 public record DistrictCommand(
     string? Name,
     List<NeighborhoodCommand> Neighborhoods);
-    
+
 public record NeighborhoodCommand(
     string? Name,
     AirlineId? AirlineId,

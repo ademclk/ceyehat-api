@@ -17,7 +17,7 @@ public class CityController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreateCityAsync(
         CreateCityRequest request)
