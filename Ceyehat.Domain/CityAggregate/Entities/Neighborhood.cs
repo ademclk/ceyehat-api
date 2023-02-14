@@ -8,7 +8,7 @@ namespace Ceyehat.Domain.CityAggregate.Entities;
 public sealed class Neighborhood : Entity<NeighborhoodId>
 {
     public string? Name { get; private set; }
-    
+
     public AirlineId? AirlineId { get; private set; }
     public AirportId? AirportId { get; private set; }
 

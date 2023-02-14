@@ -34,7 +34,7 @@ public sealed class District : Entity<DistrictId>
     {
         _neighborhoods.Remove(neighborhood);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private District()
     {

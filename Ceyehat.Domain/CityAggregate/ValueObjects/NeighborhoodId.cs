@@ -15,7 +15,7 @@ public sealed class NeighborhoodId : ValueObject
     {
         return new(Guid.NewGuid());
     }
-    
+
     public static NeighborhoodId Create(Guid value)
     {
         return new(value);
