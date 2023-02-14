@@ -7,13 +7,13 @@ namespace Ceyehat.Domain.CityAggregate;
 public sealed class City : AggregateRoot<CityId>
 {
     private readonly List<District> _districts = new();
-    public string? Name { get; }
+    public string? Name { get; private set; }
 
-    public CountryId CountryId { get; }
+    public CountryId CountryId { get; private set; }
     public IReadOnlyList<District> Districts => _districts.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private City(
         CityId cityId,
@@ -49,4 +49,9 @@ public sealed class City : AggregateRoot<CityId>
     {
         _districts.Remove(district);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private City()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

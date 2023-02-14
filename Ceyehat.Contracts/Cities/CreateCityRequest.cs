@@ -1,4 +1,5 @@
 
+using Ceyehat.Domain.CityAggregate.ValueObjects;
 using Ceyehat.Domain.CountryAggregate.ValueObjects;
 
 namespace Ceyehat.Contracts.Cities;

@@ -4,7 +4,7 @@ namespace Ceyehat.Domain.CityAggregate.ValueObjects;
 
 public sealed class CityId : ValueObject
 {
-    public Guid Value { get; }
+    public Guid Value { get; private set; }
 
     private CityId(Guid value)
     {
@@ -25,4 +25,9 @@ public sealed class CityId : ValueObject
     {
         yield return Value;
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private CityId()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

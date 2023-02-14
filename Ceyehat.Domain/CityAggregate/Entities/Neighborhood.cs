@@ -7,10 +7,10 @@ namespace Ceyehat.Domain.CityAggregate.Entities;
 
 public sealed class Neighborhood : Entity<NeighborhoodId>
 {
-    public string? Name { get; }
-
-    public AirlineId? AirlineId { get; }
-    public AirportId? AirportId { get; }
+    public string? Name { get; private set; }
+    
+    public AirlineId? AirlineId { get; private set; }
+    public AirportId? AirportId { get; private set; }
 
     private Neighborhood(
         NeighborhoodId neighborhoodId,
@@ -34,4 +34,9 @@ public sealed class Neighborhood : Entity<NeighborhoodId>
             airlineId,
             airportId);
     }
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Neighborhood()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

@@ -6,7 +6,7 @@ namespace Ceyehat.Domain.CityAggregate.Entities;
 public sealed class District : Entity<DistrictId>
 {
     private readonly List<Neighborhood> _neighborhoods = new();
-    public string? Name { get; }
+    public string? Name { get; private set; }
 
     public IReadOnlyList<Neighborhood> Neighborhoods => _neighborhoods.AsReadOnly();
 
@@ -34,4 +34,10 @@ public sealed class District : Entity<DistrictId>
     {
         _neighborhoods.Remove(neighborhood);
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private District()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }
