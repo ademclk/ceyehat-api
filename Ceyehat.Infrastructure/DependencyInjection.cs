@@ -37,6 +37,7 @@ public static class DependencyInjection
         services.AddScoped<IAirlineRepository, AirlineRepository>();
         services.AddScoped<IAirportRepository, AirportRepository>();
         services.AddScoped<ISeatRepository, SeatRepository>();
+        services.AddScoped<ICityRepository, CityRepository>();
 
         return services;
     }
