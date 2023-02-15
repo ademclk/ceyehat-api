@@ -10,12 +10,12 @@ namespace Ceyehat.Application.Passengers.Commands;
 public record CreatePassengerCommand(
     CustomerId CustomerId,
     List<CreateFlightTicketCommand> FlightTickets) : IRequest<ErrorOr<Passenger>>;
-    
+
 public record CreateFlightTicketCommand(
     FlightId FlightId,
     SeatId SeatId,
     CreateBoardingPassCommand? BoardingPass);
-    
+
 public record CreateBoardingPassCommand(
     string? Gate,
     DateTime BoardingTime);

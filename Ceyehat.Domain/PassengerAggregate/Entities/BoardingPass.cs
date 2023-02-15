@@ -9,7 +9,7 @@ public sealed class BoardingPass : Entity<BoardingPassId>
 {
     public string? Gate { get; }
     public DateTime BoardingTime { get; }
-    
+
     private BoardingPass(
         BoardingPassId boardingPassId,
         string? gate,

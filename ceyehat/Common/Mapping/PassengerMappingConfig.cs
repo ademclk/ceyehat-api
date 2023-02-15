@@ -10,7 +10,7 @@ public class PassengerMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<CreatePassengerRequest, CreatePassengerCommand>();
-        
+
         config.NewConfig<Passenger, PassengerResponse>()
             .Map(dest => dest.Id, src => src.Id.Value);
     }
