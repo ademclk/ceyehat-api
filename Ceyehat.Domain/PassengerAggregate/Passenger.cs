@@ -8,12 +8,14 @@ namespace Ceyehat.Domain.PassengerAggregate;
 public sealed class Passenger : AggregateRoot<PassengerId>
 {
     private readonly List<FlightTicket> _flightTickets = new();
+    private readonly List<BoardingPass> _boardingPasses = new();
 
     public CustomerId CustomerId { get; private set; }
-    public IReadOnlyCollection<FlightTicket> FlightTicketIds => _flightTickets.AsReadOnly();
+    public IReadOnlyList<FlightTicket> FlightTickets => _flightTickets.AsReadOnly();
+    public IReadOnlyList<BoardingPass> BoardingPasses => _boardingPasses.AsReadOnly();
 
-    public DateTime CreatedAt { get; }
-    public DateTime UpdatedAt { get; }
+    public DateTime CreatedAt { get; private set; }
+    public DateTime UpdatedAt { get; private set; }
 
     private Passenger(
         PassengerId passengerId,
@@ -45,4 +47,20 @@ public sealed class Passenger : AggregateRoot<PassengerId>
     {
         _flightTickets.Remove(flightTicket);
     }
+    
+    public void AddBoardingPass(BoardingPass boardingPass)
+    {
+        _boardingPasses.Add(boardingPass);
+    }
+    
+    public void RemoveBoardingPass(BoardingPass boardingPass)
+    {
+        _boardingPasses.Remove(boardingPass);
+    }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private Passenger()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }

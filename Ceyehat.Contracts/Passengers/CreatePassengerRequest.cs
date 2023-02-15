@@ -1,14 +1,20 @@
+using Ceyehat.Domain.CustomerAggregate.ValueObjects;
+using Ceyehat.Domain.PassengerAggregate;
+using Ceyehat.Domain.PassengerAggregate.ValueObjects;
+using ErrorOr;
+using MediatR;
+
 namespace Ceyehat.Contracts.Passengers;
 
 public record CreatePassengerRequest(
-    string CustomerId,
-    CreateFlightTicketRequest FlightTickets);
+    CustomerId CustomerId,
+    List<CreateFlightTicketRequest> FlightTickets,
+    List<CreateBoardingPassRequest> BoardingPasses) : IRequest<ErrorOr<Passenger>>;
 
 public record CreateFlightTicketRequest(
-    string FlightId,
-    string SeatId,
-    CreateBoardingPassRequest? BoardingPass);
+    BookingId BookingId);
 
 public record CreateBoardingPassRequest(
+    FlightTicketId FlightTicketId,
     string? Gate,
     DateTime BoardingTime);

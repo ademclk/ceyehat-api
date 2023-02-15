@@ -19,12 +19,20 @@ public class CreatePassengerCommandHandler : IRequestHandler<CreatePassengerComm
     {
         var passenger = Passenger.Create(request.CustomerId);
 
-        var flightTickets = request.FlightTickets.Select(flightTicketCommand => FlightTicket.Create(
-             flightTicketCommand.FlightId,
-             flightTicketCommand.SeatId,
-             flightTicketCommand.BoardingPass is null
-                 ? null
-                 : BoardingPass.Create(flightTicketCommand.BoardingPass.Gate, flightTicketCommand.BoardingPass.BoardingTime)));
+        foreach (var flightTicketCommand in request.FlightTickets)
+        {
+            var flightTicket = FlightTicket.Create(flightTicketCommand.BookingId);
+            passenger.AddFlightTicket(flightTicket);
+        }
+
+        foreach (var boardingPassCommand in request.BoardingPasses)
+        {
+            var boardingPass = BoardingPass.Create(
+                boardingPassCommand.FlightTicketId,
+                boardingPassCommand.Gate,
+                boardingPassCommand.BoardingTime);
+            passenger.AddBoardingPass(boardingPass);
+        }
 
         await _passengerRepository.AddPassengerAsync(passenger);
 

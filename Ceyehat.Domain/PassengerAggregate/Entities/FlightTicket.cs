@@ -1,37 +1,32 @@
 using Ceyehat.Domain.Common.Models;
-using Ceyehat.Domain.FlightAggregate.ValueObjects;
+using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.PassengerAggregate.ValueObjects;
-using Ceyehat.Domain.SeatAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.PassengerAggregate.Entities;
 
 public sealed class FlightTicket : Entity<FlightTicketId>
 {
-    public FlightId FlightId { get; }
-    public SeatId SeatId { get; }
-    public BoardingPass? BoardingPass { get; }
+    public BookingId BookingId { get; private set; }
 
     private FlightTicket(
         FlightTicketId flightTicketId,
-        FlightId flightId,
-        SeatId seatId,
-        BoardingPass? boardingPass)
+        BookingId bookingId)
         : base(flightTicketId)
     {
-        FlightId = flightId;
-        SeatId = seatId;
-        BoardingPass = boardingPass;
+        BookingId = bookingId;
     }
 
     public static FlightTicket Create(
-        FlightId flightId,
-        SeatId seatId,
-        BoardingPass? boardingPass)
+        BookingId bookingId)
     {
         return new(
             FlightTicketId.CreateUnique(),
-            flightId,
-            seatId,
-            boardingPass);
+            bookingId);
     }
+    
+#pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
+    private FlightTicket()
+    {
+    }
+#pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
 }
