@@ -40,7 +40,7 @@ public sealed class Passenger : AggregateRoot<PassengerId>
     {
         _flightTickets.Add(flightTicket);
     }
-    
+
     public void RemoveFlightTicket(FlightTicket flightTicket)
     {
         _flightTickets.Remove(flightTicket);

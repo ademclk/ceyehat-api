@@ -18,13 +18,13 @@ public class CreatePassengerCommandHandler : IRequestHandler<CreatePassengerComm
     public async Task<ErrorOr<Passenger>> Handle(CreatePassengerCommand request, CancellationToken cancellationToken)
     {
         var passenger = Passenger.Create(request.CustomerId);
-        
-       var flightTickets = request.FlightTickets.Select(flightTicketCommand => FlightTicket.Create(
-            flightTicketCommand.FlightId,
-            flightTicketCommand.SeatId,
-            flightTicketCommand.BoardingPass is null
-                ? null
-                : BoardingPass.Create(flightTicketCommand.BoardingPass.Gate, flightTicketCommand.BoardingPass.BoardingTime)));
+
+        var flightTickets = request.FlightTickets.Select(flightTicketCommand => FlightTicket.Create(
+             flightTicketCommand.FlightId,
+             flightTicketCommand.SeatId,
+             flightTicketCommand.BoardingPass is null
+                 ? null
+                 : BoardingPass.Create(flightTicketCommand.BoardingPass.Gate, flightTicketCommand.BoardingPass.BoardingTime)));
 
         await _passengerRepository.AddPassengerAsync(passenger);
 

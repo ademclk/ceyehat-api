@@ -11,7 +11,7 @@ public class PassengerController : ApiController
 {
     private readonly IMapper _mapper;
     private readonly ISender _sender;
-    
+
     public PassengerController(IMapper mapper, ISender sender)
     {
         _mapper = mapper;
@@ -23,9 +23,9 @@ public class PassengerController : ApiController
         CreatePassengerRequest request)
     {
         var command = _mapper.Map<CreatePassengerCommand>(request);
-        
+
         var createPassengerResult = await _sender.Send(command);
-        
+
         return createPassengerResult.Match<IActionResult>(
             passenger => Ok(_mapper.Map<PassengerResponse>(passenger)),
             error => Problem(error));
