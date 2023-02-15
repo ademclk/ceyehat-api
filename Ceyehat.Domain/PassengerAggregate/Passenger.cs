@@ -1,15 +1,16 @@
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
+using Ceyehat.Domain.PassengerAggregate.Entities;
 using Ceyehat.Domain.PassengerAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.PassengerAggregate;
 
 public sealed class Passenger : AggregateRoot<PassengerId>
 {
-    private readonly List<FlightTicketId> _flightTicketIds = new();
+    private readonly List<FlightTicket> _flightTickets = new();
 
     public CustomerId CustomerId { get; private set; }
-    public IReadOnlyCollection<FlightTicketId> FlightTicketIds => _flightTicketIds.AsReadOnly();
+    public IReadOnlyCollection<FlightTicket> FlightTicketIds => _flightTickets.AsReadOnly();
 
     public DateTime CreatedAt { get; }
     public DateTime UpdatedAt { get; }
@@ -35,13 +36,13 @@ public sealed class Passenger : AggregateRoot<PassengerId>
             DateTime.UtcNow);
     }
 
-    public void AddFlightTicket(FlightTicketId flightTicketId)
+    public void AddFlightTicket(FlightTicket flightTicket)
     {
-        _flightTicketIds.Add(flightTicketId);
+        _flightTickets.Add(flightTicket);
     }
-
-    public void RemoveFlightTicket(FlightTicketId flightTicketId)
+    
+    public void RemoveFlightTicket(FlightTicket flightTicket)
     {
-        _flightTicketIds.Remove(flightTicketId);
+        _flightTickets.Remove(flightTicket);
     }
 }

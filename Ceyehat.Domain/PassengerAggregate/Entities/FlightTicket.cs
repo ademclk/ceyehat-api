@@ -9,13 +9,13 @@ public sealed class FlightTicket : Entity<FlightTicketId>
 {
     public FlightId FlightId { get; }
     public SeatId SeatId { get; }
-    public BoardingPass BoardingPass { get; }
+    public BoardingPass? BoardingPass { get; }
 
     private FlightTicket(
         FlightTicketId flightTicketId,
         FlightId flightId,
         SeatId seatId,
-        BoardingPass boardingPass)
+        BoardingPass? boardingPass)
         : base(flightTicketId)
     {
         FlightId = flightId;
@@ -26,7 +26,7 @@ public sealed class FlightTicket : Entity<FlightTicketId>
     public static FlightTicket Create(
         FlightId flightId,
         SeatId seatId,
-        BoardingPass boardingPass)
+        BoardingPass? boardingPass)
     {
         return new(
             FlightTicketId.CreateUnique(),
