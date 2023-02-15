@@ -23,7 +23,7 @@ public sealed class FlightTicket : Entity<FlightTicketId>
             FlightTicketId.CreateUnique(),
             bookingId);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private FlightTicket()
     {
