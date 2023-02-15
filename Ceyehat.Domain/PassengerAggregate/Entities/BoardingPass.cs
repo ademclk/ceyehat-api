@@ -32,7 +32,7 @@ public sealed class BoardingPass : Entity<BoardingPassId>
             gate,
             boardingTime);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private BoardingPass()
     {

@@ -32,8 +32,8 @@ public class PassengerConfigurations : IEntityTypeConfiguration<Passenger>
                     .HasConversion(
                         id => id.Value,
                         value => BoardingPassId.Create(value));
-                
-                tb.Property(b=> b.FlightTicketId)
+
+                tb.Property(b => b.FlightTicketId)
                     .ValueGeneratedNever()
                     .HasConversion(
                         id => id.Value,
@@ -61,7 +61,7 @@ public class PassengerConfigurations : IEntityTypeConfiguration<Passenger>
                     .HasConversion(
                         id => id.Value,
                         value => FlightTicketId.Create(value));
-                
+
                 tb.Property(t => t.BookingId)
                     .ValueGeneratedNever()
                     .HasConversion(
@@ -73,20 +73,20 @@ public class PassengerConfigurations : IEntityTypeConfiguration<Passenger>
     private void ConfigurePassengersTable(EntityTypeBuilder<Passenger> builder)
     {
         builder.ToTable("Passengers");
-        
+
         builder.HasKey(p => p.Id);
-        
+
         builder.Property(p => p.Id)
             .ValueGeneratedNever()
             .HasConversion(
                 p => p.Value,
                 value => PassengerId.Create(value));
-        
+
         builder.Property(p => p.CustomerId)
             .ValueGeneratedNever()
             .HasConversion(
                 p => p.Value,
                 value => CustomerId.Create(value));
-        
+
     }
 }
