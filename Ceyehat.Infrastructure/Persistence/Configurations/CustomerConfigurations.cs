@@ -2,7 +2,6 @@ using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
-using Ceyehat.Domain.PassengerAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate.ValueObjects;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +14,6 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
     public void Configure(EntityTypeBuilder<Customer> builder)
     {
         ConfigureCustomersTable(builder);
-        ConfigureCustomerPassengerIdsTable(builder);
         ConfigureCustomerBookingsTable(builder);
     }
 
@@ -53,28 +51,7 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                         value => FlightId.Create(value));
             });
     }
-
-    private void ConfigureCustomerPassengerIdsTable(EntityTypeBuilder<Customer> builder)
-    {
-        builder.OwnsMany(
-            c => c.PassengerIds,
-            pb =>
-            {
-                pb.ToTable("CustomerPassengerIds");
-
-                pb.WithOwner().HasForeignKey("CustomerId");
-
-                pb.HasKey("Id");
-
-                pb.Property(p => p.Value)
-                    .HasColumnName("PassengerId")
-                    .ValueGeneratedNever();
-            });
-
-        builder.Metadata.FindNavigation(nameof(Customer.PassengerIds))!
-            .SetPropertyAccessMode(PropertyAccessMode.Field);
-    }
-
+    
     private void ConfigureCustomersTable(EntityTypeBuilder<Customer> builder)
     {
         builder.ToTable("Customers");

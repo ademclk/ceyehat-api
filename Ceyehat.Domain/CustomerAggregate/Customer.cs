@@ -2,14 +2,12 @@ using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.CustomerAggregate.Entities;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
-using Ceyehat.Domain.PassengerAggregate.ValueObjects;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.CustomerAggregate;
 
 public sealed class Customer : AggregateRoot<CustomerId>
 {
-    private readonly List<PassengerId> _passengerIds = new();
     private readonly List<Booking> _bookings = new();
 
     public string? Name { get; private set; }
@@ -21,7 +19,6 @@ public sealed class Customer : AggregateRoot<CustomerId>
     public PassengerType PassengerType { get; private set; }
 
     public UserId? UserId { get; private set; }
-    public IReadOnlyCollection<PassengerId> PassengerIds => _passengerIds.AsReadOnly();
     public IReadOnlyCollection<Booking> Bookings => _bookings.AsReadOnly();
 
     public DateTime CreatedAt { get; private set; }
@@ -75,17 +72,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
-
-    public void AddPassenger(PassengerId passengerId)
-    {
-        _passengerIds.Add(passengerId);
-    }
-
-    public void RemovePassenger(PassengerId passengerId)
-    {
-        _passengerIds.Remove(passengerId);
-    }
-
+    
     public void AddBooking(Booking booking)
     {
         _bookings.Add(booking);
