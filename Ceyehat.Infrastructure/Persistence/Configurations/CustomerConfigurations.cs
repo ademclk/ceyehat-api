@@ -51,7 +51,7 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                         value => FlightId.Create(value));
             });
     }
-    
+
     private void ConfigureCustomersTable(EntityTypeBuilder<Customer> builder)
     {
         builder.ToTable("Customers");

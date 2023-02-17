@@ -72,7 +72,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
-    
+
     public void AddBooking(Booking booking)
     {
         _bookings.Add(booking);
