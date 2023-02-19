@@ -19,7 +19,7 @@ public sealed class Flight : AggregateRoot<FlightId>
     public AircraftId AircraftId { get; private set; }
     public AirportId DepartureAirportId { get; private set; }
     public AirportId ArrivalAirportId { get; private set; }
-    
+
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
