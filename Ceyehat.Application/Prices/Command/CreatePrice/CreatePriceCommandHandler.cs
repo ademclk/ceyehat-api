@@ -28,9 +28,9 @@ public class CreatePriceCommandHandler : IRequestHandler<CreatePriceCommand, Err
                 request.Pricing.SeasonalMultiplier,
                 request.Pricing.LengthMultiplier,
                 request.Pricing.ClassMultiplier));
-        
+
         await _priceRepository.AddPriceAsync(price);
-    
+
         return price;
     }
 }
