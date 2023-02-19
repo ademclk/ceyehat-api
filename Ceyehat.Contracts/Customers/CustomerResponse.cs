@@ -13,12 +13,29 @@ public record CustomerResponse(
     DateTime BirthDate,
     PassengerType PassengerType,
     UserId? UserId,
-    List<string> PassengerIds,
     List<BookingResponse> BookingIds,
+    List<FlightTicketResponse> FlightTicketIds,
+    List<BoardingPassResponse> BoardingPassIds,
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
 public record BookingResponse(
     string? Id,
     string? SeatId,
+    float Price,
+    Currency Currency,
+    PassengerType PassengerType,
     string? FlightId);
+    
+public record FlightTicketResponse(
+    string? Id,
+    string? BoardingPassId,
+    string? BookingId);
+    
+public record BoardingPassResponse(
+    string? Id,
+    string? BoardingGroup,
+    string? BoardingGate,
+    DateTime BoardingTime,
+    DateTime CheckInTime
+);

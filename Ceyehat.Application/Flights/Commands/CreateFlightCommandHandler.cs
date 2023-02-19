@@ -1,5 +1,6 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.FlightAggregate.Entities;
 using MediatR;
 using ErrorOr;
 
@@ -28,6 +29,12 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
             request.AircraftId,
             request.DepartureAirportId,
             request.ArrivalAirportId);
+        
+        foreach (var p in request.Prices)
+        {
+            var price = Price.Create(p.Value, p.Currency, p.SeatClass, p.FlightId);
+            flight.AddPrice(price);
+        }
 
         await _flightRepository.AddFlightAsync(flight);
 

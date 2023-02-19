@@ -2,6 +2,7 @@ using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using MediatR;
 using ErrorOr;
 
@@ -17,5 +18,13 @@ public record CreateFlightCommand(
     DateTime? ActualArrival,
     AircraftId AircraftId,
     AirportId DepartureAirportId,
-    AirportId ArrivalAirportId
-) : IRequest<ErrorOr<Flight>>;
+    AirportId ArrivalAirportId,
+    List<CreatePriceCommand> Prices
+    ) : IRequest<ErrorOr<Flight>>;
+
+public record CreatePriceCommand(
+    float Value,
+    Currency Currency,
+    SeatClass SeatClass,
+    FlightId FlightId);
+    

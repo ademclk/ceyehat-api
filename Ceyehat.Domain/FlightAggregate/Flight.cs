@@ -2,12 +2,14 @@ using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.Enums;
+using Ceyehat.Domain.FlightAggregate.Entities;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.FlightAggregate;
 
 public sealed class Flight : AggregateRoot<FlightId>
 {
+    private readonly List<Price> _prices = new();
     public string? FlightNumber { get; private set; }
     public DateTime ScheduledDeparture { get; private set; }
     public DateTime ScheduledArrival { get; private set; }
@@ -19,6 +21,7 @@ public sealed class Flight : AggregateRoot<FlightId>
     public AircraftId AircraftId { get; private set; }
     public AirportId DepartureAirportId { get; private set; }
     public AirportId ArrivalAirportId { get; private set; }
+    public IReadOnlyCollection<Price> Prices => _prices.AsReadOnly();
 
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -79,6 +82,17 @@ public sealed class Flight : AggregateRoot<FlightId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
+    
+    public void AddPrice(Price price)
+    {
+        _prices.Add(price);
+    }
+    
+    public void RemovePrice(Price price)
+    {
+        _prices.Remove(price);
+    }
+    
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private Flight()
     {

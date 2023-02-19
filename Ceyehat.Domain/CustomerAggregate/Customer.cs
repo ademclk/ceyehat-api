@@ -9,7 +9,8 @@ namespace Ceyehat.Domain.CustomerAggregate;
 public sealed class Customer : AggregateRoot<CustomerId>
 {
     private readonly List<Booking> _bookings = new();
-
+    private readonly List<FlightTicket> _flightTickets = new();
+    private readonly List<BoardingPass> _boardingPasses = new();
     public string? Name { get; private set; }
     public string? Surname { get; private set; }
     public string? Email { get; private set; }
@@ -20,6 +21,8 @@ public sealed class Customer : AggregateRoot<CustomerId>
 
     public UserId? UserId { get; private set; }
     public IReadOnlyCollection<Booking> Bookings => _bookings.AsReadOnly();
+    public IReadOnlyCollection<FlightTicket> FlightTickets => _flightTickets.AsReadOnly();
+    public IReadOnlyCollection<BoardingPass> BoardingPasses => _boardingPasses.AsReadOnly();
 
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -81,6 +84,26 @@ public sealed class Customer : AggregateRoot<CustomerId>
     public void RemoveBooking(Booking booking)
     {
         _bookings.Remove(booking);
+    }
+    
+    public void AddFlightTicket(FlightTicket flightTicket)
+    {
+        _flightTickets.Add(flightTicket);
+    }
+    
+    public void RemoveFlightTicket(FlightTicket flightTicket)
+    {
+        _flightTickets.Remove(flightTicket);
+    }
+    
+    public void AddBoardingPass(BoardingPass boardingPass)
+    {
+        _boardingPasses.Add(boardingPass);
+    }
+    
+    public void RemoveBoardingPass(BoardingPass boardingPass)
+    {
+        _boardingPasses.Remove(boardingPass);
     }
 
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
