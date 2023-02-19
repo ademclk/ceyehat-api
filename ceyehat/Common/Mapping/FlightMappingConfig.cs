@@ -1,4 +1,5 @@
 using Ceyehat.Application.Flights.Commands;
+using Ceyehat.Application.Flights.Commands.CreateFlight;
 using Ceyehat.Contracts.Flights;
 using Ceyehat.Domain.FlightAggregate;
 using Mapster;

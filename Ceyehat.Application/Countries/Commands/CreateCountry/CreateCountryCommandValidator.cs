@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Ceyehat.Application.Countries.Commands;
+namespace Ceyehat.Application.Countries.Commands.CreateCountry;
 
 public class CreateCountryCommandValidator : AbstractValidator<CreateCountryCommand>
 {

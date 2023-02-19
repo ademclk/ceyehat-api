@@ -1,7 +1,7 @@
 using Ceyehat.Domain.SeatAggregate;
 using FluentValidation;
 
-namespace Ceyehat.Application.Seats.Commands;
+namespace Ceyehat.Application.Seats.Commands.CreateSeat;
 
 public class CreateSeatCommandValidator : AbstractValidator<Seat>
 {

@@ -4,7 +4,7 @@ using Ceyehat.Domain.SeatAggregate;
 using ErrorOr;
 using MediatR;
 
-namespace Ceyehat.Application.Seats.Commands;
+namespace Ceyehat.Application.Seats.Commands.CreateSeat;
 
 public record CreateSeatCommand(
     string? SeatNumber,

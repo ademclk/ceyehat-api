@@ -1,9 +1,9 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.SeatAggregate;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Seats.Commands;
+namespace Ceyehat.Application.Seats.Commands.CreateSeat;
 
 public class CreateSeatCommandHandler : IRequestHandler<CreateSeatCommand, ErrorOr<Seat>>
 {

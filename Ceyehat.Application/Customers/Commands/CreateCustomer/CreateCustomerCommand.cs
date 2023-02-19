@@ -4,10 +4,10 @@ using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate.ValueObjects;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Customers.Commands;
+namespace Ceyehat.Application.Customers.Commands.CreateCustomer;
 
 public record CreateCustomerCommand(
     string Name,

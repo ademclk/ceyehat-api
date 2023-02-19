@@ -1,7 +1,7 @@
 using Ceyehat.Domain.CustomerAggregate;
 using FluentValidation;
 
-namespace Ceyehat.Application.Customers.Commands;
+namespace Ceyehat.Application.Customers.Commands.CreateCustomer;
 
 public class CreateCustomerCommandValidator : AbstractValidator<Customer>
 {

@@ -3,7 +3,7 @@ using Ceyehat.Domain.Enums;
 using ErrorOr;
 using MediatR;
 
-namespace Ceyehat.Application.Countries.Commands;
+namespace Ceyehat.Application.Countries.Commands.CreateCountry;
 
 public record CreateCountryCommand(
     string UnLocode,

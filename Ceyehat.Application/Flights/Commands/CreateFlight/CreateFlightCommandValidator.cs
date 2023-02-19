@@ -1,6 +1,6 @@
 using FluentValidation;
 
-namespace Ceyehat.Application.Flights.Commands;
+namespace Ceyehat.Application.Flights.Commands.CreateFlight;
 
 public class CreateAircraftCommandValidator : AbstractValidator<CreateFlightCommand>
 {

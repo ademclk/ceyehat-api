@@ -2,11 +2,10 @@ using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
-using Ceyehat.Domain.FlightAggregate.ValueObjects;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Flights.Commands;
+namespace Ceyehat.Application.Flights.Commands.CreateFlight;
 
 public record CreateFlightCommand(
     string? FlightNumber,

@@ -1,10 +1,10 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.CustomerAggregate.Entities;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Customers.Commands;
+namespace Ceyehat.Application.Customers.Commands.CreateCustomer;
 
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, ErrorOr<Customer>>
 {

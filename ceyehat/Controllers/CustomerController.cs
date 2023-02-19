@@ -1,4 +1,5 @@
 using Ceyehat.Application.Customers.Commands;
+using Ceyehat.Application.Customers.Commands.CreateCustomer;
 using Ceyehat.Contracts.Customers;
 using MapsterMapper;
 using MediatR;

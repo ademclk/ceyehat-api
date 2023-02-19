@@ -1,9 +1,9 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.CountryAggregate;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Countries.Commands;
+namespace Ceyehat.Application.Countries.Commands.CreateCountry;
 
 public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand, ErrorOr<Country>>
 {

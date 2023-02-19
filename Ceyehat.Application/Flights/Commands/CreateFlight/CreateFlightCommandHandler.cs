@@ -1,9 +1,9 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.FlightAggregate;
-using MediatR;
 using ErrorOr;
+using MediatR;
 
-namespace Ceyehat.Application.Flights.Commands;
+namespace Ceyehat.Application.Flights.Commands.CreateFlight;
 
 public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, ErrorOr<Flight>>
 {
