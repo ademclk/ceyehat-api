@@ -9,12 +9,12 @@ public sealed class Price : AggregateRoot<PriceId>
 {
     public decimal Amount { get; private set; }
     public Currency Currency { get; private set; }
-    
+
     public FlightPricingId FlightPricingId { get; private set; }
-    
+
     private Price(
-        PriceId id, 
-        decimal amount, 
+        PriceId id,
+        decimal amount,
         Currency currency,
         FlightPricingId flightPricingId)
     {
@@ -23,19 +23,19 @@ public sealed class Price : AggregateRoot<PriceId>
         Currency = currency;
         FlightPricingId = flightPricingId;
     }
-    
+
     public static Price Create(
-        decimal amount, 
+        decimal amount,
         Currency currency,
         FlightPricingId flightPricingId)
     {
         return new(
-            PriceId.CreateUnique(), 
-            amount, 
+            PriceId.CreateUnique(),
+            amount,
             currency,
             flightPricingId);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     protected Price()
     {
