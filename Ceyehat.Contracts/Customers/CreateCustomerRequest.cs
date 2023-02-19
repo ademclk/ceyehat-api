@@ -21,11 +21,11 @@ public record BookingRequest(
     float Price,
     Currency Currency,
     PassengerType PassengerType);
-    
+
 public record FlightTicketRequest(
     string? BoardingPassId,
     string? BookingId);
-    
+
 public record BoardingPassRequest(
     string? BoardingGroup,
     string? BoardingGate,

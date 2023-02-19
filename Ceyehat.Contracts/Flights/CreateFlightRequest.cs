@@ -9,7 +9,7 @@ public record CreateFlightRequest(
     FlightStatus Status,
     FlightType Type,
     DateTime? ActualDeparture,
-    DateTime? ActualArrival, 
+    DateTime? ActualArrival,
     string? AircraftId,
     string? DepartureAirportId,
     string? ArrivalAirportId,

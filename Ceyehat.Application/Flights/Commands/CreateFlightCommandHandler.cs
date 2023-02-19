@@ -29,7 +29,7 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
             request.AircraftId,
             request.DepartureAirportId,
             request.ArrivalAirportId);
-        
+
         foreach (var p in request.Prices)
         {
             var price = Price.Create(p.Value, p.Currency, p.SeatClass, p.FlightId);
