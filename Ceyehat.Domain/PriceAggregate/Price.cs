@@ -11,9 +11,9 @@ public sealed class Price : AggregateRoot<PriceId>
     public Currency Currency { get; private set; }
 
     public FlightPricing FlightPricing { get; private set; }
-    
+
     public DateTime CreatedAt { get; private set; }
-    
+
     public DateTime UpdatedAt { get; private set; }
 
     private Price(

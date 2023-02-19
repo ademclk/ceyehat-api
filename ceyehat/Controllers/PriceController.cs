@@ -16,7 +16,7 @@ public class PriceController : ApiController
         _mapper = mapper;
         _mediator = mediator;
     }
-    
+
     [HttpPost]
     public async Task<IActionResult> CreatePriceAsync(
         CreatePriceRequest request)
@@ -29,6 +29,6 @@ public class PriceController : ApiController
             price => Ok(_mapper.Map<PriceResponse>(price)),
             error => Problem(error));
     }
-    
-    
+
+
 }
