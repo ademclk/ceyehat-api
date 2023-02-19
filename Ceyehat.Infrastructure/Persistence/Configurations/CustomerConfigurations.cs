@@ -28,24 +28,24 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                 tb.ToTable("CustomerBoardingPasses");
 
                 tb.HasKey(b => b.Id);
-                
+
                 tb.Property(b => b.Id)
                     .ValueGeneratedNever()
                     .HasConversion(
                         f => f.Value,
                         value => BoardingPassId.Create(value));
-                
+
                 tb.Property(b => b.BoardingGate)
                     .HasMaxLength(8);
 
                 tb.Property(b => b.BoardingGroup)
                     .HasMaxLength(2);
-                
+
                 tb.Property(b => b.BoardingTime)
                     .HasConversion(
                         f => f,
                         value => value);
-                
+
                 tb.Property(b => b.CheckInTime)
                     .HasConversion(
                         f => f,
@@ -62,13 +62,13 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                 tb.ToTable("CustomerFlightTickets");
 
                 tb.HasKey(f => f.Id);
-                
+
                 tb.Property(f => f.Id)
                     .ValueGeneratedNever()
                     .HasConversion(
                         f => f.Value,
                         value => FlightTicketId.Create(value));
-                
+
                 tb.Property(f => f.BookingId)
                     .ValueGeneratedNever()
                     .HasConversion(
