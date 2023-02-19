@@ -51,6 +51,8 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                         f => f,
                         value => value);
             });
+        builder.Metadata.FindNavigation(nameof(Customer.BoardingPasses))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureCustomerFlightTicketsTable(EntityTypeBuilder<Customer> builder)
@@ -82,6 +84,9 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                         value => BoardingPassId.Create(value));
 
             });
+        
+        builder.Metadata.FindNavigation(nameof(Customer.FlightTickets))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureCustomerBookingsTable(EntityTypeBuilder<Customer> builder)
@@ -117,6 +122,9 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
                         b => b!.Value,
                         value => FlightId.Create(value));
             });
+        
+        builder.Metadata.FindNavigation(nameof(Customer.Bookings))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureCustomersTable(EntityTypeBuilder<Customer> builder)

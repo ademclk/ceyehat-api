@@ -86,7 +86,7 @@ public class AircraftConfigurations : IEntityTypeConfiguration<Aircraft>
             .HasConversion(
                 id => id.Value,
                 value => CountryId.Create(value));
-
+        
         builder.Property(a => a.AirlineId)
             .ValueGeneratedNever()
             .HasConversion(

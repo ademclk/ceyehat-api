@@ -67,7 +67,13 @@ public class CityConfigurations : IEntityTypeConfiguration<City>
 
                 });
 
+                db.Navigation(d => d.Neighborhoods).Metadata.SetField("_neighborhoods");
+                db.Navigation(d => d.Neighborhoods).UsePropertyAccessMode(PropertyAccessMode.Field);
+                
             });
+        
+        builder.Metadata.FindNavigation(nameof(City.Districts))!
+            .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
 
     private void ConfigureCitiesTable(EntityTypeBuilder<City> builder)
