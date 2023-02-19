@@ -13,16 +13,16 @@ public sealed class FlightPricing : Entity<FlightPricingId>
     public decimal LengthMultiplier { get; private set; }
     public decimal ClassMultiplier { get; private set; }
     public decimal TotalCost { get; private set; }
-    
+
     private FlightPricing(
-        FlightPricingId id, 
-        decimal baseCost, 
-        decimal markupPercentage, 
-        decimal demandMultiplier, 
-        decimal competitionMultiplier, 
-        decimal seasonalMultiplier, 
-        decimal lengthMultiplier, 
-        decimal classMultiplier, 
+        FlightPricingId id,
+        decimal baseCost,
+        decimal markupPercentage,
+        decimal demandMultiplier,
+        decimal competitionMultiplier,
+        decimal seasonalMultiplier,
+        decimal lengthMultiplier,
+        decimal classMultiplier,
         decimal totalCost)
     {
         Id = id;
@@ -35,14 +35,14 @@ public sealed class FlightPricing : Entity<FlightPricingId>
         ClassMultiplier = classMultiplier;
         TotalCost = totalCost;
     }
-    
+
     public static FlightPricing Create(
-        decimal baseCost, 
-        decimal markupPercentage, 
-        decimal demandMultiplier, 
-        decimal competitionMultiplier, 
-        decimal seasonalMultiplier, 
-        decimal lengthMultiplier, 
+        decimal baseCost,
+        decimal markupPercentage,
+        decimal demandMultiplier,
+        decimal competitionMultiplier,
+        decimal seasonalMultiplier,
+        decimal lengthMultiplier,
         decimal classMultiplier)
     {
         var totalCost = CalculateTotalCost();
@@ -59,14 +59,14 @@ public sealed class FlightPricing : Entity<FlightPricingId>
         }
 
         return new(
-            FlightPricingId.CreateUnique(), 
-            baseCost, 
-            markupPercentage, 
-            demandMultiplier, 
-            competitionMultiplier, 
-            seasonalMultiplier, 
-            lengthMultiplier, 
-            classMultiplier, 
+            FlightPricingId.CreateUnique(),
+            baseCost,
+            markupPercentage,
+            demandMultiplier,
+            competitionMultiplier,
+            seasonalMultiplier,
+            lengthMultiplier,
+            classMultiplier,
             totalCost);
     }
 
@@ -75,5 +75,5 @@ public sealed class FlightPricing : Entity<FlightPricingId>
     {
     }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable. 
-    
+
 }
