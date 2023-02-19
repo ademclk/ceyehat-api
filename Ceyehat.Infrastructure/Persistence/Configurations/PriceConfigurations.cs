@@ -53,7 +53,7 @@ public class PriceConfigurations : IEntityTypeConfiguration<Price>
                 pb.Property(p => p.ClassMultiplier)
                     .HasColumnType("decimal(10,2)");
             });
-        
+
         builder.Metadata.FindNavigation(nameof(Price.FlightPricing))!
             .SetPropertyAccessMode(PropertyAccessMode.Field);
     }
