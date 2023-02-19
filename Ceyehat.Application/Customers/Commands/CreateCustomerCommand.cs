@@ -21,14 +21,14 @@ public record CreateCustomerCommand(
     List<BookingCommand> BookingCommands,
     List<FlightTicketCommand> FlightTicketCommands,
     List<BoardingPassCommand> BoardingPassCommands) : IRequest<ErrorOr<Customer>>;
-    
+
 public record BookingCommand(
     SeatId SeatId,
     FlightId FlightId,
     float Price,
     Currency Currency,
     PassengerType PassengerType);
-    
+
 public record FlightTicketCommand(
     BoardingPassId BoardingPassId,
     BookingId BookingId);
@@ -39,4 +39,5 @@ public record BoardingPassCommand(
     DateTime BoardingTime,
     DateTime CheckInTime
 );
-    
+
+

@@ -26,12 +26,12 @@ public record BookingResponse(
     Currency Currency,
     PassengerType PassengerType,
     string? FlightId);
-    
+
 public record FlightTicketResponse(
     string? Id,
     string? BoardingPassId,
     string? BookingId);
-    
+
 public record BoardingPassResponse(
     string? Id,
     string? BoardingGroup,

@@ -26,7 +26,7 @@ public class FlightTicket : Entity<FlightTicketId>
             boardingPassId,
             bookingId);
     }
-    
+
     public void AddBoardingPass(BoardingPassId boardingPassId)
     {
         if (BoardingPassId! != null!)

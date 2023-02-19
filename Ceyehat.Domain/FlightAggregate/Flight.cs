@@ -82,17 +82,17 @@ public sealed class Flight : AggregateRoot<FlightId>
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
-    
+
     public void AddPrice(Price price)
     {
         _prices.Add(price);
     }
-    
+
     public void RemovePrice(Price price)
     {
         _prices.Remove(price);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private Flight()
     {

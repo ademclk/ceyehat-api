@@ -10,7 +10,7 @@ public class Price : Entity<PriceId>
     public Currency Currency { get; private set; }
     public SeatClass SeatClass { get; private set; }
     public FlightId? FlightId { get; private set; }
-    
+
     private Price(
         PriceId priceId,
         float value,
@@ -23,7 +23,7 @@ public class Price : Entity<PriceId>
         SeatClass = seatClass;
         FlightId = flightId;
     }
-    
+
     public static Price Create(
         float value,
         Currency currency,
@@ -37,11 +37,11 @@ public class Price : Entity<PriceId>
             seatClass,
             flightId);
     }
-    
+
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     protected Price()
     {
     }
 #pragma warning restore CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
-    
+
 }

@@ -85,22 +85,22 @@ public sealed class Customer : AggregateRoot<CustomerId>
     {
         _bookings.Remove(booking);
     }
-    
+
     public void AddFlightTicket(FlightTicket flightTicket)
     {
         _flightTickets.Add(flightTicket);
     }
-    
+
     public void RemoveFlightTicket(FlightTicket flightTicket)
     {
         _flightTickets.Remove(flightTicket);
     }
-    
+
     public void AddBoardingPass(BoardingPass boardingPass)
     {
         _boardingPasses.Add(boardingPass);
     }
-    
+
     public void RemoveBoardingPass(BoardingPass boardingPass)
     {
         _boardingPasses.Remove(boardingPass);

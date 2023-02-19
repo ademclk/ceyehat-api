@@ -26,7 +26,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             request.BirthDate,
             request.PassengerType,
             request.UserId);
-        
+
         foreach (var b in request.BookingCommands)
         {
             var booking = Booking.Create(
@@ -37,7 +37,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
                 b.PassengerType);
             customer.AddBooking(booking);
         }
-        
+
         foreach (var ft in request.FlightTicketCommands)
         {
             var flightTicket = FlightTicket.Create(
@@ -45,7 +45,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
                 ft.BookingId);
             customer.AddFlightTicket(flightTicket);
         }
-        
+
         foreach (var bp in request.BoardingPassCommands)
         {
             var boardingPass = BoardingPass.Create(
