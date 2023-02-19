@@ -3,6 +3,7 @@ using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
+using Ceyehat.Domain.PriceAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -68,5 +69,11 @@ public class FlightConfigurations : IEntityTypeConfiguration<Flight>
             .HasConversion(
                 f => f.Value,
                 value => AirportId.Create(value));
+
+        builder.Property(f => f.PriceId)
+            .ValueGeneratedNever()
+            .HasConversion(
+                f => f.Value,
+                value => PriceId.Create(value));
     }
 }

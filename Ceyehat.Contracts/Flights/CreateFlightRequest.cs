@@ -12,5 +12,6 @@ public record CreateFlightRequest(
     DateTime? ActualArrival,
     string? AircraftId,
     string? DepartureAirportId,
-    string? ArrivalAirportId
+    string? ArrivalAirportId,
+    string? PriceId
 );

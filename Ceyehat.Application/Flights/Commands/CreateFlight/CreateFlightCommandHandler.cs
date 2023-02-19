@@ -27,7 +27,8 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
             request.ActualArrival,
             request.AircraftId,
             request.DepartureAirportId,
-            request.ArrivalAirportId);
+            request.ArrivalAirportId,
+            request.PriceId);
 
         await _flightRepository.AddFlightAsync(flight);
 

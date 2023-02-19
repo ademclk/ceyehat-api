@@ -3,6 +3,7 @@ using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
+using Ceyehat.Domain.PriceAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.FlightAggregate;
 
@@ -19,6 +20,7 @@ public sealed class Flight : AggregateRoot<FlightId>
     public AircraftId AircraftId { get; private set; }
     public AirportId DepartureAirportId { get; private set; }
     public AirportId ArrivalAirportId { get; private set; }
+    public PriceId PriceId { get; private set; }
 
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -35,6 +37,7 @@ public sealed class Flight : AggregateRoot<FlightId>
         AircraftId aircraftId,
         AirportId departureAirportId,
         AirportId arrivalAirportId,
+        PriceId priceId,
         DateTime createdAt,
         DateTime updatedAt) : base(flightId)
     {
@@ -48,6 +51,7 @@ public sealed class Flight : AggregateRoot<FlightId>
         AircraftId = aircraftId;
         DepartureAirportId = departureAirportId;
         ArrivalAirportId = arrivalAirportId;
+        PriceId = priceId;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
@@ -62,7 +66,8 @@ public sealed class Flight : AggregateRoot<FlightId>
         DateTime? actualArrival,
         AircraftId aircraftId,
         AirportId departureAirport,
-        AirportId arrivalAirport)
+        AirportId arrivalAirport,
+        PriceId priceId)
     {
         return new Flight(
             FlightId.CreateUnique(),
@@ -76,6 +81,7 @@ public sealed class Flight : AggregateRoot<FlightId>
             aircraftId,
             departureAirport,
             arrivalAirport,
+            priceId,
             DateTime.UtcNow,
             DateTime.UtcNow);
     }
