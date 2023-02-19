@@ -16,15 +16,6 @@ public record FlightResponse(
     AircraftResponse Aircraft,
     AirportResponse DepartureAirport,
     AirportResponse ArrivalAirport,
-    List<PriceResponse> Prices,
     DateTime CreatedAt,
     DateTime UpdatedAt
-);
-
-public record PriceResponse(
-    string? Id,
-    float Value,
-    Currency Currency,
-    SeatClass SeatClass,
-    string? FlightId
 );

@@ -12,12 +12,5 @@ public record CreateFlightRequest(
     DateTime? ActualArrival,
     string? AircraftId,
     string? DepartureAirportId,
-    string? ArrivalAirportId,
-    List<CreatePriceRequest> Prices
-);
-
-public record CreatePriceRequest(
-    float Value,
-    Currency Currency,
-    SeatClass SeatClass
+    string? ArrivalAirportId
 );

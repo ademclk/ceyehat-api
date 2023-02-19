@@ -18,13 +18,5 @@ public record CreateFlightCommand(
     DateTime? ActualArrival,
     AircraftId AircraftId,
     AirportId DepartureAirportId,
-    AirportId ArrivalAirportId,
-    List<CreatePriceCommand> Prices
-    ) : IRequest<ErrorOr<Flight>>;
-
-public record CreatePriceCommand(
-    float Value,
-    Currency Currency,
-    SeatClass SeatClass,
-    FlightId FlightId);
-    
+    AirportId ArrivalAirportId
+) : IRequest<ErrorOr<Flight>>;
