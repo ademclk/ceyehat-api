@@ -6,6 +6,7 @@ using Ceyehat.Domain.CityAggregate;
 using Ceyehat.Domain.CountryAggregate;
 using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.PriceAggregate;
 using Ceyehat.Domain.SeatAggregate;
 using Ceyehat.Domain.UserAggregate;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,7 @@ public partial class CeyehatDbContext : DbContext
     public DbSet<Seat> Seats { get; set; } = null!;
     public DbSet<City> Cities { get; set; } = null!;
     public DbSet<Customer> Customers { get; set; } = null!;
+    public DbSet<Price> Prices { get; set; } = null!;
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
