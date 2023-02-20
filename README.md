@@ -19,7 +19,15 @@ My senior project backend
    - **Cities**
       - [Create City](#create-city)
         - [Create City Request](#create-city-request)
-        - [Create City Response](#create-city-response)   
+        - [Create City Response](#create-city-response)
+   - **Airlines**
+      - [Create Airline](#create-airline)
+        - [Create Airline Request](#create-airline-request)
+        - [Create Airline Response](#create-airline-response) 
+   - **Airports**
+      - [Create Airport](#create-airport)
+        - [Create Airport Request](#create-airport-request)
+        - [Create Airport Response](#create-airport-response) 
    
 
 ---
@@ -185,6 +193,103 @@ HTTP/1.1 200 OK
   "updatedAt": "2023-02-20T11:37:33.372649Z"
 }
 ```
+
+## Create Airline
+
+**Requires authorization token.**
+
+### Create Airline Request 
+
+```http
+POST /api/Airline
+```
+
+```json
+{
+  "name": "Turkish Airlines",
+  "iataCode": "TK",
+  "icaoCode": "THY",
+  "callsign": "TURKISH",
+  "code": "235",
+  "website": "https://www.turkishairlines.com",
+  "address": {
+    "cityId": "b936bdcc-5bec-4660-b296-682fb142e5c5"
+  },
+  "aircraftIds": [
+    ""
+  ]
+}
+```
+
+### Create Airline Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "09f46ed8-ca89-4d8d-ac67-d2fb4b9200b6",
+  "name": "Turkish Airlines",
+  "iataCode": "TK",
+  "icaoCode": "THY",
+  "callsign": "TURKISH",
+  "code": "235",
+  "website": "https://www.turkishairlines.com",
+  "address": {
+    "city": "b936bdcc-5bec-4660-b296-682fb142e5c5"
+  },
+  "aircraftIds": [],
+  "createdAt": "2023-02-20T18:58:00.195811Z",
+  "updatedAt": "2023-02-20T18:58:00.195811Z"
+}
+```
+
+## Create Airport
+
+**Requires authorization token.**
+
+### Create Airport Request
+
+```http
+POST /api/Airport
+```
+
+```json
+{
+  "name": "Sabiha Gökçen Uluslararası Havalimanı",
+  "cityId": "b936bdcc-5bec-4660-b296-682fb142e5c5",
+  "iataCode": "SAW",
+  "icaoCode": "LTFJ",
+  "latitude": 40.9054302267176,
+  "longitude": 29.31685227451326,
+  "timezone": "GMT+03:00"
+}
+```
+
+### Create Airport Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "36c66a4f-dc74-4c70-8823-e02583cfe285",
+  "name": "Sabiha Gökçen Uluslararası Havalimanı",
+  "cityId": "b936bdcc-5bec-4660-b296-682fb142e5c5",
+  "iataCode": "SAW",
+  "icaoCode": "LTFJ",
+  "latitude": 40.9054302267176,
+  "longitude": 29.31685227451326,
+  "timezone": "GMT+03:00",
+  "departureFlights": [],
+  "arrivalFlights": [],
+  "createdAt": "2023-02-20T21:14:49.184471Z",
+  "updatedAt": "2023-02-20T21:14:49.184471Z"
+}
+```
+
 
 # Disclaimer
 
