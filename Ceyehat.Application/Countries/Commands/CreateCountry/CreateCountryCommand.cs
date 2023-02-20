@@ -8,6 +8,6 @@ namespace Ceyehat.Application.Countries.Commands.CreateCountry;
 public record CreateCountryCommand(
     string UnLocode,
     string Name,
-    string? IsoCode,
-    string? Iso3Code,
+    string? Iso2,
+    string? Iso3,
     Currency Currency) : IRequest<ErrorOr<Country>>;

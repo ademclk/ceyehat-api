@@ -1,6 +1,9 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Contracts.Cities;
+using Ceyehat.Domain.AirlineAggregate.ValueObjects;
+using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.CityAggregate;
+using Ceyehat.Domain.CountryAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 using District = Ceyehat.Domain.CityAggregate.Entities.District;
@@ -18,7 +21,9 @@ public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, Error
 
     public async Task<ErrorOr<City>> Handle(CreateCityCommand command, CancellationToken cancellationToken)
     {
-        var city = City.Create(command.CountryId, command.Name);
+        var countryId = CountryId.Create(Guid.Parse(command.CountryId!));
+        
+        var city = City.Create(countryId, command.Name);
 
         foreach (var districtCommand in command.Districts)
         {
@@ -26,7 +31,16 @@ public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, Error
 
             foreach (var neighborhoodCommand in districtCommand.Neighborhoods)
             {
-                var neighborhood = Domain.CityAggregate.Entities.Neighborhood.Create(neighborhoodCommand.Name, neighborhoodCommand.AirlineId, neighborhoodCommand.AirportId);
+                if (neighborhoodCommand.AirlineId is not null && neighborhoodCommand.AirportId is not null)
+                {
+                    var airlineId = AirlineId.Create(Guid.Parse(neighborhoodCommand.AirlineId));
+                    var airportId = AirportId.Create(Guid.Parse(neighborhoodCommand.AirportId));
+                    var neighborhood1 = Domain.CityAggregate.Entities.Neighborhood.Create(neighborhoodCommand.Name, airlineId, airportId);
+                    district.AddNeighborhood(neighborhood1);
+                    continue;
+                }
+                
+                var neighborhood = Domain.CityAggregate.Entities.Neighborhood.CreateWithout(neighborhoodCommand.Name);
                 district.AddNeighborhood(neighborhood);
             }
 

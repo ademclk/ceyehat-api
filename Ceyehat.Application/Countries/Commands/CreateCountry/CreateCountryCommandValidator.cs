@@ -10,9 +10,9 @@ public class CreateCountryCommandValidator : AbstractValidator<CreateCountryComm
             .NotEmpty();
         RuleFor(x => x.Name)
             .NotEmpty();
-        RuleFor(x => x.IsoCode)
+        RuleFor(x => x.Iso2)
             .NotEmpty();
-        RuleFor(x => x.Iso3Code)
+        RuleFor(x => x.Iso3)
             .NotEmpty();
         RuleFor(x => x.Currency)
             .NotEmpty();

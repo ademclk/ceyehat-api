@@ -1,0 +1,13 @@
+POST http://localhost:5228/api/Airport
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiYmYxMDBmYzctNWUzYS00ZjhkLWEzMjEtMWU0NDIwMjVkZWI5IiwiZXhwIjoxNjc2OTMxMjQ1LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.yntp31MI8qD1h85Gyhr-5bpkDF-JqHm13xC_8z9Z9-aWPo3iT0boTQJH_0c9k4EOKu1_1051QYiq5wAHXjT0zA
+
+{
+  "name": "Sabiha Gökçen Uluslararası Havalimanı",
+  "cityId": "b936bdcc-5bec-4660-b296-682fb142e5c5",
+  "iataCode": "SAW",
+  "icaoCode": "LTFJ",
+  "latitude": 40.9054302267176,
+  "longitude": 29.31685227451326,
+  "timezone": "GMT+03:00"
+}

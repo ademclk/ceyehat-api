@@ -10,7 +10,10 @@ public record CreateAirlineCommand(
     string? IataCode,
     string? IcaoCode,
     string? Callsign,
-    string? Country,
+    string? Code,
     string? Website,
-    AirlineAddress Address
+    AirlineAddressCommand Address
 ) : IRequest<ErrorOr<Airline>>;
+
+public record AirlineAddressCommand(
+    string? CityId);

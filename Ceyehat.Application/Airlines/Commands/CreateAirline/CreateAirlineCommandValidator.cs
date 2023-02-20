@@ -18,13 +18,13 @@ public class CreateAirlineCommandValidator : AbstractValidator<CreateAirlineComm
         RuleFor(v => v.Callsign)
             .MaximumLength(64)
             .NotEmpty();
-        RuleFor(v => v.Country)
+        RuleFor(v => v.Code)
             .MaximumLength(64)
             .NotEmpty();
         RuleFor(v => v.Website)
             .MaximumLength(64)
             .NotEmpty();
-        RuleFor(v => v.Address.City)
+        RuleFor(v => v.Address.CityId)
             .NotEmpty();
     }
 }

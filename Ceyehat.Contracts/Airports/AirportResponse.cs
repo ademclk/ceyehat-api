@@ -3,7 +3,7 @@ namespace Ceyehat.Contracts.Airports;
 public record AirportResponse(
     string Id,
     string Name,
-    string City,
+    string CityId,
     string IataCode,
     string IcaoCode,
     double Latitude,

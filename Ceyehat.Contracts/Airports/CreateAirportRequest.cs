@@ -2,7 +2,7 @@ namespace Ceyehat.Contracts.Airports;
 
 public record CreateAirportRequest(
     string? Name,
-    string? City,
+    string? CityId,
     string? IataCode,
     string? IcaoCode,
     double Latitude,

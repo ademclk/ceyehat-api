@@ -22,6 +22,13 @@ public sealed class Neighborhood : Entity<NeighborhoodId>
         AirlineId = airlineId;
         AirportId = airportId;
     }
+    
+    private Neighborhood(
+        NeighborhoodId neighborhoodId,
+        string? name) : base(neighborhoodId)
+    {
+        Name = name;
+    }
 
     public static Neighborhood Create(
         string? name,
@@ -34,6 +41,15 @@ public sealed class Neighborhood : Entity<NeighborhoodId>
             airlineId,
             airportId);
     }
+
+    public static Neighborhood CreateWithout(
+        string? name)
+    {
+        return new Neighborhood(
+            NeighborhoodId.CreateUnique(),
+            name);
+    }
+    
 #pragma warning disable CS8618 // Non-nullable field is uninitialized. Consider declaring as nullable.
     private Neighborhood()
     {

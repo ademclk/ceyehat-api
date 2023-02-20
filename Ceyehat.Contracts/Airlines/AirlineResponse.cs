@@ -10,10 +10,10 @@ public record AirlineResponse(
     string? Callsign,
     string? Code,
     string? Website,
-    AirlineAddress Address,
+    AirlineAddressResponse Address,
     List<string> AircraftIds,
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
-public record AirlineAddress(
-    CityId City);
+public record AirlineAddressResponse(
+    string? City);

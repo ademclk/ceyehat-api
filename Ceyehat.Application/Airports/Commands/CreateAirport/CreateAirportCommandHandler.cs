@@ -1,5 +1,6 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AirportAggregate;
+using Ceyehat.Domain.CityAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -16,14 +17,16 @@ public class CreateAirportCommandHandler : IRequestHandler<CreateAirportCommand,
 
     public async Task<ErrorOr<Airport>> Handle(CreateAirportCommand request, CancellationToken cancellationToken)
     {
+        var cityId = CityId.Create(Guid.Parse(request.CityId!));
+        
         var airport = Airport.Create(
-            request.Name,
             request.IataCode,
             request.IcaoCode,
+            request.Name,
             request.Latitude,
             request.Longitude,
             request.Timezone,
-            request.CityId);
+            cityId);
 
         await _airportRepository.AddAirportAsync(airport);
 

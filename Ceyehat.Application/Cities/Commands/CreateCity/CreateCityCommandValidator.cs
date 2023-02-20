@@ -11,21 +11,5 @@ public class CreateCityCommandValidator : AbstractValidator<City>
     {
         RuleFor(x => x.Name).NotEmpty();
         RuleFor(x => x.CountryId).NotEmpty();
-        RuleForEach(x => x.Districts).SetValidator(new DistrictCommandValidator());
-    }
-
-    public class DistrictCommandValidator : IPropertyValidator<City, District>
-    {
-        public bool IsValid(ValidationContext<City> context, District value)
-        {
-            return value.Name != null;
-        }
-
-        public string Name => "DistrictCommandValidator";
-
-        public string GetDefaultMessageTemplate(string errorCode)
-        {
-            return "DistrictCommandValidator";
-        }
     }
 }

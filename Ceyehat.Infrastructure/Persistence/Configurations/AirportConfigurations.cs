@@ -79,10 +79,10 @@ public class AirportConfigurations : IEntityTypeConfiguration<Airport>
             .HasMaxLength(16);
 
         builder.Property(a => a.Latitude)
-            .HasColumnType("decimal(6, 16)");
+            .HasColumnType("float");
 
         builder.Property(a => a.Longitude)
-            .HasColumnType("decimal(6, 16)");
+            .HasColumnType("float");
 
         builder.Property(a => a.TimeZone)
             .HasMaxLength(16);

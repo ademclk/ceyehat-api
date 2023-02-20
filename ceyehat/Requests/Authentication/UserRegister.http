@@ -2,8 +2,8 @@ POST http://localhost:5228/api/auth/register
 Content-Type: application/json
 
 {
-  "email": "adem@ceyehat.com",
+  "email": "test@github.com",
   "password": "Test12345",
-  "firstname": "Test",
-  "lastname":"User"
+  "firstname": "Github",
+  "lastname":"Test"
 }

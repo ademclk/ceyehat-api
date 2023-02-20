@@ -1,5 +1,6 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AirlineAggregate;
+using Ceyehat.Domain.CityAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 using AirlineAddress = Ceyehat.Domain.AirlineAggregate.Entities.AirlineAddress;
@@ -17,14 +18,16 @@ public class CreateAirlineCommandHandler : IRequestHandler<CreateAirlineCommand,
 
     public async Task<ErrorOr<Airline>> Handle(CreateAirlineCommand request, CancellationToken cancellationToken)
     {
+        var airlineAddress = AirlineAddress.Create(CityId.Create(Guid.Parse(request.Address.CityId!)));
+        
         var airline = Airline.Create(
             request.Name,
             request.IataCode,
             request.IcaoCode,
             request.Callsign,
-            request.Country,
+            request.Code,
             request.Website,
-            AirlineAddress.Create(request.Address.City));
+            airlineAddress);
 
         await _airlineRepository.AddAirlineAsync(airline);
 

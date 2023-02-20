@@ -12,6 +12,8 @@ public class AirlineMappingConfig : IRegister
         config.NewConfig<CreateAirlineRequest, CreateAirlineCommand>();
 
         config.NewConfig<Airline, AirlineResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value);
+            .Map(dest => dest.Id, src => src.Id.Value)
+            .Map(dest => dest.Address, src => src.AirlineAddress)
+            .Map(dest => dest.Address.City, src => src.AirlineAddress.CityId.Value);
     }
 }

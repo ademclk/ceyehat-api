@@ -7,6 +7,7 @@ namespace ceyehat.Controllers;
 [Route("api/error")]
 public class ErrorsController : ControllerBase
 {
+    [HttpGet]
     public IActionResult Error()
     {
         var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;

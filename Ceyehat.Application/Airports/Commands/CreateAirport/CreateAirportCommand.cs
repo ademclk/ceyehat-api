@@ -12,4 +12,4 @@ public record CreateAirportCommand(
     double Latitude,
     double Longitude,
     string? Timezone,
-    CityId CityId) : IRequest<ErrorOr<Airport>>;
+    string? CityId) : IRequest<ErrorOr<Airport>>;

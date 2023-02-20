@@ -12,6 +12,8 @@ public class AirportMappingConfig : IRegister
         config.NewConfig<CreateAirportRequest, CreateAirportCommand>();
 
         config.NewConfig<Airport, AirportResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value);
+            .Map(dest => dest.Id, src => src.Id.Value)
+            .Map(dest => dest.CityId, src => src.CityId.Value)
+            .Map(dest => dest.Timezone, src => src.TimeZone);
     }
 }

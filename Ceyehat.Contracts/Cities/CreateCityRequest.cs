@@ -6,7 +6,7 @@ namespace Ceyehat.Contracts.Cities;
 
 public record CreateCityRequest(
     string? Name,
-    CountryId CountryId,
+    string? CountryId,
     List<District> Districts);
 
 public record District(

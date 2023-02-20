@@ -2,6 +2,8 @@ using Ceyehat.Application.Cities.Commands.CreateCity;
 using Ceyehat.Contracts.Cities;
 using Ceyehat.Domain.CityAggregate;
 using Mapster;
+using District = Ceyehat.Domain.CityAggregate.Entities.District;
+using Neighborhood = Ceyehat.Domain.CityAggregate.Entities.Neighborhood;
 
 namespace ceyehat.Common.Mapping;
 
@@ -13,11 +15,13 @@ public class CityMappingConfig : IRegister
 
         config.NewConfig<City, CityResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.Name, src => src.Name)
-            .Map(dest => dest.CountryId, src => src.CountryId.Value)
-            .Map(dest => dest.Districts, src => src.Districts)
-            .Map(dest => dest.CreatedAt, src => src.CreatedAt)
-            .Map(dest => dest.UpdatedAt, src => src.UpdatedAt);
+            .Map(dest => dest.CountryId, src => src.CountryId.Value);
+
+        config.NewConfig<Neighborhood, NeighborhoodResponse>()
+            .Map(dest => dest.Id, src => src.Id.Value);
+
+        config.NewConfig<District, DistrictResponse>()
+            .Map(dest => dest.Id, src => src.Id.Value);
 
     }
 }

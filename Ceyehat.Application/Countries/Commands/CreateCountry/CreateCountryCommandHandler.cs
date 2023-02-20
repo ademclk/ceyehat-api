@@ -19,8 +19,8 @@ public class CreateCountryCommandHandler : IRequestHandler<CreateCountryCommand,
         var country = Country.Create(
             request.UnLocode,
             request.Name,
-            request.IsoCode,
-            request.Iso3Code,
+            request.Iso2,
+            request.Iso3,
             request.Currency);
 
         await _countryRepository.AddCountryAsync(country);

@@ -1,0 +1,27 @@
+POST http://localhost:5228/api/City
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiZTI4YjQyYzEtNWRkZi00NjhlLWE3ZDgtM2JhZjA2MjlhYjQ0IiwiZXhwIjoxNjc2ODk0NDI0LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.PIWAagjgx3l9iyPHQbcJ4N720xBL31yUBEYuEIAT1aViXSO7N5oqxVzZDocdJ3SCsBXMA1nMjAWUG9dyCVQEpA
+
+{
+  "Name": "İstanbul",
+  "CountryId": "7afcf68f-2f86-4d20-9f02-72c707b31a29",
+  "Districts": [
+    {
+      "Name": "Pendik",
+      "Neighborhoods": [
+        {
+          "Name": "Sanayi"
+        }
+      ]
+    },
+    {
+      "Name": "Bakırköy",
+      "Neighborhoods": [
+        {
+          "Name": "Yeşilköy"
+        }
+      ]
+    }
+  ]
+}
+
