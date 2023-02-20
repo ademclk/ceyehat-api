@@ -4,6 +4,8 @@ My senior project backend
 
 # API Definition
 
+_All requests shown here can be found at ceyehat/Requests_
+
 ## User Registration
 
 ### User Register Request
@@ -63,9 +65,47 @@ HTTP/1.1 200 OK
 }
 ```
 
+## Create Country
 
+*Requires authorization token.*
 
+### Create Country Request
 
+```http
+POST /api/Country
+```
+
+```json
+{
+  "unLocode": "792",
+  "name": "Türkiye",
+  "iso2": "TR",
+  "iso3": "TUR",
+  "currency": 15
+}
+```
+
+Create Country Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "7afcf68f-2f86-4d20-9f02-72c707b31a29",
+  "unLocode": "792",
+  "name": "Türkiye",
+  "iso2": "TR",
+  "iso3": "TUR",
+  "currency": 15,
+  "aircraftIds": [],
+  "airlineIds": [],
+  "cityIds": [],
+  "createdAt": "2023-02-20T09:14:04.770867Z",
+  "updatedAt": "2023-02-20T09:14:04.770867Z"
+}
+```
 
 
 
