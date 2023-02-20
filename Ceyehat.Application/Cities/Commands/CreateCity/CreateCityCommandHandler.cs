@@ -22,7 +22,7 @@ public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, Error
     public async Task<ErrorOr<City>> Handle(CreateCityCommand command, CancellationToken cancellationToken)
     {
         var countryId = CountryId.Create(Guid.Parse(command.CountryId!));
-        
+
         var city = City.Create(countryId, command.Name);
 
         foreach (var districtCommand in command.Districts)
@@ -39,7 +39,7 @@ public class CreateCityCommandHandler : IRequestHandler<CreateCityCommand, Error
                     district.AddNeighborhood(neighborhood1);
                     continue;
                 }
-                
+
                 var neighborhood = Domain.CityAggregate.Entities.Neighborhood.CreateWithout(neighborhoodCommand.Name);
                 district.AddNeighborhood(neighborhood);
             }

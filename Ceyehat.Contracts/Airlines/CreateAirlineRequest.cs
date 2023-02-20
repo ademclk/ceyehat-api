@@ -9,6 +9,6 @@ public record CreateAirlineRequest(
     string? Website,
     AirlineAddressRequest Address,
     List<string> AircraftIds);
-    
+
 public record AirlineAddressRequest(
     string? CityId);

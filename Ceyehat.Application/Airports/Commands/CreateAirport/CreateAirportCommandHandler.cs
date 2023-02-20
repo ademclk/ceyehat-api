@@ -18,7 +18,7 @@ public class CreateAirportCommandHandler : IRequestHandler<CreateAirportCommand,
     public async Task<ErrorOr<Airport>> Handle(CreateAirportCommand request, CancellationToken cancellationToken)
     {
         var cityId = CityId.Create(Guid.Parse(request.CityId!));
-        
+
         var airport = Airport.Create(
             request.IataCode,
             request.IcaoCode,
