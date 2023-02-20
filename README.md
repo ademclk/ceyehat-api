@@ -16,6 +16,10 @@ My senior project backend
       - [Create Country](#create-country)
         - [Create Country Request](#create-country-request)
         - [Create Country Response](#create-country-response)
+   - **Cities**
+      - [Create City](#create-city)
+        - [Create City Request](#create-city-request)
+        - [Create City Response](#create-city-response)   
    
 
 ---
@@ -85,7 +89,7 @@ HTTP/1.1 200 OK
 
 ## Create Country
 
-*Requires authorization token.*
+**Requires authorization token.**
 
 ### Create Country Request
 
@@ -125,7 +129,62 @@ HTTP/1.1 200 OK
 }
 ```
 
+## Create City
 
+**Requires authorization token.**
+
+### Create City Request
+
+```http
+POST /api/City
+```
+
+```json
+{
+  "Name": "İstanbul",
+  "CountryId": "7afcf68f-2f86-4d20-9f02-72c707b31a29",
+  "Districts": [
+    {
+      "Name": "Pendik",
+      "Neighborhoods": [
+        {
+          "Name": "Sanayi"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Create City Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "e0b9aab2-e1e1-4fbc-9aa9-10988fc15764",
+  "name": "İstanbul",
+  "countryId": "7afcf68f-2f86-4d20-9f02-72c707b31a29",
+  "districts": [
+    {
+      "id": "fbaf912a-4e74-4908-9763-5b4fbf80d3ec",
+      "name": "Pendik",
+      "neighborhoods": [
+        {
+          "id": "23f03723-7a09-40e3-ba61-e777005de2c8",
+          "name": "Sanayi",
+          "airlineId": null,
+          "airportId": null
+        }
+      ]
+    }
+  ],
+  "createdAt": "2023-02-20T11:37:33.372649Z",
+  "updatedAt": "2023-02-20T11:37:33.372649Z"
+}
+```
 
 # Disclaimer
 
