@@ -1,6 +1,24 @@
 # ceyehat-api
 My senior project backend
 
+---
+
+### Index
+- [API Definition](#api-definition)
+  - **Users**
+    - [User Registration](#user-registration)
+      - [User Register Request](#user-register-request)
+      - [User Register Response](#user-register-response)
+    - [User Login](#user-login)
+      - [User Login Request](#user-login-request)
+      - [User Login Response](#user-login-response)
+   - **Countries**
+      - [Create Country](#create-country)
+        - [Create Country Request](#create-country-request)
+        - [Create Country Response](#create-country-response)
+   
+
+---
 
 # API Definition
 
@@ -85,7 +103,7 @@ POST /api/Country
 }
 ```
 
-Create Country Response
+### Create Country Response
 
 ```http
 HTTP/1.1 200 OK
@@ -106,6 +124,16 @@ HTTP/1.1 200 OK
   "updatedAt": "2023-02-20T09:14:04.770867Z"
 }
 ```
+
+
+
+# Disclaimer
+
+This is an educational project.
+
+# License
+
+This project is licensed under the [MIT License](https://github.com/ademclk/ceyehat-api/blob/main/LICENSE)
 
 
 
