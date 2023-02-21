@@ -27,9 +27,28 @@ My senior project backend
    - **Airports**
       - [Create Airport](#create-airport)
         - [Create Airport Request](#create-airport-request)
-        - [Create Airport Response](#create-airport-response) 
-   
-
+        - [Create Airport Response](#create-airport-response)
+   - **Aircrafts**
+      - [Create Aircraft](#create-aircraft)
+        - [Create Aircraft Request](#create-aircraft-request)
+        - [Create Aircraft Response](#create-aircraft-response)
+   - **Customers**
+      - [Create Customer](#create-customer)
+        - [Create Customer Request](#create-customer-request)
+        - [Create Customer Response](#create-customer-response)
+   - **Flights**
+      - [Create Flight](#create-flight)
+        - [Create Flight Request](#create-flight-request)
+        - [Create Flight Response](#create-flight-response)
+   - **Seats**
+      - [Create Seat](#create-seat)
+        - [Create Seat Request](#create-seat-request)
+        - [Create Seat Response](#create-seat-response)
+   - **Prices**
+      - [Create Price](#create-price)
+        - [Create Price Request](#create-price-request)
+        - [Create Price Response](#create-price-response)
+        
 ---
 
 # API Definition
@@ -287,6 +306,240 @@ HTTP/1.1 200 OK
   "arrivalFlights": [],
   "createdAt": "2023-02-20T21:14:49.184471Z",
   "updatedAt": "2023-02-20T21:14:49.184471Z"
+}
+```
+
+## Create Aircraft
+
+**Requires authorization token.**
+
+### Create Aircraft Request
+
+```http
+POST /api/Aircraft
+```
+
+```json
+{
+  "registrationNumber": "TC-JFE",
+  "icao24Code": "4BA8C5",
+  "model": "Boeing 737-8F2",
+  "manufacturerSerialNumber": "29767",
+  "faaRegistration": "N1786B",
+  "countryId" : "7afcf68f-2f86-4d20-9f02-72c707b31a29",
+  "airlineId" : "09f46ed8-ca89-4d8d-ac67-d2fb4b9200b6"
+}
+```
+
+### Create Aircraft Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "registrationNumber": "TC-JFE",
+  "icao24Code": "4BA8C5",
+  "model": "Boeing 737-8F2",
+  "manufacturerSerialNumber": "29767",
+  "faaRegistration": "N1786B",
+  "countryId": "7afcf68f-2f86-4d20-9f02-72c707b31a29",
+  "airlineId": "09f46ed8-ca89-4d8d-ac67-d2fb4b9200b6",
+  "flightIds": [],
+  "seatIds": [],
+  "createdAt": "2023-02-21T10:11:29.506748Z",
+  "updatedAt": "2023-02-21T10:11:29.506748Z"
+}
+```
+
+## Create Customer
+
+**Requires authorization token.**
+
+### Create Customer Request
+
+```http
+POST /api/Customer
+```
+
+```json
+{
+  "name": "Test",
+  "surname": "Customer",
+  "email": "test@customer.com",
+  "phoneNumber": "0000001111",
+  "title": 0,
+  "birthDate": "2023-02-21T13:18:27.199Z",
+  "passengerType": 0,
+  "userId": null
+}
+```
+
+### Create Customer Response
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "baff9e0e-c670-4ab2-92b1-207af6f81288",
+  "name": "Test",
+  "surname": "Customer",
+  "email": "test@customer.com",
+  "phoneNumber": "0000001111",
+  "title": 0,
+  "birthDate": "2023-02-21T13:18:27.199Z",
+  "passengerType": 0,
+  "userId": "77d7e6a0-7f21-4583-b572-bd62e862115f",
+  "bookings": [],
+  "flightTickets": [],
+  "boardingPasses": [],
+  "createdAt": "2023-02-21T13:34:07.561229Z",
+  "updatedAt": "2023-02-21T13:34:07.561229Z"
+}
+```
+
+## Create Flight
+
+**Requires authorization token.**
+
+### Create Flight Request
+
+```http
+POST /api/Flight
+```
+
+```json
+{
+  "flightNumber": "AI000001",
+  "scheduledDeparture": "2023-02-21T16:13:34.240Z",
+  "scheduledArrival": "2023-02-21T16:13:34.240Z",
+  "status": 0,
+  "type": 0,
+  "actualDeparture": null,
+  "actualArrival": null,
+  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "departureAirportId": "f0b4f0f9-496f-4a9f-a60e-bfc63eb91f04",
+  "arrivalAirportId": "a5cf68f9-23a3-4385-8bcb-bbd586a4d23b",
+  "priceId": "f0b4f0f9-496f-4a9f-a60e-bfc63eb91f04"
+}
+```
+
+### Create Flight Response 
+
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "b50106b5-5dc1-4c53-9f07-aab7dd253d18",
+  "flightNumber": "AI000001",
+  "scheduledDeparture": "2023-02-21T16:13:34.24Z",
+  "scheduledArrival": "2023-02-21T16:13:34.24Z",
+  "status": "Scheduled",
+  "type": "RoundTrip",
+  "actualDeparture": null,
+  "actualArrival": null,
+  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "departureAirportId": "f0b4f0f9-496f-4a9f-a60e-bfc63eb91f04",
+  "arrivalAirportId": "a5cf68f9-23a3-4385-8bcb-bbd586a4d23b",
+  "priceId": "f0b4f0f9-496f-4a9f-a60e-bfc63eb91f04",
+  "createdAt": "2023-02-21T20:55:27.113222Z",
+  "updatedAt": "2023-02-21T20:55:27.113222Z"
+}
+```
+
+## Create Seat
+
+**Requires authorization token.**
+
+### Create Seat Request
+
+```http
+POST /api/Seat
+```
+
+```json
+{
+  "seatNumber": "A1",
+  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "seatClass": 0,
+  "seatStatus": 0
+}
+```
+
+### Create Seat Response 
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "876898a7-474d-433f-ac14-aad2fea9c264",
+  "seatNumber": "A1",
+  "seatClass": "Economy",
+  "seatStatus": "Available",
+  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "createdAt": "2023-02-21T21:19:32.814403Z",
+  "updatedAt": "2023-02-21T21:19:32.814404Z"
+}
+```
+
+## Create Price
+
+**Requires authorization token.**
+
+### Create Price Request
+
+```http
+POST /api/Price
+```
+
+```json
+{
+  "amount": 1,
+  "currency": 0,
+  "pricing": {
+    "baseCost": 100,
+    "markupPercentage": 10,
+    "demandMultiplier": 1,
+    "competitionMultiplier": 0.9,
+    "seasonalMultiplier": 1.3,
+    "lengthMultiplier": 1.5,
+    "classMultiplier": 1.2
+  }
+}
+```
+
+### Create Price Response 
+
+```http
+HTTP/1.1 200 OK
+```
+
+```json
+{
+  "id": "4879b856-be8a-4593-a772-2350663dbae3",
+  "amount": 1,
+  "currency": "Usd",
+  "pricing": {
+    "baseCost": 100,
+    "markupPercentage": 10,
+    "demandMultiplier": 1,
+    "competitionMultiplier": 0.9,
+    "seasonalMultiplier": 1.3,
+    "lengthMultiplier": 1.5,
+    "classMultiplier": 1.2,
+    "totalCost": 2316.6000
+  },
+  "createdAt": "2023-02-21T21:58:39.588187Z",
+  "updatedAt": "2023-02-21T21:58:39.588187Z"
 }
 ```
 
