@@ -24,7 +24,7 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
         var departureAirportId = AirportId.Create(Guid.Parse(request.DepartureAirportId!));
         var arrivalAirportId = AirportId.Create(Guid.Parse(request.ArrivalAirportId!));
         var priceId = PriceId.Create(Guid.Parse(request.PriceId!));
-        
+
         var flight = Flight.Create(
             request.FlightNumber,
             request.ScheduledDeparture,

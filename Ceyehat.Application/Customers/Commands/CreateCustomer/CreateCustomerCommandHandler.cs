@@ -19,7 +19,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
     public async Task<ErrorOr<Customer>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
         var userId = request.UserId ?? UserId.CreateUnique();
-        
+
         var customer = Customer.Create(
             request.Name,
             request.Surname,

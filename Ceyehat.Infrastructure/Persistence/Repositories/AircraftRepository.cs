@@ -12,7 +12,7 @@ public class AircraftRepository : IAircraftRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<Aircraft?> GetAircraftByIdAsync(AircraftId aircraftId)
     {
         return await _dbContext.Aircrafts.FindAsync(aircraftId.Value);

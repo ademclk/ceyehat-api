@@ -17,7 +17,7 @@ public class FlightMappingConfig : IRegister
 
         config.NewConfig<Flight, FlightResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.AircraftId,  src => src.AircraftId.Value)
+            .Map(dest => dest.AircraftId, src => src.AircraftId.Value)
             .Map(dest => dest.Status, src => Enum.Parse(typeof(FlightStatus), src.Status.ToString()))
             .Map(dest => dest.Type, src => Enum.Parse(typeof(FlightType), src.Type.ToString()))
             .Map(dest => dest.DepartureAirportId, src => src.DepartureAirportId.Value)
