@@ -19,7 +19,7 @@ public class CreateSeatCommandHandler : IRequestHandler<CreateSeatCommand, Error
     public async Task<ErrorOr<Seat>> Handle(CreateSeatCommand request, CancellationToken cancellationToken)
     {
         var aircraftId = AircraftId.Create(Guid.Parse(request.AircraftId.ToString()!));
-        
+
         var seat = Seat.Create(
             request.SeatNumber,
             request.SeatClass,

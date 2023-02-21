@@ -20,7 +20,7 @@ public class CreateAircraftCommandHandler : IRequestHandler<CreateAircraftComman
     {
         var countryId = CountryId.Create(Guid.Parse(request.CountryId.ToString()!));
         var airlineId = AirlineId.Create(Guid.Parse(request.AirlineId.ToString()!));
-        
+
         var aircraft = Aircraft.Create(
             request.RegistrationNumber,
             request.Icao24Code,
