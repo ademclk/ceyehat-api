@@ -12,6 +12,6 @@ public record CreateAircraftCommand(
     string? Model,
     string? ManufacturerSerialNumber,
     string? FaaRegistration,
-    CountryId CountryId,
-    AirlineId AirlineId
+    string? CountryId,
+    string? AirlineId
 ) : IRequest<ErrorOr<Aircraft>>;

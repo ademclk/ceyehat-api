@@ -1,5 +1,7 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AircraftAggregate;
+using Ceyehat.Domain.AirlineAggregate.ValueObjects;
+using Ceyehat.Domain.CountryAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -16,14 +18,17 @@ public class CreateAircraftCommandHandler : IRequestHandler<CreateAircraftComman
 
     public async Task<ErrorOr<Aircraft>> Handle(CreateAircraftCommand request, CancellationToken cancellationToken)
     {
+        var countryId = CountryId.Create(Guid.Parse(request.CountryId.ToString()!));
+        var airlineId = AirlineId.Create(Guid.Parse(request.AirlineId.ToString()!));
+        
         var aircraft = Aircraft.Create(
             request.RegistrationNumber,
             request.Icao24Code,
             request.Model,
             request.ManufacturerSerialNumber,
             request.FaaRegistration,
-            request.CountryId,
-            request.AirlineId);
+            countryId,
+            airlineId);
 
         await _aircraftRepository.AddAircraftAsync(aircraft);
 

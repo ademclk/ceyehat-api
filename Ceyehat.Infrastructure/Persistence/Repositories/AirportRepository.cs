@@ -1,5 +1,6 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AirportAggregate;
+using Ceyehat.Domain.AirportAggregate.ValueObjects;
 
 namespace Ceyehat.Infrastructure.Persistence.Repositories;
 
@@ -10,6 +11,11 @@ public class AirportRepository : IAirportRepository
     public AirportRepository(CeyehatDbContext dbContext)
     {
         _dbContext = dbContext;
+    }
+    
+    public async Task<Airport?> GetAirportByIdAsync(AirportId airportId)
+    {
+        return await _dbContext.Airports.FindAsync(airportId.Value);
     }
 
     public async Task AddAirportAsync(Airport airport)

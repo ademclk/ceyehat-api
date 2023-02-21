@@ -19,7 +19,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
     public DateTime BirthDate { get; private set; }
     public PassengerType PassengerType { get; private set; }
 
-    public UserId? UserId { get; private set; }
+    public UserId UserId { get; private set; }
     public IReadOnlyCollection<Booking> Bookings => _bookings.AsReadOnly();
     public IReadOnlyCollection<FlightTicket> FlightTickets => _flightTickets.AsReadOnly();
     public IReadOnlyCollection<BoardingPass> BoardingPasses => _boardingPasses.AsReadOnly();
@@ -36,7 +36,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
         Title title,
         DateTime birthDate,
         PassengerType passengerType,
-        UserId? userId,
+        UserId userId,
         DateTime createdAt,
         DateTime updatedAt) : base(customerId)
     {
@@ -60,7 +60,7 @@ public sealed class Customer : AggregateRoot<CustomerId>
         Title title,
         DateTime birthDate,
         PassengerType passengerType,
-        UserId? userId)
+        UserId userId)
     {
         return new(
             CustomerId.CreateUnique(),

@@ -5,4 +5,6 @@ public record CreateAircraftRequest(
     string? Icao24Code,
     string? Model,
     string? ManufacturerSerialNumber,
-    string? FaaRegistration);
+    string? FaaRegistration,
+    string? AirlineId,
+    string? CountryId);

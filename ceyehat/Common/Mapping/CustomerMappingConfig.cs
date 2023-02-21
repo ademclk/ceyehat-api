@@ -11,6 +11,7 @@ public class CustomerMappingConfig : IRegister
         config.NewConfig<CreateCustomerRequest, Customer>();
 
         config.NewConfig<Customer, CustomerResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value);
+            .Map(dest => dest.Id, src => src.Id.Value)
+            .Map(dest => dest.UserId, src => src.UserId.Value);
     }
 }

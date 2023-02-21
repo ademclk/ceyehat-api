@@ -1,0 +1,17 @@
+POST http://localhost:5228/api/Flight
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiYmVjYzRjZTAtZjZjMi00ODMxLTg2ZTAtZTA1Y2E1NzIyN2NmIiwiZXhwIjoxNjc3MDEzNTU5LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.rEYlJb_iX9fI9VjuVm1wHjHvtc_iqViAvGVRHgA-83KkIMFwHJ1JHZ4KmI-h12HEvzI7LLG44AXpV6NfCUUBvw
+
+{
+  "flightNumber": "AI000001",
+  "scheduledDeparture": "2023-02-21T16:13:34.240Z",
+  "scheduledArrival": "2023-02-21T16:13:34.240Z",
+  "status": 0,
+  "type": 0,
+  "actualDeparture": null,
+  "actualArrival": null,
+  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "departureAirportId": "f0b4f0f9-496f-4a9f-a60e-bfc63eb91f04",
+  "arrivalAirportId": "a5cf68f9-23a3-4385-8bcb-bbd586a4d23b",
+  "priceId": "f0b4f0f9-496f-4a9f-a60e-bfc63eb91f04"
+}

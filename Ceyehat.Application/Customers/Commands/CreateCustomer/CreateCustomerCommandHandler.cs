@@ -1,6 +1,7 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.CustomerAggregate.Entities;
+using Ceyehat.Domain.UserAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -17,6 +18,8 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
 
     public async Task<ErrorOr<Customer>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
+        var userId = request.UserId ?? UserId.CreateUnique();
+        
         var customer = Customer.Create(
             request.Name,
             request.Surname,
@@ -25,9 +28,9 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             request.Title,
             request.BirthDate,
             request.PassengerType,
-            request.UserId);
+            userId);
 
-        foreach (var b in request.BookingCommands)
+        /*foreach (var b in request.BookingCommands)
         {
             var booking = Booking.Create(
                 b.SeatId,
@@ -54,7 +57,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
                 bp.BoardingTime,
                 bp.CheckInTime);
             customer.AddBoardingPass(boardingPass);
-        }
+        }*/
 
         await _customerRepository.AddCustomerAsync(customer);
 

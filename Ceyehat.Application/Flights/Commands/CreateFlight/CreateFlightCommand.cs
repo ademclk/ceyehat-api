@@ -16,8 +16,8 @@ public record CreateFlightCommand(
     FlightType Type,
     DateTime? ActualDeparture,
     DateTime? ActualArrival,
-    AircraftId AircraftId,
-    AirportId DepartureAirportId,
-    AirportId ArrivalAirportId,
-    PriceId PriceId
+    string? AircraftId,
+    string? DepartureAirportId,
+    string? ArrivalAirportId,
+    string? PriceId
 ) : IRequest<ErrorOr<Flight>>;

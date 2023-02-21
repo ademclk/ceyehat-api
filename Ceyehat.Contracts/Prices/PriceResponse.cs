@@ -5,14 +5,13 @@ namespace Ceyehat.Contracts.Prices;
 public record PriceResponse(
     string? Id,
     decimal Amount,
-    Currency Currency,
+    string? Currency,
     FlightPricing Pricing,
     DateTime CreatedAt,
     DateTime UpdatedAt
 );
 
 public record FlightPricing(
-    string? Id,
     decimal BaseCost,
     decimal MarkupPercentage,
     decimal DemandMultiplier,

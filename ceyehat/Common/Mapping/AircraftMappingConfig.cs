@@ -12,6 +12,8 @@ public class AircraftMappingConfig : IRegister
         config.NewConfig<CreateAircraftRequest, CreateAircraftCommand>();
 
         config.NewConfig<Aircraft, AircraftResponse>()
-            .Map(dest => dest.Id, src => src.Id.Value);
+            .Map(dest => dest.Id, src => src.Id.Value)
+            .Map(dest => dest.CountryId, src => src.CountryId.Value)
+            .Map(dest => dest.AirlineId, src => src.AirlineId.Value);
     }
 }

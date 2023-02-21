@@ -10,4 +10,4 @@ public record CreateSeatCommand(
     string? SeatNumber,
     SeatClass SeatClass,
     SeatStatus SeatStatus,
-    AircraftId AircraftId) : IRequest<ErrorOr<Seat>>;
+    string? AircraftId) : IRequest<ErrorOr<Seat>>;

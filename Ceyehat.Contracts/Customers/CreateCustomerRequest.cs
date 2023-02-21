@@ -10,10 +10,7 @@ public record CreateCustomerRequest(
     Title Title,
     DateTime BirthDate,
     PassengerType PassengerType,
-    string? UserId,
-    List<BookingRequest> BookingIds,
-    List<FlightTicketRequest> FlightTicketIds,
-    List<BoardingPassRequest> BoardingPassIds);
+    string? UserId);
 
 public record BookingRequest(
     string? SeatId,

@@ -1,5 +1,8 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
+using Ceyehat.Domain.AircraftAggregate.ValueObjects;
+using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.PriceAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -17,6 +20,11 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
 
     public async Task<ErrorOr<Flight>> Handle(CreateFlightCommand request, CancellationToken cancellationToken)
     {
+        var aircraftId = AircraftId.Create(Guid.Parse(request.AircraftId!));
+        var departureAirportId = AirportId.Create(Guid.Parse(request.DepartureAirportId!));
+        var arrivalAirportId = AirportId.Create(Guid.Parse(request.ArrivalAirportId!));
+        var priceId = PriceId.Create(Guid.Parse(request.PriceId!));
+        
         var flight = Flight.Create(
             request.FlightNumber,
             request.ScheduledDeparture,
@@ -25,10 +33,10 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
             request.Type,
             request.ActualDeparture,
             request.ActualArrival,
-            request.AircraftId,
-            request.DepartureAirportId,
-            request.ArrivalAirportId,
-            request.PriceId);
+            aircraftId,
+            departureAirportId,
+            arrivalAirportId,
+            priceId);
 
         await _flightRepository.AddFlightAsync(flight);
 

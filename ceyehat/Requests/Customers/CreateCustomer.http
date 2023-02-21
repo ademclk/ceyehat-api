@@ -1,0 +1,14 @@
+POST http://localhost:5228/api/Customer
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiZDI3Zjk5YTItMDI5ZC00MjE3LThiZDktY2U4ODlkOTM2MjU4IiwiZXhwIjoxNjc2OTg4Nzk5LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.ac8wN-c5pzdh1rx9OPewHL2iD-5gVbUu9IbZDvZUG7PP2zj9EqqTgkmC-Q3JuCBZVjpICxeyAM5FcLMdzCpYuw
+
+{
+  "name": "Test",
+  "surname": "Customer",
+  "email": "test@customer.com",
+  "phoneNumber": "0000001111",
+  "title": 0,
+  "birthDate": "2023-02-21T13:18:27.199Z",
+  "passengerType": 0,
+  "userId": null
+} 

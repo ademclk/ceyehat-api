@@ -9,14 +9,15 @@ public record FlightResponse(
     string? FlightNumber,
     DateTime ScheduledDeparture,
     DateTime ScheduledArrival,
-    FlightStatus Status,
-    FlightType Type,
+    string? Status,
+    string? Type,
     DateTime? ActualDeparture,
     DateTime? ActualArrival,
-    AircraftResponse Aircraft,
-    AirportResponse DepartureAirport,
-    AirportResponse ArrivalAirport,
+    string? AircraftId,
+    string? DepartureAirportId,
+    string ArrivalAirportId,
     string? PriceId,
     DateTime CreatedAt,
     DateTime UpdatedAt
 );
+

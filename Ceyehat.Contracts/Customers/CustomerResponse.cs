@@ -12,10 +12,10 @@ public record CustomerResponse(
     Title Title,
     DateTime BirthDate,
     PassengerType PassengerType,
-    UserId? UserId,
-    List<BookingResponse> BookingIds,
-    List<FlightTicketResponse> FlightTicketIds,
-    List<BoardingPassResponse> BoardingPassIds,
+    string? UserId,
+    List<BookingResponse> Bookings,
+    List<FlightTicketResponse> FlightTickets,
+    List<BoardingPassResponse> BoardingPasses,
     DateTime CreatedAt,
     DateTime UpdatedAt);
 

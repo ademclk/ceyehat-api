@@ -1,0 +1,10 @@
+POST http://localhost:5228/api/Seat
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiOTFiOGM2ZjAtZTdmYy00NDY2LWE4MTUtZGQ5ZTI5YzQzOTlkIiwiZXhwIjoxNjc3MDE3NjcwLCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.vmUUt94iM8tS_y9RSVREd0BsUf3dahjvUd2dXeLnRMz-aqyMlj6IXW5oEbFBAvzlsrUFVTHnLnWRYxlJsK1mgw
+
+{
+  "seatNumber": "A1",
+  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "seatClass": 0,
+  "seatStatus": 0
+}
