@@ -1,4 +1,5 @@
 using Ceyehat.Application.Airports.Commands.CreateAirport;
+using Ceyehat.Application.Airports.Queries.GetAirports;
 using Ceyehat.Contracts.Airports;
 using MapsterMapper;
 using MediatR;
@@ -27,4 +28,15 @@ public class AirportController : ApiController
             airport => Ok(_mapper.Map<AirportResponse>(airport)),
             error => Problem(error));
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetAllAirports()
+    {
+        var result = await _mediator.Send(new GetAirportsQuery());
+        return result.Match<IActionResult>(
+            airports => Ok(_mapper.Map<List<AirportResponse>>(airports)),
+            error => Problem(error));
+    }
+
+    
 }

@@ -5,6 +5,7 @@ namespace Ceyehat.Application.Common.Interfaces.Persistence;
 
 public interface IAirportRepository
 {
+    Task<List<Airport>> GetAllAirportsAsync();
     Task<Airport?> GetAirportByIdAsync(AirportId airportId);
     Task AddAirportAsync(Airport airport);
 }
