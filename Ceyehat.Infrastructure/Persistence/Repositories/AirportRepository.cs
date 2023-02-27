@@ -13,7 +13,7 @@ public class AirportRepository : IAirportRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<List<Airport>> GetAllAirportsAsync()
     {
         return await _dbContext.Airports.ToListAsync();
