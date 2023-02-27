@@ -28,7 +28,7 @@ public class AirportController : ApiController
             airport => Ok(_mapper.Map<AirportResponse>(airport)),
             error => Problem(error));
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetAllAirports()
     {
@@ -38,5 +38,5 @@ public class AirportController : ApiController
             error => Problem(error));
     }
 
-    
+
 }
