@@ -1,3 +1,4 @@
+using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AirportAggregate;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
@@ -14,6 +15,34 @@ public class AirportRepository : IAirportRepository
         _dbContext = dbContext;
     }
 
+    public async Task<List<AirportDto>> SearchAirportsAsync(string searchTerm)
+    {
+        
+        var airports = await _dbContext.Airports
+            .Join(_dbContext.Cities, a => a.CityId, c => c.Id, (a, c) => new { a, c })
+            .Join(_dbContext.Countries, ac => ac.c.CountryId, co => co.Id, (ac, co) => new AirportDto
+            {
+                Name = ac.a.Name,
+                IataCode = ac.a.IataCode,
+                CityName = ac.c.Name,
+                CountryName = co.Name
+            }).ToListAsync();
+
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            return airports;
+        }
+
+        var upperSearchTerm = searchTerm.ToUpperInvariant();
+        var searchResult = airports.Where(dto => dto.Name!.ToUpperInvariant().Contains(upperSearchTerm)
+                                                 || dto.IataCode!.ToUpperInvariant().Contains(upperSearchTerm)
+                                                 || dto.CityName!.ToUpperInvariant().Contains(upperSearchTerm)
+                                                 || dto.CountryName!.ToUpperInvariant().Contains(upperSearchTerm))
+            .ToList();
+
+        return searchResult;
+    }
+    
     public async Task<List<Airport>> GetAllAirportsAsync()
     {
         return await _dbContext.Airports.ToListAsync();

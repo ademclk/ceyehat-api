@@ -1,13 +1,17 @@
 using Ceyehat.Application.Airports.Commands.CreateAirport;
+using Ceyehat.Application.Airports.Common;
 using Ceyehat.Application.Airports.Queries.GetAirports;
+using Ceyehat.Application.Airports.Queries.SearchAirports;
 using Ceyehat.Contracts.Airports;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 
 [Route("api/[controller]")]
+[AllowAnonymous]
 public class AirportController : ApiController
 {
     private readonly IMapper _mapper;
@@ -37,6 +41,15 @@ public class AirportController : ApiController
             airports => Ok(_mapper.Map<List<AirportResponse>>(airports)),
             error => Problem(error));
     }
-
-
+    
+    [HttpGet]
+    [Route("search")]
+    public async Task<IActionResult> SearchAirports(string? searchTerm)
+    {
+        var result = await _mediator.Send(new SearchAirportsQuery(searchTerm));
+        return result.Match<IActionResult>(
+            airports => Ok(_mapper.Map<List<AirportDtoResponse>>(airports)),
+            error => Problem(error));
+    }
+    
 }
