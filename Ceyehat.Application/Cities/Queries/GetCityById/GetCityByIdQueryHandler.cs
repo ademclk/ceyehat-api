@@ -20,12 +20,12 @@ public class GetCityByIdQueryHandler : IRequestHandler<GetCityByIdQuery, ErrorOr
     {
         var cityId = CityId.Create(Guid.Parse(request.Id));
         var city = await _cityRepository.GetCityByIdAsync(cityId);
-        
+
         if (city! == null!)
         {
             return Errors.City.NotFound;
         }
-        
+
         return city;
     }
 }
