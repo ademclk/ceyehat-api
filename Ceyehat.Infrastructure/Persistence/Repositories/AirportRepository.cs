@@ -17,7 +17,7 @@ public class AirportRepository : IAirportRepository
 
     public async Task<List<AirportDto>> SearchAirportsAsync(string searchTerm)
     {
-        
+
         var airports = await _dbContext.Airports
             .Join(_dbContext.Cities, a => a.CityId, c => c.Id, (a, c) => new { a, c })
             .Join(_dbContext.Countries, ac => ac.c.CountryId, co => co.Id, (ac, co) => new AirportDto
@@ -42,7 +42,7 @@ public class AirportRepository : IAirportRepository
 
         return searchResult;
     }
-    
+
     public async Task<List<Airport>> GetAllAirportsAsync()
     {
         return await _dbContext.Airports.ToListAsync();

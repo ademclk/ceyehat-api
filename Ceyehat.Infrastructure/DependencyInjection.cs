@@ -42,7 +42,7 @@ public static class DependencyInjection
         services.AddScoped<ICityRepository, CityRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IPriceRepository, PriceRepository>();
-        
+
         return services;
     }
 

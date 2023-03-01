@@ -10,5 +10,5 @@ public partial class Errors
             code: "Country.CountryNotFound",
             description: "Country not found");
     }
-    
+
 }

@@ -18,7 +18,7 @@ public class SearchAirportsQueryHandler : IRequestHandler<SearchAirportsQuery, E
     public async Task<ErrorOr<List<AirportDto>>> Handle(SearchAirportsQuery request, CancellationToken cancellationToken)
     {
         var airportDtos = await _airportRepository.SearchAirportsAsync(request.SearchTerm!);
-        
+
         return airportDtos;
     }
 }

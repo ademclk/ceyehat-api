@@ -41,7 +41,7 @@ public class AirportController : ApiController
             airports => Ok(_mapper.Map<List<AirportResponse>>(airports)),
             error => Problem(error));
     }
-    
+
     [HttpGet]
     [Route("search")]
     public async Task<IActionResult> SearchAirports(string? searchTerm)
@@ -51,5 +51,5 @@ public class AirportController : ApiController
             airports => Ok(_mapper.Map<List<AirportDtoResponse>>(airports)),
             error => Problem(error));
     }
-    
+
 }

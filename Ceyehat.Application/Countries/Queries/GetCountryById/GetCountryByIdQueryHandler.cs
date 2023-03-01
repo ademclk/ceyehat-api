@@ -15,19 +15,19 @@ public class GetCountryByIdQueryHandler : IRequestHandler<GetCountryByIdQuery, E
     {
         _countryRepository = countryRepository;
     }
-    
+
     public async Task<ErrorOr<Country>> Handle(GetCountryByIdQuery request, CancellationToken cancellationToken)
     {
         var countryId = CountryId.Create(Guid.Parse(request.Id));
-        
+
         var country = await _countryRepository.GetCountryByIdAsync(countryId);
-        
+
         if (country! == null!)
         {
             return Errors.Country.NotFound;
         }
-        
+
         return country;
-        
+
     }
 }
