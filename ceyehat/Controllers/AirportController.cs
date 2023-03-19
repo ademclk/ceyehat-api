@@ -47,6 +47,7 @@ public class AirportController : ApiController
     public async Task<IActionResult> SearchAirports(string? searchTerm)
     {
         var result = await _mediator.Send(new SearchAirportsQuery(searchTerm));
+        
         return result.Match<IActionResult>(
             airports => Ok(_mapper.Map<List<AirportDtoResponse>>(airports)),
             error => Problem(error));

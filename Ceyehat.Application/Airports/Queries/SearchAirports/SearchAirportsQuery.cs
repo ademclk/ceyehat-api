@@ -1,5 +1,4 @@
 using Ceyehat.Application.Common.DTOs;
-using Ceyehat.Domain.AirportAggregate;
 using MediatR;
 using ErrorOr;
 
