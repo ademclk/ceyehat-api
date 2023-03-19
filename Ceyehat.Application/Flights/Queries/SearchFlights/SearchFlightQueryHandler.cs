@@ -10,7 +10,7 @@ namespace Ceyehat.Application.Flights.Queries.SearchFlights;
 public class SearchFlightQueryHandler : IRequestHandler<SearchFlightQuery, ErrorOr<List<FlightDto>>>
 {
     private readonly IFlightRepository _flightRepository;
-    
+
     public SearchFlightQueryHandler(IFlightRepository flightRepository)
     {
         _flightRepository = flightRepository;
@@ -20,14 +20,14 @@ public class SearchFlightQueryHandler : IRequestHandler<SearchFlightQuery, Error
     {
         var departureDate = DateTime.Parse(request.DepartureDate!);
         var returnDate = DateTime.Parse(request.ReturnDate!);
-        
+
         var flights = await _flightRepository.SearchFlightsAsync(
-            request.DepartureAirportIataCode!, 
-            request.ArrivalAirportIataCode!, 
-            departureDate.ToUniversalTime(), 
-            returnDate.ToUniversalTime(), 
+            request.DepartureAirportIataCode!,
+            request.ArrivalAirportIataCode!,
+            departureDate.ToUniversalTime(),
+            returnDate.ToUniversalTime(),
             request.PassengerCount);
-        
+
         return flights;
     }
 }

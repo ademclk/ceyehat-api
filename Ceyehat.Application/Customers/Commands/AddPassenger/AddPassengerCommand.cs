@@ -4,7 +4,7 @@ using ErrorOr;
 using MediatR;
 
 namespace Ceyehat.Application.Customers.Commands.AddPassenger;
-public record AddPassengerCommand (
+public record AddPassengerCommand(
     string Name,
     string Surname,
     string Email,
