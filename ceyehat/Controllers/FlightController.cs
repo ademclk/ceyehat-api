@@ -35,7 +35,7 @@ public class FlightController : ApiController
             flight => Ok(_mapper.Map<FlightResponse>(flight)),
             error => Problem(error));
     }
-    
+
     [HttpPost]
     [Route("search")]
     public async Task<IActionResult> SearchFlightsAsync(
@@ -47,7 +47,7 @@ public class FlightController : ApiController
             request.DepartureDate,
             request.ReturnDate,
             request.PassengerCount));
-        
+
         return searchFlightsResult.Match<IActionResult>(
             flights => Ok(_mapper.Map<List<FlightDtoResponse>>(flights)),
             error => Problem(error));

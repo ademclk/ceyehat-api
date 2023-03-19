@@ -5,5 +5,5 @@ namespace Ceyehat.Application.Customers.Commands.AddPassenger;
 
 public class AddPassengerCommandValidator : AbstractValidator<Customer>
 {
-    
+
 }

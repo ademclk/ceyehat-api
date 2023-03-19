@@ -28,7 +28,7 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
             UserId.CreateUnique());
 
         await _customerRepository.AddCustomerAsync(customer);
-        
+
         return customer;
     }
 }

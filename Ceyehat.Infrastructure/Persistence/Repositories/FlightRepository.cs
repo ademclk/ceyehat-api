@@ -16,12 +16,12 @@ public class FlightRepository : IFlightRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<List<FlightDto>> SearchFlightsAsync(
-        string departureAirportIataCode, 
-        string arrivalAirportIataCode, 
+        string departureAirportIataCode,
+        string arrivalAirportIataCode,
         DateTime? departureDate,
-        DateTime? returnDate, 
+        DateTime? returnDate,
         int passengerCount)
     {
         var flights = await (
@@ -30,7 +30,7 @@ public class FlightRepository : IFlightRepository
             join airline in _dbContext.Airlines on aircraft.AirlineId equals airline.Id
             // join dAirport in _dbContext.Airports on flight.DepartureAirportId equals dAirport.Id
             // join aAirport in _dbContext.Airports on flight.ArrivalAirportId equals aAirport.Id
-            
+
             // TODO: TO FILTER RESULTS WHERE CLAUSE SHOULD BE HERE.
 
             select new FlightDto
@@ -44,14 +44,14 @@ public class FlightRepository : IFlightRepository
                 ComfortPrice = 145.20m,
                 BusinessPrice = 250.30m,
             }).ToListAsync();
-        
+
         return flights;
     }
 
     public async Task<List<Flight>> GetAllFlightsAsync()
     {
         var flights = await _dbContext.Flights.ToListAsync();
-        
+
         return flights;
     }
 

@@ -34,7 +34,7 @@ public class CustomerController : ApiController
             customer => Ok(_mapper.Map<CustomerResponse>(customer)),
             error => Problem(error));
     }
-    
+
     [HttpPost("add-passenger")]
     public async Task<IActionResult> AddPassengerAsync(
         AddPassengerRequest request)
