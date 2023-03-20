@@ -75,18 +75,18 @@ public class FlightConfigurations : IEntityTypeConfiguration<Flight>
             .HasConversion(
                 f => f.Value,
                 value => PriceId.Create(value));
-        
+
         builder.Property(f => f.ComfortPriceId)
             .ValueGeneratedNever()
             .HasConversion(
                 f => f.Value,
                 value => PriceId.Create(value));
-        
+
         builder.Property(f => f.BusinessPriceId)
             .ValueGeneratedNever()
             .HasConversion(
                 f => f.Value,
                 value => PriceId.Create(value));
-        
+
     }
 }
