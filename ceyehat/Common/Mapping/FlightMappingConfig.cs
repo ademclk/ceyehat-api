@@ -22,6 +22,8 @@ public class FlightMappingConfig : IRegister
             .Map(dest => dest.Type, src => Enum.Parse(typeof(FlightType), src.Type.ToString()))
             .Map(dest => dest.DepartureAirportId, src => src.DepartureAirportId.Value)
             .Map(dest => dest.ArrivalAirportId, src => src.ArrivalAirportId.Value)
-            .Map(dest => dest.PriceId, src => src.PriceId.Value);
+            .Map(dest => dest.EconomyPriceId, src => src.EconomyPriceId.Value)
+            .Map(dest => dest.ComfortPriceId, src => src.ComfortPriceId.Value)
+            .Map(dest => dest.BusinessPriceId, src => src.BusinessPriceId.Value);
     }
 }

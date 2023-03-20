@@ -16,7 +16,9 @@ public record FlightResponse(
     string? AircraftId,
     string? DepartureAirportId,
     string ArrivalAirportId,
-    string? PriceId,
+    string? EconomyPriceId,
+    string? ComfortPriceId,
+    string? BusinessPriceId,
     DateTime CreatedAt,
     DateTime UpdatedAt
 );

@@ -28,10 +28,17 @@ public class FlightRepository : IFlightRepository
             from flight in _dbContext.Flights
             join aircraft in _dbContext.Aircrafts on flight.AircraftId equals aircraft.Id
             join airline in _dbContext.Airlines on aircraft.AirlineId equals airline.Id
-            // join dAirport in _dbContext.Airports on flight.DepartureAirportId equals dAirport.Id
-            // join aAirport in _dbContext.Airports on flight.ArrivalAirportId equals aAirport.Id
-
-            // TODO: TO FILTER RESULTS WHERE CLAUSE SHOULD BE HERE.
+            join ecoPrice in _dbContext.Prices on flight.EconomyPriceId equals ecoPrice.Id
+            join comPrice in _dbContext.Prices on flight.ComfortPriceId equals comPrice.Id
+            join busPrice in _dbContext.Prices on flight.BusinessPriceId equals busPrice.Id
+            join dAirport in _dbContext.Airports on flight.DepartureAirportId equals dAirport.Id
+            join aAirport in _dbContext.Airports on flight.ArrivalAirportId equals aAirport.Id
+            
+            where dAirport.IataCode == departureAirportIataCode
+                  && aAirport.IataCode == arrivalAirportIataCode
+                  && flight.ScheduledDeparture.Year == departureDate.Value.Year
+                  && flight.ScheduledDeparture.Month == departureDate.Value.Month
+                    && flight.ScheduledDeparture.Day == departureDate.Value.Day
 
             select new FlightDto
             {
@@ -40,9 +47,9 @@ public class FlightRepository : IFlightRepository
                 AircraftName = aircraft.RegistrationNumber,
                 DepartureHour = flight.ScheduledDeparture,
                 ArrivalHour = flight.ScheduledArrival,
-                EconomyPrice = 125.10m,
-                ComfortPrice = 145.20m,
-                BusinessPrice = 250.30m,
+                EconomyPrice = ecoPrice.FlightPricing.TotalCost,
+                ComfortPrice = comPrice.FlightPricing.TotalCost,
+                BusinessPrice = busPrice.FlightPricing.TotalCost
             }).ToListAsync();
 
         return flights;

@@ -13,5 +13,7 @@ public record CreateFlightRequest(
     string? AircraftId,
     string? DepartureAirportId,
     string? ArrivalAirportId,
-    string? PriceId
+    string? EconomyPriceId,
+    string? ComfortPriceId,
+    string? BusinessPriceId
 );

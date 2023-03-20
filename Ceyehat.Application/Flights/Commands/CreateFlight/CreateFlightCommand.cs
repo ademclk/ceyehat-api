@@ -19,5 +19,7 @@ public record CreateFlightCommand(
     string? AircraftId,
     string? DepartureAirportId,
     string? ArrivalAirportId,
-    string? PriceId
+    string? EconomyPriceId,
+    string? ComfortPriceId,
+    string? BusinessPriceId
 ) : IRequest<ErrorOr<Flight>>;

@@ -1,14 +1,14 @@
 POST http://localhost:5228/api/Aircraft
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiMjdhMDFhNGItYzU4ZC00MDU5LWE4NzQtNDUxMDk4NWY2YzAxIiwiZXhwIjoxNjc2OTc1OTExLCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.XfCONz9xAAqtslVaCTo8S8LV9thoQoHnmeyr-0VwZ-DHJcRERybVYkqXQ8XB5wIR6lm9sLnttzgWVD1dYLhMVw
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiNWYwYzhhYmItNDQwOS00YTgyLWJjZjItMTE3MWRjNzVmODk2IiwiZXhwIjoxNjc5MzM2MjM1LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.3JSdhBx4K_178uT0BZ63f-_ZMl2tPZDvQcvwbgX1kg5w4wGa8-NNNFzPk-AyoXOtL8hb4lxF2bjppLfr7XbqPA
 
 
 {
-  "registrationNumber": "TC-JFE",
-  "icao24Code": "4BA8C5",
-  "model": "Boeing 737-8F2",
-  "manufacturerSerialNumber": "29767",
+  "registrationNumber": "TC-JGA",
+  "icao24Code": "4BA8E1",
+  "model": "BOEING 737 NG / MAX",
+  "manufacturerSerialNumber": "29785",
   "faaRegistration": "N1786B",
   "countryId" : "7afcf68f-2f86-4d20-9f02-72c707b31a29",
-  "airlineId" : "09f46ed8-ca89-4d8d-ac67-d2fb4b9200b6"
+  "airlineId" : "9e90cf1e-eb4c-4a63-9a5d-c07bbccaf28d"
 }

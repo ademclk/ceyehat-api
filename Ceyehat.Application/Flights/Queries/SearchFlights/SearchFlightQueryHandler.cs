@@ -24,8 +24,8 @@ public class SearchFlightQueryHandler : IRequestHandler<SearchFlightQuery, Error
         var flights = await _flightRepository.SearchFlightsAsync(
             request.DepartureAirportIataCode!,
             request.ArrivalAirportIataCode!,
-            departureDate.ToUniversalTime(),
-            returnDate.ToUniversalTime(),
+            departureDate,
+            returnDate,
             request.PassengerCount);
 
         return flights;

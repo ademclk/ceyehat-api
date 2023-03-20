@@ -23,7 +23,9 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
         var aircraftId = AircraftId.Create(Guid.Parse(request.AircraftId!));
         var departureAirportId = AirportId.Create(Guid.Parse(request.DepartureAirportId!));
         var arrivalAirportId = AirportId.Create(Guid.Parse(request.ArrivalAirportId!));
-        var priceId = PriceId.Create(Guid.Parse(request.PriceId!));
+        var ePriceId = PriceId.Create(Guid.Parse(request.EconomyPriceId!));
+        var cPriceId = PriceId.Create(Guid.Parse(request.ComfortPriceId!));
+        var bPriceId = PriceId.Create(Guid.Parse(request.BusinessPriceId!));
 
         var flight = Flight.Create(
             request.FlightNumber,
@@ -36,7 +38,9 @@ public class CreateFlightCommandHandler : IRequestHandler<CreateFlightCommand, E
             aircraftId,
             departureAirportId,
             arrivalAirportId,
-            priceId);
+            ePriceId,
+            cPriceId,
+            bPriceId);
 
         await _flightRepository.AddFlightAsync(flight);
 
