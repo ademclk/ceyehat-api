@@ -33,7 +33,7 @@ public class FlightRepository : IFlightRepository
             join busPrice in _dbContext.Prices on flight.BusinessPriceId equals busPrice.Id
             join dAirport in _dbContext.Airports on flight.DepartureAirportId equals dAirport.Id
             join aAirport in _dbContext.Airports on flight.ArrivalAirportId equals aAirport.Id
-            
+
             where dAirport.IataCode == departureAirportIataCode
                   && aAirport.IataCode == arrivalAirportIataCode
                   && flight.ScheduledDeparture.Year == departureDate.Value.Year
