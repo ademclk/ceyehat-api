@@ -1,5 +1,7 @@
 # ceyehat-api
 My senior project backend
+[![CodeQL](https://github.com/ademclk/ceyehat-api/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/ademclk/ceyehat-api/actions/workflows/codeql.yml)
+
 
 ---
 
