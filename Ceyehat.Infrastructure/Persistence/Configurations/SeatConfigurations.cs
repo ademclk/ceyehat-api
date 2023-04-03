@@ -45,7 +45,7 @@ public class SeatConfigurations : IEntityTypeConfiguration<Seat>
             .HasConversion(
                 s => s.Value,
                 value => AircraftId.Create(value));
-        
+
         builder.Property(s => s.FlightId)
             .ValueGeneratedNever()
             .HasConversion(

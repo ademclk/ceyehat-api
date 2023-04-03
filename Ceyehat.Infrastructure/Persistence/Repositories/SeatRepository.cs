@@ -27,7 +27,7 @@ public class SeatRepository : ISeatRepository
                 SeatStatus = seat.SeatStatus
             }
         ).ToListAsync();
-        
+
         return seats;
     }
 
