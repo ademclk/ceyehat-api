@@ -16,6 +16,7 @@ public class SeatMappingConfig : IRegister
         config.NewConfig<Seat, SeatResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.AircraftId, src => src.AircraftId.Value)
+            .Map(dest => dest.FlightId, src => src.FlightId.Value)
             .Map(dest => dest.SeatStatus, src => Enum.Parse(typeof(SeatStatus), src.SeatStatus.ToString()))
             .Map(dest => dest.SeatClass, src => Enum.Parse(typeof(SeatClass), src.SeatClass.ToString()));
 

@@ -3,9 +3,9 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiNWYwYzhhYmItNDQwOS00YTgyLWJjZjItMTE3MWRjNzVmODk2IiwiZXhwIjoxNjc5MzM2MjM1LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.3JSdhBx4K_178uT0BZ63f-_ZMl2tPZDvQcvwbgX1kg5w4wGa8-NNNFzPk-AyoXOtL8hb4lxF2bjppLfr7XbqPA
 
 {
-  "flightNumber": "AI000003",
-  "scheduledDeparture": "2023-03-24T16:30:34.240Z",
-  "scheduledArrival": "2023-03-24T17:30:34.240Z",
+  "flightNumber": "AI000005",
+  "scheduledDeparture": "2023-04-01T16:30:34.240Z",
+  "scheduledArrival": "2023-04-01T17:30:34.240Z",
   "status": 0,
   "type": 1,
   "actualDeparture": null,

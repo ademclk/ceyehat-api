@@ -1,5 +1,6 @@
 using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate;
 using Ceyehat.Domain.SeatAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
@@ -44,5 +45,11 @@ public class SeatConfigurations : IEntityTypeConfiguration<Seat>
             .HasConversion(
                 s => s.Value,
                 value => AircraftId.Create(value));
+        
+        builder.Property(s => s.FlightId)
+            .ValueGeneratedNever()
+            .HasConversion(
+                s => s.Value,
+                value => FlightId.Create(value));
     }
 }

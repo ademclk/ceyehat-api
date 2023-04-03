@@ -1,6 +1,7 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate;
 using ErrorOr;
 using MediatR;
@@ -18,13 +19,15 @@ public class CreateSeatCommandHandler : IRequestHandler<CreateSeatCommand, Error
 
     public async Task<ErrorOr<Seat>> Handle(CreateSeatCommand request, CancellationToken cancellationToken)
     {
-        var aircraftId = AircraftId.Create(Guid.Parse(request.AircraftId.ToString()!));
+        var aircraftId = AircraftId.Create(Guid.Parse(request.AircraftId!));
+        var flightId = FlightId.Create(Guid.Parse(request.FlightId!));
 
         var seat = Seat.Create(
             request.SeatNumber,
             request.SeatClass,
             request.SeatStatus,
-            aircraftId);
+            aircraftId,
+            flightId);
 
         await _seatRepository.AddSeatAsync(seat);
 

@@ -1,6 +1,7 @@
 using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.Common.Models;
 using Ceyehat.Domain.Enums;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate.ValueObjects;
 
 namespace Ceyehat.Domain.SeatAggregate;
@@ -12,6 +13,7 @@ public sealed class Seat : AggregateRoot<SeatId>
     public SeatStatus SeatStatus { get; private set; }
 
     public AircraftId AircraftId { get; private set; }
+    public FlightId FlightId { get; private set; }
 
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
@@ -22,6 +24,7 @@ public sealed class Seat : AggregateRoot<SeatId>
         SeatClass seatClass,
         SeatStatus seatStatus,
         AircraftId aircraftId,
+        FlightId flightId,
         DateTime createdAt,
         DateTime updatedAt) : base(seatId)
     {
@@ -29,6 +32,7 @@ public sealed class Seat : AggregateRoot<SeatId>
         SeatClass = seatClass;
         SeatStatus = seatStatus;
         AircraftId = aircraftId;
+        FlightId = flightId;
         CreatedAt = createdAt;
         UpdatedAt = updatedAt;
     }
@@ -37,7 +41,8 @@ public sealed class Seat : AggregateRoot<SeatId>
         string? seatNumber,
         SeatClass seatClass,
         SeatStatus seatStatus,
-        AircraftId aircraftId)
+        AircraftId aircraftId,
+        FlightId flightId)
     {
         return new(
             SeatId.CreateUnique(),
@@ -45,6 +50,7 @@ public sealed class Seat : AggregateRoot<SeatId>
             seatClass,
             seatStatus,
             aircraftId,
+            flightId,
             DateTime.UtcNow,
             DateTime.UtcNow);
     }

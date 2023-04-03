@@ -1,10 +1,11 @@
 POST http://localhost:5228/api/Seat
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiOTFiOGM2ZjAtZTdmYy00NDY2LWE4MTUtZGQ5ZTI5YzQzOTlkIiwiZXhwIjoxNjc3MDE3NjcwLCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.vmUUt94iM8tS_y9RSVREd0BsUf3dahjvUd2dXeLnRMz-aqyMlj6IXW5oEbFBAvzlsrUFVTHnLnWRYxlJsK1mgw
+Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiZmE1MTBkOTMtZTI2ZS00MThjLTljOGMtYjNlYWE5ZGM2YjRjIiwiZXhwIjoxNjc5NTA4NzY3LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.m7z8M2qkTVnV9gL7ptYnR2uBuCfsjJ8VrrLl9GY0NHwvSUX4mr5pUOI9GWkMKlNRSttF6KfB1v7WGVIRZVrwlw
 
 {
-  "seatNumber": "A1",
-  "aircraftId": "0a3901f2-cf62-441e-9ae8-0d3a9e5059c2",
+  "seatNumber": "38F",
+  "aircraftId": "e182aaa1-130a-4418-a537-f634b104a3df",
+  "flightId": "2dc17e0d-1247-43e3-b8e5-1ab6b543dfea",
   "seatClass": 0,
   "seatStatus": 0
 }

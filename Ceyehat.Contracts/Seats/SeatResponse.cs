@@ -9,5 +9,6 @@ public record SeatResponse(
     string SeatClass,
     string SeatStatus,
     string? AircraftId,
+    string? FlightId,
     DateTime CreatedAt,
     DateTime UpdatedAt);
