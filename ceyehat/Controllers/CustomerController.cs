@@ -54,7 +54,7 @@ public class CustomerController : ApiController
             customer => Ok(_mapper.Map<CustomerResponse>(customer)),
             error => Problem(error));
     }
-    
+
     [HttpPost("create-ticket")]
     public async Task<IActionResult> CreateTicketAsync(CreateTicketRequest request)
     {
@@ -91,7 +91,7 @@ public class CustomerController : ApiController
         sb.AppendLine("<p>Bilet bilgileriniz aşağıdaki gibidir:</p>");
 
         sb.AppendLine("<ul>");
-        
+
         sb.AppendLine("<li>");
         sb.AppendLine("<p>Uçuş ID: <strong>" + customer.FlightTickets[0].Id + "</strong></p>");
         sb.AppendLine("<p>Rezervasyon ID: <strong>" + customer.FlightTickets[0].BookingId + "</strong></p>");
