@@ -68,7 +68,7 @@ public class FlightRepository : IFlightRepository
         await _dbContext.Flights.AddAsync(flight);
         await _dbContext.SaveChangesAsync();
     }
-    
+
     public async Task<FlightId?> GetFlightIdByFlightNumberAsync(string flightNumber)
     {
         var flight = await _dbContext.Flights.FirstOrDefaultAsync(x => x.FlightNumber == flightNumber);
