@@ -20,12 +20,12 @@ public abstract class Entity<TId> : IEquatable<Entity<TId>>
         return obj is Entity<TId> entity && Id.Equals(entity.Id);
     }
 
-    public static bool operator ==(Entity<TId> l, Entity<TId> r)
+    public static bool operator ==(Entity<TId>? l, Entity<TId>? r)
     {
         return Equals(l, r);
     }
 
-    public static bool operator !=(Entity<TId> l, Entity<TId> r)
+    public static bool operator !=(Entity<TId>? l, Entity<TId>? r)
     {
         return !Equals(l, r);
     }

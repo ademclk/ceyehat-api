@@ -1,3 +1,4 @@
+using Ceyehat.Application.Customers.Commands.AddPassenger;
 using Ceyehat.Contracts.Customers;
 using Ceyehat.Domain.CustomerAggregate;
 using Mapster;
@@ -13,5 +14,8 @@ public class CustomerMappingConfig : IRegister
         config.NewConfig<Customer, CustomerResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.UserId, src => src.UserId.Value);
+
+        config.NewConfig<AddPassengerRequest, AddPassengerCommand>()
+            .Map(dest => dest.AddBookingCommands, src => src.AddBookingRequests);
     }
 }

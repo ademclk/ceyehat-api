@@ -3,6 +3,7 @@ using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate;
 using Microsoft.EntityFrameworkCore;
 
@@ -66,5 +67,12 @@ public class FlightRepository : IFlightRepository
     {
         await _dbContext.Flights.AddAsync(flight);
         await _dbContext.SaveChangesAsync();
+    }
+    
+    public async Task<FlightId?> GetFlightIdByFlightNumberAsync(string flightNumber)
+    {
+        var flight = await _dbContext.Flights.FirstOrDefaultAsync(x => x.FlightNumber == flightNumber);
+
+        return flight?.Id;
     }
 }

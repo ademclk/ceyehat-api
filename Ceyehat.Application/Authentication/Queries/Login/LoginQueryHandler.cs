@@ -22,19 +22,17 @@ public class LoginQueryHandler :
     public async Task<ErrorOr<Token>> Handle(LoginQuery query, CancellationToken cancellationToken)
     {
         var userResponse = await _userRepository.GetUserByEmailAsync(query.Email);
-        // Validate if user exists
+        
         if (userResponse == null)
         {
             return Errors.Authentication.InvalidCredentials;
         }
-
-        // Validate if password is correct
+        
         if (userResponse.Password != query.Password)
         {
             return Errors.Authentication.InvalidCredentials;
         }
-
-        // Generate JWT token
+        
         var token = _jwtTokenGenerator.GenerateToken(userResponse);
 
         return token;

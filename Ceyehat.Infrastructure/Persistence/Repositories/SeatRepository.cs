@@ -1,6 +1,8 @@
 using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Application.Common.Interfaces.Persistence;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate;
+using Ceyehat.Domain.SeatAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ceyehat.Infrastructure.Persistence.Repositories;
@@ -35,5 +37,12 @@ public class SeatRepository : ISeatRepository
     {
         await _dbContext.Seats.AddAsync(seat);
         await _dbContext.SaveChangesAsync();
+    }
+    
+    public async Task<SeatId?> GetSeatIdByFlightIdAndSeatNumberAsync(FlightId flightId, string seatNumber)
+    {
+        var seat = await _dbContext.Seats
+            .FirstOrDefaultAsync(s => s.FlightId == flightId && s.SeatNumber == seatNumber);
+        return seat?.Id;
     }
 }

@@ -16,7 +16,7 @@ public sealed class Booking : Entity<BookingId>
 
     private Booking(
         BookingId bookingId,
-        SeatId seatId,
+        SeatId? seatId,
         FlightId flightId,
         float price,
         Currency currency,
@@ -30,7 +30,7 @@ public sealed class Booking : Entity<BookingId>
     }
 
     public static Booking Create(
-        SeatId seatId,
+        SeatId? seatId,
         FlightId flightId,
         float price,
         Currency currency,
@@ -39,6 +39,20 @@ public sealed class Booking : Entity<BookingId>
         return new(
             BookingId.CreateUnique(),
             seatId,
+            flightId,
+            price,
+            currency,
+            passengerType);
+    }
+    public static Booking CreateWithoutSeat(
+        FlightId flightId,
+        float price,
+        Currency currency,
+        PassengerType passengerType)
+    {
+        return new(
+            BookingId.CreateUnique(),
+            null,
             flightId,
             price,
             currency,

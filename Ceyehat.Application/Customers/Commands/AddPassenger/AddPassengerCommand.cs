@@ -1,5 +1,8 @@
+using Ceyehat.Application.Customers.Commands.CreateCustomer;
 using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.Enums;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
+using Ceyehat.Domain.SeatAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 
@@ -11,5 +14,14 @@ public record AddPassengerCommand(
     string PhoneNumber,
     Title Title,
     DateTime BirthDate,
-    PassengerType PassengerType
+    PassengerType PassengerType,
+    List<AddBookingCommand> AddBookingCommands
 ) : IRequest<ErrorOr<Customer>>;
+
+public record AddBookingCommand(
+    string? SeatId,
+    string? FlightId,
+    float Price,
+    Currency Currency,
+    PassengerType PassengerType
+);

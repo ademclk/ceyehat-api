@@ -1,5 +1,6 @@
 using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Domain.FlightAggregate;
+using Ceyehat.Domain.FlightAggregate.ValueObjects;
 
 namespace Ceyehat.Application.Common.Interfaces.Persistence;
 
@@ -13,4 +14,5 @@ public interface IFlightRepository
         int passengerCount);
     Task<List<Flight>> GetAllFlightsAsync();
     Task AddFlightAsync(Flight flight);
+    Task<FlightId?> GetFlightIdByFlightNumberAsync(string flightNumber);
 }
