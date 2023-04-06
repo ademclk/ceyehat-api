@@ -27,14 +27,14 @@ public class CustomerMappingConfig : IRegister
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.FlightId, src => src.FlightId!.Value)
             .Map(dest => dest.SeatId, src => src.SeatId!.Value);
-        
+
         config.NewConfig<FlightTicket, FlightTicketResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
             .Map(dest => dest.BookingId, src => src.BookingId!.Value);
 
         config.NewConfig<BoardingPass, BoardingPassResponse>()
             .Map(dest => dest.Id, src => src.Id.Value);
-        
+
         config.NewConfig<CreateTicketRequest, CreateTicketCommand>();
     }
 }
