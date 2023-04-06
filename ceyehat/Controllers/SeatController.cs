@@ -31,7 +31,7 @@ public class SeatController : ApiController
             seat => Ok(_mapper.Map<SeatResponse>(seat)),
             error => Problem(error));
     }
-    
+
     [HttpGet]
     [Route("{flightNumber}/{aircraftName}")]
     public async Task<IActionResult> GetSeatsAsync(string flightNumber, string aircraftName)

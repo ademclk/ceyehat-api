@@ -3,7 +3,7 @@ using FluentValidation;
 namespace Ceyehat.Application.Seats.Queries.GetSeats;
 
 public class GetSeatsQueryValidator : AbstractValidator<GetSeatsQuery>
-{ 
+{
     public GetSeatsQueryValidator()
     {
         RuleFor(a => a.FlightNumber)
