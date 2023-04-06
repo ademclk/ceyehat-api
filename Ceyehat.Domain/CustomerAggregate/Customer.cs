@@ -98,6 +98,8 @@ public sealed class Customer : AggregateRoot<CustomerId>
         {
             _flightTickets?.Add(flightTicket);
         }
+        
+        _flightTickets?.Add(flightTicket!);
     }
 
     public void RemoveFlightTicket(FlightTicket? flightTicket)

@@ -10,7 +10,7 @@ public class FlightTicket : Entity<FlightTicketId>
 
     private FlightTicket(
         FlightTicketId flightTicketId,
-        BoardingPassId boardingPassId,
+        BoardingPassId? boardingPassId,
         BookingId bookingId) : base(flightTicketId)
     {
         BoardingPassId = boardingPassId;
@@ -18,7 +18,7 @@ public class FlightTicket : Entity<FlightTicketId>
     }
 
     public static FlightTicket Create(
-        BoardingPassId boardingPassId,
+        BoardingPassId? boardingPassId,
         BookingId bookingId)
     {
         return new(
