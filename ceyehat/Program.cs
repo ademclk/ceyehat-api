@@ -11,9 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
         .AddPresentation()
         .AddApplication()
         .AddInfrastructure(builder.Configuration);
-    
+
     builder.Services.AddSingleton(new EmailService(builder.Configuration.GetSection("SendGrid").GetValue<string>("ApiKey")!));
-    
+
     builder.Services.AddDbContext<CeyehatDbContext>(opt => opt.UseNpgsql(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 }
