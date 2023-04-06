@@ -25,9 +25,9 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
     public async Task<ErrorOr<Customer>> Handle(AddPassengerCommand request, CancellationToken cancellationToken)
     {
         var existingCustomer = await _customerRepository.GetCustomerByEmailAsync(request.Email);
-        
-        
-        
+
+
+
         if (existingCustomer != null)
         {
             foreach (var bookingCommand in request.AddBookingCommands)
@@ -41,10 +41,10 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
                         bookingCommand.Price,
                         bookingCommand.Currency,
                         bookingCommand.PassengerType);
-                    
+
                     existingCustomer.AddBooking(booking);
                 }
-                
+
                 var seatId = await _seatRepository.GetSeatIdByFlightIdAndSeatNumberAsync(flightId!, bookingCommand.SeatId!);
 
                 var bookingWithSeat = Booking.Create(
@@ -53,15 +53,15 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
                     bookingCommand.Price,
                     bookingCommand.Currency,
                     bookingCommand.PassengerType);
-                
+
                 existingCustomer.AddBooking(bookingWithSeat);
             }
-            
+
             await _customerRepository.UpdateCustomerAsync(existingCustomer);
-            
+
             return existingCustomer;
         }
-        
+
         var newCustomer = Customer.Create(
             request.Name,
             request.Surname,
@@ -75,7 +75,7 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
         foreach (var bookingCommand in request.AddBookingCommands)
         {
             var flightId = await _flightRepository.GetFlightIdByFlightNumberAsync(bookingCommand.FlightId!);
-            
+
             if (bookingCommand.SeatId == null)
             {
                 var booking = Booking.CreateWithoutSeat(
@@ -83,19 +83,19 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
                     bookingCommand.Price,
                     bookingCommand.Currency,
                     bookingCommand.PassengerType);
-                
+
                 newCustomer.AddBooking(booking);
             }
-            
+
             var seatId = await _seatRepository.GetSeatIdByFlightIdAndSeatNumberAsync(flightId!, bookingCommand.SeatId!);
-            
+
             var bookingWithSeat = Booking.Create(
                 seatId,
                 flightId!,
                 bookingCommand.Price,
                 bookingCommand.Currency,
                 bookingCommand.PassengerType);
-            
+
             newCustomer.AddBooking(bookingWithSeat);
         }
 

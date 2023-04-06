@@ -38,7 +38,7 @@ public class SeatRepository : ISeatRepository
         await _dbContext.Seats.AddAsync(seat);
         await _dbContext.SaveChangesAsync();
     }
-    
+
     public async Task<SeatId?> GetSeatIdByFlightIdAndSeatNumberAsync(FlightId flightId, string seatNumber)
     {
         var seat = await _dbContext.Seats

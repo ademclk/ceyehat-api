@@ -18,18 +18,18 @@ public class CustomerRepository : ICustomerRepository
         await _dbContext.Customers.AddAsync(customer);
         await _dbContext.SaveChangesAsync();
     }
-    
+
     public async Task UpdateCustomerAsync(Customer customer)
     {
         _dbContext.Customers.Update(customer);
         await _dbContext.SaveChangesAsync();
     }
-    
+
     public async Task<Customer?> GetCustomerByIdAsync(string id)
     {
         return await _dbContext.Customers.FindAsync(id);
     }
-    
+
     public async Task<Customer?> GetCustomerByEmailAsync(string email)
     {
         return await _dbContext.Customers.FirstOrDefaultAsync(x => x.Email == email);
