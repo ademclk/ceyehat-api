@@ -40,7 +40,7 @@ public class AuthenticationController : ApiController
             user => Ok(user),
             errors => Problem(errors));
     }
-    
+
     [HttpPost("user-bookings")]
     public async Task<IActionResult> GetUserBookingsAsync(GetBookingRequest request)
     {
@@ -52,7 +52,7 @@ public class AuthenticationController : ApiController
             booking => Ok(booking),
             error => Problem(error));
     }
-    
+
     [HttpPost("user-tickets")]
     public async Task<IActionResult> GetUserTicketsAsync(GetFlightTicketRequest request)
     {
@@ -64,7 +64,7 @@ public class AuthenticationController : ApiController
             ticket => Ok(ticket),
             error => Problem(error));
     }
-    
+
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
