@@ -27,7 +27,9 @@ public class AirportRepository : IAirportRepository
                 Name = airport.Name,
                 IataCode = airport.IataCode,
                 CityName = city.Name,
-                CountryName = country.Name
+                CountryName = country.Name,
+                Longitude = airport.Longitude,
+                Latitude = airport.Latitude
             }
         ).ToListAsync();
 
@@ -57,7 +59,7 @@ public class AirportRepository : IAirportRepository
 
     public async Task<Airport?> GetAirportByIdAsync(AirportId airportId)
     {
-        return await _dbContext.Airports.FindAsync(airportId.Value);
+        return await _dbContext.Airports.FindAsync(airportId);
     }
 
     public async Task AddAirportAsync(Airport airport)

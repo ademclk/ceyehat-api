@@ -6,4 +6,6 @@ public class AirportDtoResponse
     public string IataCode { get; set; } = null!;
     public string CityName { get; set; } = null!;
     public string CountryName { get; set; } = null!;
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
 }
