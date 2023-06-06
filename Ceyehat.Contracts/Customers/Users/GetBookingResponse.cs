@@ -6,7 +6,7 @@ public record GetBookingResponse(
     string? SeatNumber,
     string? FlightId,
     string? FlightNumber,
-    string? Currency, 
+    string? Currency,
     float Price,
     string? PassengerType
 );
