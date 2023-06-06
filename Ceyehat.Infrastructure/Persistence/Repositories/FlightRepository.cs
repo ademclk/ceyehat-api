@@ -18,6 +18,13 @@ public class FlightRepository : IFlightRepository
         _dbContext = dbContext;
     }
 
+    public async Task<Flight?> GetFlightByIdAsync(FlightId flightId)
+    {
+        var flight = await _dbContext.Flights.FirstOrDefaultAsync(f => f.Id == flightId);
+        
+        return flight;
+    }
+
     public async Task<List<FlightDto>> SearchFlightsAsync(
         string departureAirportIataCode,
         string arrivalAirportIataCode,

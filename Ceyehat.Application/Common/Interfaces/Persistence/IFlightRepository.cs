@@ -6,6 +6,7 @@ namespace Ceyehat.Application.Common.Interfaces.Persistence;
 
 public interface IFlightRepository
 {
+    Task<Flight?> GetFlightByIdAsync(FlightId flightId);
     Task<List<FlightDto>> SearchFlightsAsync(
         string departureAirportIataCode,
         string arrivalAirportIataCode,
