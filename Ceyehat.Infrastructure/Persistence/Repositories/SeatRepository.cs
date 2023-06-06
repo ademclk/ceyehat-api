@@ -19,7 +19,7 @@ public class SeatRepository : ISeatRepository
     public async Task<Seat?> GetSeatByIdAsync(SeatId seatId)
     {
         var seat = await _dbContext.Seats.FirstOrDefaultAsync(s => s.Id == seatId);
-        
+
         return seat;
     }
 
