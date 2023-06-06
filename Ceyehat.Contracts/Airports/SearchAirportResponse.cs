@@ -4,4 +4,6 @@ public record SearchAirportResponse(
     string Name,
     string IataCode,
     string City,
-    string Country);
+    string Country,
+    double longitude,
+    double latitude);
