@@ -21,7 +21,7 @@ public class FlightRepository : IFlightRepository
     public async Task<Flight?> GetFlightByIdAsync(FlightId flightId)
     {
         var flight = await _dbContext.Flights.FirstOrDefaultAsync(f => f.Id == flightId);
-        
+
         return flight;
     }
 

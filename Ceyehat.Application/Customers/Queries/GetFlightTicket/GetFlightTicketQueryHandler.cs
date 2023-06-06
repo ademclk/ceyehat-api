@@ -22,9 +22,9 @@ public class GetFlightTicketQueryHandler : IRequestHandler<GetFlightTicketQuery,
     public async Task<ErrorOr<List<FlightTicketDtoResponse>>> Handle(GetFlightTicketQuery request, CancellationToken cancellationToken)
     {
         var customer = await _customerRepository.GetCustomerByEmailAsync(request.Email!);
-        
+
         var bookings = customer?.Bookings;
-        
+
         var flightTicketDtos = new List<FlightTicketDtoResponse>();
 
         foreach (var booking in bookings!)
@@ -33,7 +33,7 @@ public class GetFlightTicketQueryHandler : IRequestHandler<GetFlightTicketQuery,
             var departureAirport = await _airportRepository.GetAirportByIdAsync(flight?.DepartureAirportId!);
             var arrivalAirport = await _airportRepository.GetAirportByIdAsync(flight?.ArrivalAirportId!);
             var seat = await _seatRepository.GetSeatByIdAsync(booking.SeatId!);
-            
+
             var flightTicketDto = new FlightTicketDtoResponse
             {
                 Id = customer?.FlightTickets?.Where(f => f.BookingId == booking.Id).Select(f => f.Id.Value.ToString()).FirstOrDefault(),
@@ -53,10 +53,10 @@ public class GetFlightTicketQueryHandler : IRequestHandler<GetFlightTicketQuery,
                 Currency = booking.Currency.ToString(),
                 Status = flight?.Status.ToString()
             };
-            
+
             flightTicketDtos.Add(flightTicketDto);
         }
-        
+
         return flightTicketDtos;
     }
 }
