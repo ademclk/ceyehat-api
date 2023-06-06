@@ -16,6 +16,13 @@ public class SeatRepository : ISeatRepository
         _dbContext = dbContext;
     }
 
+    public async Task<Seat?> GetSeatByIdAsync(SeatId seatId)
+    {
+        var seat = await _dbContext.Seats.FirstOrDefaultAsync(s => s.Id == seatId);
+        
+        return seat;
+    }
+
     public async Task<List<SeatDto>> GetSeatsAsync(string flightNumber, string aircraftName)
     {
         var seats = await (
