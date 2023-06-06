@@ -10,15 +10,17 @@ namespace Ceyehat.Application.Customers.Commands.CreateCustomer;
 public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, ErrorOr<Customer>>
 {
     private readonly ICustomerRepository _customerRepository;
+    private readonly IUserRepository _userRepository;
 
-    public CreateCustomerCommandHandler(ICustomerRepository customerRepository)
+    public CreateCustomerCommandHandler(ICustomerRepository customerRepository, IUserRepository userRepository)
     {
         _customerRepository = customerRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<ErrorOr<Customer>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        var userId = request.UserId ?? UserId.CreateUnique();
+        var userId = await _userRepository.GetUserIdByEmailAsync(request.Email);
 
         var customer = Customer.Create(
             request.Name,
@@ -28,7 +30,7 @@ public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerComman
             request.Title,
             request.BirthDate,
             request.PassengerType,
-            userId);
+            userId ?? UserId.CreateUnique());
 
         await _customerRepository.AddCustomerAsync(customer);
 

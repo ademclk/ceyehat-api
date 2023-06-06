@@ -3,12 +3,14 @@ using Ceyehat.Application.Customers.Commands;
 using Ceyehat.Application.Customers.Commands.AddPassenger;
 using Ceyehat.Application.Customers.Commands.CreateCustomer;
 using Ceyehat.Application.Customers.Commands.CreateTicket;
+using Ceyehat.Application.Customers.Queries.GetBooking;
 using Ceyehat.Contracts.Customers;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ceyehat.Common.Services;
+using Ceyehat.Contracts.Customers.Users;
 using Ceyehat.Domain.CustomerAggregate;
 
 
@@ -66,7 +68,6 @@ public class CustomerController : ApiController
             async ticket => await HandleTicketCreationSuccess(ticket),
             error => Task.FromResult<IActionResult>(Problem(error)));
     }
-
     private async Task<IActionResult> HandleTicketCreationSuccess(Customer ticket)
     {
         var customerResponse = _mapper.Map<CustomerResponse>(ticket);
