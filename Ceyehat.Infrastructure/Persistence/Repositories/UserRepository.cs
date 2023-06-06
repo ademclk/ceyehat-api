@@ -1,5 +1,6 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.UserAggregate;
+using Ceyehat.Domain.UserAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 
@@ -23,5 +24,16 @@ public class UserRepository : IUserRepository
     {
         await _dbContext.Users.AddAsync(user!);
         await _dbContext.SaveChangesAsync();
+    }
+    
+    public async Task<UserId?> GetUserIdByEmailAsync(string email)
+    {
+        var userId = await _dbContext.Users.FirstOrDefaultAsync(u => u!.Email == email);
+        if (userId == null)
+        {
+            throw new NpgsqlException("User not found");
+        }
+        
+        return userId?.Id;
     }
 }

@@ -1,8 +1,14 @@
 using Ceyehat.Application.Authentication.Commands.Register;
 using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Authentication.Queries.Login;
+using Ceyehat.Application.Customers.Common;
+using Ceyehat.Application.Customers.Queries.GetBooking;
+using Ceyehat.Application.Customers.Queries.GetFlightTicket;
+using Ceyehat.Application.Customers.Queries.GetUser;
 using Ceyehat.Contracts.Authentication;
+using Ceyehat.Contracts.Customers.Users;
 using Ceyehat.Domain.Common.Errors;
+using Ceyehat.Domain.UserAggregate;
 using ErrorOr;
 using MapsterMapper;
 using MediatR;
@@ -24,6 +30,41 @@ public class AuthenticationController : ApiController
         _mapper = mapper;
     }
 
+    [HttpPost("user-info")]
+    public async Task<IActionResult> GetUserInfoAsync(GetUserRequest request)
+    {
+        var query = _mapper.Map<GetUserQuery>(request);
+        ErrorOr<UserDtoResponse?> result = await _mediator.Send(query);
+
+        return result.Match<IActionResult>(
+            user => Ok(user),
+            errors => Problem(errors));
+    }
+    
+    [HttpPost("user-bookings")]
+    public async Task<IActionResult> GetUserBookingsAsync(GetBookingRequest request)
+    {
+        var query = _mapper.Map<GetBookingQuery>(request);
+
+        var bookings = await _mediator.Send(query);
+
+        return bookings.Match<IActionResult>(
+            booking => Ok(booking),
+            error => Problem(error));
+    }
+    
+    [HttpPost("user-tickets")]
+    public async Task<IActionResult> GetUserTicketsAsync(GetFlightTicketRequest request)
+    {
+        var query = _mapper.Map<GetFlightTicketQuery>(request);
+
+        var tickets = await _mediator.Send(query);
+
+        return tickets.Match<IActionResult>(
+            ticket => Ok(ticket),
+            error => Problem(error));
+    }
+    
     [HttpPost("login")]
     public async Task<IActionResult> LoginAsync(LoginRequest request)
     {
