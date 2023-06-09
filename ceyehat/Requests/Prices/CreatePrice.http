@@ -12,6 +12,6 @@ Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW
     "competitionMultiplier": 0.85,
     "seasonalMultiplier": 1.01,
     "lengthMultiplier": 1.05,
-    "classMultiplier": 1.45
+    "classMultiplier": 1.01
   }
 }

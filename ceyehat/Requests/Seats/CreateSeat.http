@@ -1,11 +1,10 @@
 POST http://localhost:5228/api/Seat
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiZmE1MTBkOTMtZTI2ZS00MThjLTljOGMtYjNlYWE5ZGM2YjRjIiwiZXhwIjoxNjc5NTA4NzY3LCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.m7z8M2qkTVnV9gL7ptYnR2uBuCfsjJ8VrrLl9GY0NHwvSUX4mr5pUOI9GWkMKlNRSttF6KfB1v7WGVIRZVrwlw
 
 {
-  "seatNumber": "38F",
-  "aircraftId": "e182aaa1-130a-4418-a537-f634b104a3df",
-  "flightId": "2dc17e0d-1247-43e3-b8e5-1ab6b543dfea",
+  "seatNumber": "10F",
+  "aircraftId": "d62a5ff7-0473-4f26-8906-a4b4083ba6b4",
+  "flightId": "7cae1ba1-6863-4e53-bb37-0a383c264190",
   "seatClass": 0,
   "seatStatus": 0
 }

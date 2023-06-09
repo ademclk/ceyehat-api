@@ -3,14 +3,17 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiYWJhNDRkNGQtOWVmOC00MDI2LTg3MmEtMmFlOTMzYjVhNGEzIiwiZXhwIjoxNjc4Nzk2MjIyLCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.7c3DPLPWxCD5dj0neXyfrU-WV9UYXacbUuPDqCNCT3io6GjBi-fGjuLk8GKIzKuUMKPoLAqjRH6OCAHOpVFvMQ
 
 {
-  "Name": "Katowice",
-  "CountryId": "e1045143-c79c-4c32-83e3-fb2280b83407",
+  "Name": "Paris",
+  "CountryId": "84f45674-158c-4c77-ae12-d08fda09a235",
   "Districts": [
     {
-      "Name": "Silesian Voivodeship",
+      "Name": "Paris City Center",
       "Neighborhoods": [
         {
-          "Name": "Pyrzowice"
+          "Name": "Le Marais"
+        },
+        {
+          "Name": "Saint-Germain-des-Prés"
         }
       ]
     }

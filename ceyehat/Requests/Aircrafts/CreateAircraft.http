@@ -9,6 +9,6 @@ Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW
   "model": "BOEING 737 NG / MAX",
   "manufacturerSerialNumber": "29785",
   "faaRegistration": "N1786B",
-  "countryId" : "7afcf68f-2f86-4d20-9f02-72c707b31a29",
-  "airlineId" : "9e90cf1e-eb4c-4a63-9a5d-c07bbccaf28d"
+  "countryId" : "931fea84-b2f3-4ccf-9909-9886774d8c1f",
+  "airlineId" : "929af944-ab66-43b4-9966-ee57ce3ac9e5"
 }

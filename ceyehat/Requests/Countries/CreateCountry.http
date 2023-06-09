@@ -3,9 +3,10 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiN2E5NTE3OGYtY2ZhOS00Y2NiLWE3MjUtYzA3ZTY5MzAxOGIwIiwiZXhwIjoxNjc2ODkwNDkwLCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.EG9NZNzpLxeSYuFnp-SYssAgc6A_JKyWvMW9_5L9HNG7ZTTgYuW1liO9eJ_BxnttLmVzIHXhOzFc9NVWTNkpZw
 
 {
-  "unLocode": "616",
-  "name": "Poland",
-  "iso2": "PL",
-  "iso3": "POL",
-  "currency": 13
+  "unLocode": "AU",
+  "name": "Australia",
+  "iso2": "AU",
+  "iso3": "AUS",
+  "currency": 6
 }
+

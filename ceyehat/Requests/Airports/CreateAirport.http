@@ -3,11 +3,19 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NzQyMGQwMy1lOGIxLTRjOTctOTFkZC01ZTI3Mjk2YmFlNzEiLCJnaXZlbl9uYW1lIjoiR2l0aHViIiwiZmFtaWx5X25hbWUiOiJUZXN0IiwianRpIjoiYWJhNDRkNGQtOWVmOC00MDI2LTg3MmEtMmFlOTMzYjVhNGEzIiwiZXhwIjoxNjc4Nzk2MjIyLCJpc3MiOiJBZGVtQ0xLIiwiYXVkIjoiQWRlbUNMSyJ9.7c3DPLPWxCD5dj0neXyfrU-WV9UYXacbUuPDqCNCT3io6GjBi-fGjuLk8GKIzKuUMKPoLAqjRH6OCAHOpVFvMQ
 
 {
-  "name": "Katowice Uluslararası Havalimanı",
-  "cityId": "bc55a6d8-e866-4013-b210-36f415aff0ec",
-  "iataCode": "KTW",
-  "icaoCode": "EPKT",
-  "latitude": 48.78589445854278,
-  "longitude": 44.34543763858307,
-  "timezone": "GMT+01:00"
+  "name": "Sydney Havalimanı",
+  "cityId": "6eba5ee6-78dc-4a9f-8361-a3ce5d355d8d",
+  "iataCode": "SYD",
+  "icaoCode": "YSSY",
+  "latitude": -33.9461,
+  "longitude": 151.1772,
+  "timezone": "GMT+10:00"
 }
+
+
+
+
+
+
+
+

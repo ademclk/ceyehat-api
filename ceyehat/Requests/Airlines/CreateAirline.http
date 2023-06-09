@@ -10,7 +10,7 @@ Authorization: Bearer eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW
   "code": "235",
   "website": "https://www.anadolujet.com/tr",
   "address": {
-    "cityId": "b936bdcc-5bec-4660-b296-682fb142e5c5"
+    "cityId": "fb18a2cc-34a7-470b-a347-cfc327fa1f07"
   },
   "aircraftIds": [
     ""
