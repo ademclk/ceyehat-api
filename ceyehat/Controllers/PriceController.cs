@@ -2,10 +2,12 @@ using Ceyehat.Application.Prices.Command.CreatePrice;
 using Ceyehat.Contracts.Prices;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 [Route("api/[controller]")]
+[AllowAnonymous]
 public class PriceController : ApiController
 {
     private readonly IMapper _mapper;

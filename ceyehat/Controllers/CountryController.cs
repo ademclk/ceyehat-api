@@ -3,11 +3,13 @@ using Ceyehat.Application.Countries.Commands.CreateCountry;
 using Ceyehat.Contracts.Countries;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 
 [Route("api/[controller]")]
+[AllowAnonymous]
 public class CountryController : ApiController
 {
     private readonly IMapper _mapper;

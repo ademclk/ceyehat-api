@@ -25,6 +25,11 @@ public class GetFlightTicketQueryHandler : IRequestHandler<GetFlightTicketQuery,
         
         var bookings = customer?.Bookings;
         
+        if (customer?.Bookings is null)
+        {
+            return new List<FlightTicketDtoResponse>();
+        }
+        
         var flightTicketDtos = new List<FlightTicketDtoResponse>();
 
         foreach (var booking in bookings!)

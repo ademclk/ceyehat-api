@@ -16,10 +16,10 @@ public class CreateAirportCommandValidator : AbstractValidator<CreateAirportComm
             .MaximumLength(64)
             .NotEmpty();
         RuleFor(a => a.Latitude)
-            .InclusiveBetween(0, 90)
+            .InclusiveBetween(-90, 90)
             .NotEmpty();
         RuleFor(a => a.Longitude)
-            .InclusiveBetween(0, 180)
+            .InclusiveBetween(-180, 180)
             .NotEmpty();
         RuleFor(a => a.Timezone)
             .MaximumLength(64)

@@ -33,27 +33,44 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
         public async Task<ErrorOr<List<BookingDtoResponse>>> Handle(GetBookingQuery request, CancellationToken cancellationToken)
         {
             var customer = await _customerRepository.GetCustomerByEmailAsync(request.Email!);
-            var bookings = customer?.Bookings;
+            if (customer?.Bookings is null)
+            {
+                return new List<BookingDtoResponse>();
+            }
+    
+            var bookings = customer.Bookings;
             var bookingDtos = new List<BookingDtoResponse>();
 
             foreach (var booking in bookings!)
             {
-                var seat = await _seatRepository.GetSeatByIdAsync(booking.SeatId!);
-                var flight = await _flightRepository.GetFlightByIdAsync(booking.FlightId!);
-
-                var bookingDto = new BookingDtoResponse
+                try
                 {
-                    BookingId = booking.Id.Value.ToString(),
-                    SeatId = booking.SeatId?.Value.ToString(),
-                    SeatNumber = seat?.SeatNumber,
-                    FlightId = booking.FlightId?.Value.ToString(),
-                    FlightNumber = flight?.FlightNumber,
-                    Currency = booking.Currency.ToString(),
-                    Price = booking.Price,
-                    PassengerType = TranslatePassengerType(booking.PassengerType), // Translate passenger type
-                };
+                    var seat = await _seatRepository.GetSeatByIdAsync(booking.SeatId!);
+                    var flight = await _flightRepository.GetFlightByIdAsync(booking.FlightId!);
 
-                bookingDtos.Add(bookingDto);
+                    if (seat is null || flight is null)
+                    {
+                        continue;
+                    }
+
+                    var bookingDto = new BookingDtoResponse
+                    {
+                        BookingId = booking.Id.Value.ToString(),
+                        SeatId = booking.SeatId?.Value.ToString(),
+                        SeatNumber = seat?.SeatNumber,
+                        FlightId = booking.FlightId?.Value.ToString(),
+                        FlightNumber = flight?.FlightNumber,
+                        Currency = booking.Currency.ToString(),
+                        Price = booking.Price,
+                        PassengerType = TranslatePassengerType(booking.PassengerType),
+                    };
+
+                    bookingDtos.Add(bookingDto);
+                }
+                catch (Exception ex)
+                {
+                    continue;
+                }
             }
 
             return bookingDtos;

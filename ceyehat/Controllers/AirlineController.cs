@@ -2,11 +2,13 @@ using Ceyehat.Application.Airlines.Commands.CreateAirline;
 using Ceyehat.Contracts.Airlines;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 
 [Route("api/[controller]")]
+[AllowAnonymous]
 public class AirlineController : ApiController
 {
     private readonly IMapper _mapper;

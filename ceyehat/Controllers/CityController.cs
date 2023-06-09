@@ -2,11 +2,13 @@ using Ceyehat.Application.Cities.Commands.CreateCity;
 using Ceyehat.Contracts.Cities;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ceyehat.Controllers;
 
 [Route("api/[controller]")]
+[AllowAnonymous]
 public class CityController : ApiController
 {
     private readonly IMapper _mapper;

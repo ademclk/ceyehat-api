@@ -8,7 +8,6 @@ using Ceyehat.Application.Customers.Queries.GetUser;
 using Ceyehat.Contracts.Authentication;
 using Ceyehat.Contracts.Customers.Users;
 using Ceyehat.Domain.Common.Errors;
-using Ceyehat.Domain.UserAggregate;
 using ErrorOr;
 using MapsterMapper;
 using MediatR;
