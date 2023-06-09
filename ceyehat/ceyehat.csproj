@@ -1,33 +1,43 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
-    <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <Nullable>enable</Nullable>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>ceyehat</RootNamespace>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="ErrorOr" Version="1.2.1" />
-        <PackageReference Include="Mapster" Version="7.3.0" />
-        <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
-        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
-        <PackageReference Include="SendGrid" Version="9.28.1" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-        <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <ProjectReference Include="..\Ceyehat.Application\Ceyehat.Application.csproj" />
-        <ProjectReference Include="..\Ceyehat.Contracts\Ceyehat.Contracts.csproj" />
-        <ProjectReference Include="..\Ceyehat.Infrastructure\Ceyehat.Infrastructure.csproj" />
-    </ItemGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ceyehat</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="ErrorOr" Version="1.2.1" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.5" />
+    <PackageReference Include="Microsoft.ML" Version="1.7.1" />
+    <PackageReference Include="Microsoft.ML.Recommender" Version="0.19.1" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
+    <PackageReference Include="SendGrid" Version="9.28.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ceyehat.Application\Ceyehat.Application.csproj" />
+    <ProjectReference Include="..\Ceyehat.Contracts\Ceyehat.Contracts.csproj" />
+    <ProjectReference Include="..\Ceyehat.Infrastructure\Ceyehat.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup Label="AirportRecommenderMLModel">
+    <None Include="AirportRecommenderMLModel.consumption.cs">
+      <DependentUpon>AirportRecommenderMLModel.mbconfig</DependentUpon>
+    </None>
+    <None Include="AirportRecommenderMLModel.training.cs">
+      <DependentUpon>AirportRecommenderMLModel.mbconfig</DependentUpon>
+    </None>
+    <None Include="AirportRecommenderMLModel.zip">
+      <DependentUpon>AirportRecommenderMLModel.mbconfig</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
