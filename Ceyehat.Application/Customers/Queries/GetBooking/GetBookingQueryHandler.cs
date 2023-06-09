@@ -37,7 +37,7 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
             {
                 return new List<BookingDtoResponse>();
             }
-    
+
             var bookings = customer.Bookings;
             var bookingDtos = new List<BookingDtoResponse>();
 
