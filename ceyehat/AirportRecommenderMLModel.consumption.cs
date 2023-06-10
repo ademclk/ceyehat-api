@@ -21,9 +21,6 @@ namespace Ceyehat
             [ColumnName(@"AirportId")]
             public string AirportId { get; set; }
 
-            [ColumnName(@"Purchases")]
-            public float Purchases { get; set; }
-
         }
 
         #endregion
@@ -35,16 +32,19 @@ namespace Ceyehat
         public class ModelOutput
         {
             [ColumnName(@"UserId")]
-            public uint UserId { get; set; }
+            public float[] UserId { get; set; }
 
             [ColumnName(@"AirportId")]
             public uint AirportId { get; set; }
 
-            [ColumnName(@"Purchases")]
-            public float Purchases { get; set; }
+            [ColumnName(@"Features")]
+            public float[] Features { get; set; }
+
+            [ColumnName(@"PredictedLabel")]
+            public string PredictedLabel { get; set; }
 
             [ColumnName(@"Score")]
-            public float Score { get; set; }
+            public float[] Score { get; set; }
 
         }
 
