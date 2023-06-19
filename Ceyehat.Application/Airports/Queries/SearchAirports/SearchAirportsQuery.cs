@@ -6,4 +6,4 @@ namespace Ceyehat.Application.Airports.Queries.SearchAirports;
 
 public record SearchAirportsQuery(
     string? SearchTerm
-    ) : IRequest<ErrorOr<List<AirportDto>>>;
+) : IRequest<ErrorOr<List<AirportDto>>>;

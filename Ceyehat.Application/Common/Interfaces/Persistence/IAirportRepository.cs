@@ -9,5 +9,6 @@ public interface IAirportRepository
     Task<List<AirportDto>> SearchAirportsAsync(string searchTerm);
     Task<List<Airport>> GetAllAirportsAsync();
     Task<Airport?> GetAirportByIdAsync(AirportId airportId);
+    Task<AirportDto?> GetAirportByIdStringAsync(string airportId);
     Task AddAirportAsync(Airport airport);
 }

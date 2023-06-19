@@ -25,9 +25,7 @@ public class AddPassengerCommandHandler : IRequestHandler<AddPassengerCommand, E
     public async Task<ErrorOr<Customer>> Handle(AddPassengerCommand request, CancellationToken cancellationToken)
     {
         var existingCustomer = await _customerRepository.GetCustomerByEmailAsync(request.Email);
-
-
-
+        
         if (existingCustomer != null)
         {
             foreach (var bookingCommand in request.AddBookingCommands)

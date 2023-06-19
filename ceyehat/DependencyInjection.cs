@@ -1,4 +1,5 @@
 using System.Configuration;
+using Ceyehat;
 using ceyehat.Common.Errors;
 using ceyehat.Common.Mapping;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
@@ -13,6 +14,7 @@ public static class DependencyInjection
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen();
         services.AddSingleton<ProblemDetailsFactory, CeyehatProblemDetailsFactory>();
+        services.AddSingleton<AirportRecommenderMLModel>();
         services.AddMappings();
 
         return services;

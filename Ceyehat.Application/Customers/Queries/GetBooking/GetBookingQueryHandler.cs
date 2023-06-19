@@ -48,11 +48,6 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
                     var seat = await _seatRepository.GetSeatByIdAsync(booking.SeatId!);
                     var flight = await _flightRepository.GetFlightByIdAsync(booking.FlightId!);
 
-                    if (seat is null || flight is null)
-                    {
-                        continue;
-                    }
-
                     var bookingDto = new BookingDtoResponse
                     {
                         BookingId = booking.Id.Value.ToString(),
