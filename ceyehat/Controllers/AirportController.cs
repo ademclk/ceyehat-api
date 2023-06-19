@@ -73,8 +73,8 @@ namespace ceyehat.Controllers
             {
                 Name = airport?.Name,
                 IataCode = airport?.IataCode,
-                CityName = airport?.CityName, 
-                CountryName = airport?.CountryName, 
+                CityName = airport?.CityName,
+                CountryName = airport?.CountryName,
                 Longitude = airport?.Longitude ?? default,
                 Latitude = airport?.Latitude ?? default,
             };
