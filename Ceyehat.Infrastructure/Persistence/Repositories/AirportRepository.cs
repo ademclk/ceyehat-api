@@ -65,7 +65,7 @@ public class AirportRepository : IAirportRepository
     public async Task<AirportDto?> GetAirportByIdStringAsync(string airportId)
     {
         var aid = AirportId.Create(Guid.Parse(airportId));
-        
+
         var airport = await _dbContext.Airports
             .FirstOrDefaultAsync(a => a.Id == aid);
 
@@ -73,9 +73,9 @@ public class AirportRepository : IAirportRepository
         {
             return null;
         }
-        
+
         var res = await SearchAirportsAsync(airport.IataCode!);
-        
+
         return res.FirstOrDefault();
     }
 
