@@ -31,9 +31,9 @@ public class RegisterCommandHandler :
         {
             return Errors.User.DuplicateEmail;
         }
-        
+
         var customerResponse = await _customerRepository.GetCustomerByEmailAsync(command.Email);
-        
+
         var user = User.Create(
             command.FirstName,
             command.LastName,

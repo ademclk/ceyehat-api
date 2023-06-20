@@ -27,7 +27,7 @@ public class GetUserQueryHandler : IRequestHandler<GetUserQuery, ErrorOr<UserDto
             LastName = user.LastName,
             Email = user.Email
         };
-        
+
         return res;
     }
 }
