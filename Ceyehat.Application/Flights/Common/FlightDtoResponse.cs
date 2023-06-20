@@ -1,6 +1,6 @@
 namespace Ceyehat.Application.Flights.Common;
 
-public class FlightDtoResponse
+public abstract class FlightDtoResponse
 {
     public string? FlightNumber { get; set; }
     public string? AirlineName { get; set; }

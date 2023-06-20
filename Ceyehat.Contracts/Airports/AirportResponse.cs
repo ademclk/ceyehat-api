@@ -1,6 +1,6 @@
 namespace Ceyehat.Contracts.Airports;
 
-public record AirportResponse(
+public abstract record AirportResponse(
     string Id,
     string Name,
     string CityId,

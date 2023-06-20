@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Ceyehat.Application.Authentication.Commands.Register;
 
-public record RegisterCommand(
+public abstract record RegisterCommand(
     string Email,
     string Password,
     string FirstName,

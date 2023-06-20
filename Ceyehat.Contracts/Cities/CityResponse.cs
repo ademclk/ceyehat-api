@@ -1,6 +1,6 @@
 namespace Ceyehat.Contracts.Cities;
 
-public record CityResponse(
+public abstract record CityResponse(
     string? Id,
     string? Name,
     string? CountryId,
@@ -8,12 +8,12 @@ public record CityResponse(
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
-public record DistrictResponse(
+public abstract record DistrictResponse(
     string? Id,
     string? Name,
     List<NeighborhoodResponse> Neighborhoods);
 
-public record NeighborhoodResponse(
+public abstract record NeighborhoodResponse(
     string? Id,
     string? Name,
     string? AirlineId,

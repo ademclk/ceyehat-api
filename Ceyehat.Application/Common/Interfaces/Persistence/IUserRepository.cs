@@ -1,4 +1,3 @@
-using Ceyehat.Application.Customers.Common;
 using Ceyehat.Domain.UserAggregate;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
 

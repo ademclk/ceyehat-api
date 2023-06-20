@@ -5,12 +5,12 @@ using ErrorOr;
 
 namespace Ceyehat.Application.Prices.Command.CreatePrice;
 
-public record CreatePriceCommand(
+public abstract record CreatePriceCommand(
     decimal Amount,
     Currency Currency,
     FlightPricingCommand Pricing) : IRequest<ErrorOr<Price>>;
 
-public record FlightPricingCommand(
+public abstract record FlightPricingCommand(
     decimal BaseCost,
     decimal MarkupPercentage,
     decimal DemandMultiplier,

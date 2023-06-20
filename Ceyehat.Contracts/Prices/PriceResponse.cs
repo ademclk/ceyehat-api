@@ -1,8 +1,6 @@
-using Ceyehat.Domain.Enums;
-
 namespace Ceyehat.Contracts.Prices;
 
-public record PriceResponse(
+public abstract record PriceResponse(
     string? Id,
     decimal Amount,
     string? Currency,
@@ -11,7 +9,7 @@ public record PriceResponse(
     DateTime UpdatedAt
 );
 
-public record FlightPricing(
+public abstract record FlightPricing(
     decimal BaseCost,
     decimal MarkupPercentage,
     decimal DemandMultiplier,

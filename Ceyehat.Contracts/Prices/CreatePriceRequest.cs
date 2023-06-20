@@ -7,7 +7,7 @@ public record CreatePriceRequest(
     Currency Currency,
     FlightPricingRequest Pricing);
 
-public record FlightPricingRequest(
+public abstract record FlightPricingRequest(
     decimal BaseCost,
     decimal MarkupPercentage,
     decimal DemandMultiplier,

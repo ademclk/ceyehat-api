@@ -2,10 +2,8 @@ using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.Common.Errors;
-using Ceyehat.Domain.CustomerAggregate;
 using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Ceyehat.Domain.UserAggregate;
-using Ceyehat.Domain.UserAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;
 

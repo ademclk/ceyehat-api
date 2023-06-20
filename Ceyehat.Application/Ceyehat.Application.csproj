@@ -24,10 +24,4 @@
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.4" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Cities\Queries\GetCities" />
-      <Folder Include="Countries\Queries\GetCountries" />
-      <Folder Include="Flights\Queries\GetFlights" />
-    </ItemGroup>
-
 </Project>

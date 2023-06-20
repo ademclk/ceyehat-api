@@ -1,10 +1,7 @@
-using System.Runtime.CompilerServices;
 using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
-using Ceyehat.Domain.SeatAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ceyehat.Infrastructure.Persistence.Repositories;

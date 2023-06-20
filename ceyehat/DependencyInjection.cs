@@ -1,4 +1,3 @@
-using System.Configuration;
 using Ceyehat;
 using ceyehat.Common.Errors;
 using ceyehat.Common.Mapping;

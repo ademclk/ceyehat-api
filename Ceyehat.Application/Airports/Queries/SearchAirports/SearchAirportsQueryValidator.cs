@@ -1,4 +1,3 @@
-using Ceyehat.Domain.AirportAggregate;
 using FluentValidation;
 
 namespace Ceyehat.Application.Airports.Queries.SearchAirports;

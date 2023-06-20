@@ -17,7 +17,7 @@ public class UserRepository : IUserRepository
 
     public async Task<User?> GetUserByEmailAsync(string email)
     {
-        return await _dbContext.Users.FirstOrDefaultAsync(u => u!.Email == email);
+        return await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
 
     public async Task AddUserAsync(User? user)
@@ -28,12 +28,12 @@ public class UserRepository : IUserRepository
     
     public async Task<UserId?> GetUserIdByEmailAsync(string email)
     {
-        var userId = await _dbContext.Users.FirstOrDefaultAsync(u => u!.Email == email);
+        var userId = await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
         if (userId == null)
         {
             throw new NpgsqlException("User not found");
         }
         
-        return userId?.Id;
+        return userId.Id;
     }
 }

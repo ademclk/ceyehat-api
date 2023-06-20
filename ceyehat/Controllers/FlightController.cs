@@ -1,4 +1,3 @@
-using Ceyehat.Application.Flights.Commands;
 using Ceyehat.Application.Flights.Commands.CreateFlight;
 using Ceyehat.Application.Flights.Common;
 using Ceyehat.Application.Flights.Queries.SearchFlights;
@@ -33,7 +32,7 @@ public class FlightController : ApiController
 
         return createFlightResult.Match<IActionResult>(
             flight => Ok(_mapper.Map<FlightResponse>(flight)),
-            error => Problem(error));
+            Problem);
     }
 
     [HttpPost]
@@ -50,6 +49,6 @@ public class FlightController : ApiController
 
         return searchFlightsResult.Match<IActionResult>(
             flights => Ok(_mapper.Map<List<FlightDtoResponse>>(flights)),
-            error => Problem(error));
+            Problem);
     }
 }

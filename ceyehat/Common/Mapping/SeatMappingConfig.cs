@@ -1,4 +1,3 @@
-using Ceyehat.Application.Seats.Commands;
 using Ceyehat.Application.Seats.Commands.CreateSeat;
 using Ceyehat.Contracts.Seats;
 using Ceyehat.Domain.Enums;

@@ -169,7 +169,7 @@ public class CustomerConfigurations : IEntityTypeConfiguration<Customer>
         builder.Property(c => c.UserId)
             .ValueGeneratedNever()
             .HasConversion(
-                c => c!.Value,
+                c => c.Value,
                 value => UserId.Create(value));
     }
 }

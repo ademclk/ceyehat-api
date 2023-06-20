@@ -1,6 +1,5 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.CustomerAggregate;
-using Ceyehat.Domain.CustomerAggregate.Entities;
 using Ceyehat.Domain.UserAggregate.ValueObjects;
 using ErrorOr;
 using MediatR;

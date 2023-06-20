@@ -1,4 +1,3 @@
-using System.Configuration;
 using Ceyehat.Domain.AircraftAggregate;
 using Ceyehat.Domain.AirlineAggregate;
 using Ceyehat.Domain.AirportAggregate;
@@ -13,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ceyehat.Infrastructure.Persistence;
 
-public partial class CeyehatDbContext : DbContext
+public class CeyehatDbContext : DbContext
 {
     public CeyehatDbContext(DbContextOptions<CeyehatDbContext> options)
         : base(options)

@@ -1,7 +1,3 @@
-
-using Ceyehat.Domain.CityAggregate.ValueObjects;
-using Ceyehat.Domain.CountryAggregate.ValueObjects;
-
 namespace Ceyehat.Contracts.Cities;
 
 public record CreateCityRequest(
@@ -9,11 +5,11 @@ public record CreateCityRequest(
     string? CountryId,
     List<District> Districts);
 
-public record District(
+public abstract record District(
     string? Name,
     List<Neighborhood> Neighborhoods);
 
-public record Neighborhood(
+public abstract record Neighborhood(
     string? Name,
     string? AirlineId,
     string? AirportId);

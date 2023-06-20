@@ -1,6 +1,6 @@
 namespace Ceyehat.Contracts.Aircrafts;
 
-public record AircraftResponse(
+public abstract record AircraftResponse(
     string Id,
     string? RegistrationNumber,
     string? Icao24Code,

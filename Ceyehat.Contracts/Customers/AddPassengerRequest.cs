@@ -1,6 +1,4 @@
 using Ceyehat.Domain.Enums;
-using Ceyehat.Domain.FlightAggregate.ValueObjects;
-using Ceyehat.Domain.SeatAggregate.ValueObjects;
 
 namespace Ceyehat.Contracts.Customers;
 
@@ -15,7 +13,7 @@ public record AddPassengerRequest(
     List<AddBookingRequest> AddBookingRequests
 );
 
-public record AddBookingRequest(
+public abstract record AddBookingRequest(
     string? SeatId,
     string? FlightId,
     float Price,

@@ -18,8 +18,8 @@ public class CreateAircraftCommandHandler : IRequestHandler<CreateAircraftComman
 
     public async Task<ErrorOr<Aircraft>> Handle(CreateAircraftCommand request, CancellationToken cancellationToken)
     {
-        var countryId = CountryId.Create(Guid.Parse(request.CountryId.ToString()!));
-        var airlineId = AirlineId.Create(Guid.Parse(request.AirlineId.ToString()!));
+        var countryId = CountryId.Create(Guid.Parse(request.CountryId!));
+        var airlineId = AirlineId.Create(Guid.Parse(request.AirlineId!));
 
         var aircraft = Aircraft.Create(
             request.RegistrationNumber,

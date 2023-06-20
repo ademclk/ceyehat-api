@@ -1,6 +1,5 @@
 using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Domain.AirportAggregate;
 using ErrorOr;
 using MediatR;
 

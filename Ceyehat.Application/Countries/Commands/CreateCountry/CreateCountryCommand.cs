@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Ceyehat.Application.Countries.Commands.CreateCountry;
 
-public record CreateCountryCommand(
+public abstract record CreateCountryCommand(
     string UnLocode,
     string Name,
     string? Iso2,

@@ -17,14 +17,12 @@ namespace ceyehat.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ISender _mediator;
-        private readonly AirportRecommenderMLModel _mlModel;
         private readonly IAirportRepository _airportRepository;
 
-        public AirportController(IMapper mapper, ISender mediator, AirportRecommenderMLModel mlModel, IAirportRepository airportRepository)
+        public AirportController(IMapper mapper, ISender mediator, IAirportRepository airportRepository)
         {
             _mapper = mapper;
             _mediator = mediator;
-            _mlModel = mlModel;
             _airportRepository = airportRepository;
         }
 
@@ -35,7 +33,7 @@ namespace ceyehat.Controllers
             var result = await _mediator.Send(command);
             return result.Match<IActionResult>(
                 airport => Ok(_mapper.Map<AirportResponse>(airport)),
-                error => Problem(error));
+                Problem);
         }
 
         [HttpGet]
@@ -44,7 +42,7 @@ namespace ceyehat.Controllers
             var result = await _mediator.Send(new GetAirportsQuery());
             return result.Match<IActionResult>(
                 airports => Ok(_mapper.Map<List<AirportResponse>>(airports)),
-                error => Problem(error));
+                Problem);
         }
 
         [HttpGet]

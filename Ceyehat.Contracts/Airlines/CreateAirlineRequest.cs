@@ -10,5 +10,5 @@ public record CreateAirlineRequest(
     AirlineAddressRequest Address,
     List<string> AircraftIds);
 
-public record AirlineAddressRequest(
+public abstract record AirlineAddressRequest(
     string? CityId);

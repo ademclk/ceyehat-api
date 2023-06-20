@@ -30,6 +30,6 @@ public class CityController : ApiController
 
         return createCityResult.Match<IActionResult>(
             city => Ok(_mapper.Map<CityResponse>(city)),
-            error => Problem(error));
+            Problem);
     }
 }

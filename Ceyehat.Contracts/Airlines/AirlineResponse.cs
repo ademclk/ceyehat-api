@@ -1,8 +1,6 @@
-using Ceyehat.Domain.CityAggregate.ValueObjects;
-
 namespace Ceyehat.Contracts.Airlines;
 
-public record AirlineResponse(
+public abstract record AirlineResponse(
     string Id,
     string? Name,
     string? IataCode,
@@ -15,5 +13,5 @@ public record AirlineResponse(
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
-public record AirlineAddressResponse(
+public abstract record AirlineAddressResponse(
     string? City);

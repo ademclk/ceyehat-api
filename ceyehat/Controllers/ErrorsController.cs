@@ -10,7 +10,7 @@ public class ErrorsController : ControllerBase
     [HttpGet]
     public IActionResult Error()
     {
-        var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
+        _ = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
 
         return Problem();
     }

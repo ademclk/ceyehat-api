@@ -4,5 +4,4 @@ using MediatR;
 
 namespace Ceyehat.Application.Airports.Queries.GetAirports;
 
-public record GetAirportsQuery(
-    ) : IRequest<ErrorOr<List<Airport>>>;
+public record GetAirportsQuery : IRequest<ErrorOr<List<Airport>>>;

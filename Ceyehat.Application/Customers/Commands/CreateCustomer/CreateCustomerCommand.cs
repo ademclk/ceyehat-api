@@ -9,7 +9,7 @@ using MediatR;
 
 namespace Ceyehat.Application.Customers.Commands.CreateCustomer;
 
-public record CreateCustomerCommand(
+public abstract record CreateCustomerCommand(
     string Name,
     string Surname,
     string Email,
@@ -22,18 +22,18 @@ public record CreateCustomerCommand(
     List<FlightTicketCommand> FlightTicketCommands,
     List<BoardingPassCommand> BoardingPassCommands) : IRequest<ErrorOr<Customer>>;
 
-public record BookingCommand(
+public abstract record BookingCommand(
     SeatId SeatId,
     FlightId FlightId,
     float Price,
     Currency Currency,
     PassengerType PassengerType);
 
-public record FlightTicketCommand(
+public abstract record FlightTicketCommand(
     BoardingPassId BoardingPassId,
     BookingId BookingId);
 
-public record BoardingPassCommand(
+public abstract record BoardingPassCommand(
     string? BoardingGroup,
     string? BoardingGate,
     DateTime BoardingTime,

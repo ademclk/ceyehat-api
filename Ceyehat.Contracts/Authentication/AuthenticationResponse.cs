@@ -1,6 +1,6 @@
 namespace Ceyehat.Contracts.Authentication;
 
-public record AuthenticationResponse(
+public abstract record AuthenticationResponse(
     Guid UserId,
     string Email,
     string FirstName,

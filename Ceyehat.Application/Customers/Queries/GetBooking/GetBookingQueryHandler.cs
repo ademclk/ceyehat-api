@@ -2,7 +2,6 @@ using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Customers.Common;
 using MediatR;
 using ErrorOr;
-using System.Collections.Generic;
 using Ceyehat.Domain.Enums;
 
 namespace Ceyehat.Application.Customers.Queries.GetBooking
@@ -14,7 +13,7 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
         private readonly IFlightRepository _flightRepository;
 
         // Dictionary to map enum values to their Turkish translations
-        private readonly Dictionary<PassengerType, string> passengerTypeTranslations = new Dictionary<PassengerType, string>
+        private readonly Dictionary<PassengerType, string> _passengerTypeTranslations = new Dictionary<PassengerType, string>
         {
             { PassengerType.Adult, "Yetişkin" },
             { PassengerType.Child, "Çocuk" },
@@ -23,7 +22,7 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
             { PassengerType.Student, "Öğrenci" }
         };
 
-        public GetBookingQueryHandler(ICustomerRepository customerRepository, ISeatRepository seatRepository, IFlightRepository flightRepository, IUserRepository userRepository)
+        public GetBookingQueryHandler(ICustomerRepository customerRepository, ISeatRepository seatRepository, IFlightRepository flightRepository)
         {
             _customerRepository = customerRepository;
             _seatRepository = seatRepository;
@@ -62,9 +61,9 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
 
                     bookingDtos.Add(bookingDto);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    continue;
+                    // ignored
                 }
             }
 
@@ -74,7 +73,7 @@ namespace Ceyehat.Application.Customers.Queries.GetBooking
         private string TranslatePassengerType(PassengerType passengerType)
         {
             // Return the Turkish translation from the dictionary
-            return passengerTypeTranslations.TryGetValue(passengerType, out var translation) ? translation : string.Empty;
+            return _passengerTypeTranslations.TryGetValue(passengerType, out var translation) ? translation : string.Empty;
         }
     }
 }

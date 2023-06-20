@@ -35,9 +35,9 @@ public class AuthenticationController : ApiController
         var query = _mapper.Map<GetUserQuery>(request);
         ErrorOr<UserDtoResponse?> result = await _mediator.Send(query);
 
-        return result.Match<IActionResult>(
-            user => Ok(user),
-            errors => Problem(errors));
+        return result.Match(
+            Ok,
+            Problem);
     }
 
     [HttpPost("user-bookings")]
@@ -47,9 +47,9 @@ public class AuthenticationController : ApiController
 
         var bookings = await _mediator.Send(query);
 
-        return bookings.Match<IActionResult>(
-            booking => Ok(booking),
-            error => Problem(error));
+        return bookings.Match(
+            Ok,
+            Problem);
     }
 
     [HttpPost("user-tickets")]
@@ -59,9 +59,9 @@ public class AuthenticationController : ApiController
 
         var tickets = await _mediator.Send(query);
 
-        return tickets.Match<IActionResult>(
-            ticket => Ok(ticket),
-            error => Problem(error));
+        return tickets.Match(
+            Ok,
+            Problem);
     }
 
     [HttpPost("login")]
@@ -78,8 +78,8 @@ public class AuthenticationController : ApiController
         }
 
         return loginResult.Match(
-            authResult => Ok(loginResult.Value),
-            errors => Problem(errors));
+            _ => Ok(loginResult.Value),
+            Problem);
     }
 
     [HttpPost("register")]
@@ -89,8 +89,8 @@ public class AuthenticationController : ApiController
         ErrorOr<Token> registerResult = await _mediator.Send(command);
 
         return registerResult.Match(
-            authResult => Ok(registerResult.Value),
-             errors => Problem(errors)
+            _ => Ok(registerResult.Value),
+             Problem
         );
     }
 }

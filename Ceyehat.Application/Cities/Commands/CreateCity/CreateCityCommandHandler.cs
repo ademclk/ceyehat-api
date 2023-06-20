@@ -1,5 +1,4 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Contracts.Cities;
 using Ceyehat.Domain.AirlineAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.CityAggregate;

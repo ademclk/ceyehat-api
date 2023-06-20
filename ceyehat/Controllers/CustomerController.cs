@@ -1,16 +1,11 @@
-using System.Text;
-using Ceyehat.Application.Customers.Commands;
 using Ceyehat.Application.Customers.Commands.AddPassenger;
 using Ceyehat.Application.Customers.Commands.CreateCustomer;
 using Ceyehat.Application.Customers.Commands.CreateTicket;
-using Ceyehat.Application.Customers.Queries.GetBooking;
 using Ceyehat.Contracts.Customers;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ceyehat.Common.Services;
-using Ceyehat.Contracts.Customers.Users;
 using Ceyehat.Domain.CustomerAggregate;
 
 
@@ -39,7 +34,7 @@ public class CustomerController : ApiController
 
         return createCustomerResult.Match<IActionResult>(
             customer => Ok(_mapper.Map<CustomerResponse>(customer)),
-            error => Problem(error));
+            Problem);
     }
 
     [HttpPost("add-passenger")]
@@ -52,7 +47,7 @@ public class CustomerController : ApiController
 
         return addPassengerResult.Match<IActionResult>(
             customer => Ok(_mapper.Map<CustomerResponse>(customer)),
-            error => Problem(error));
+            Problem);
     }
 
     [HttpPost("create-ticket")]
@@ -64,12 +59,12 @@ public class CustomerController : ApiController
 
         return await createTicketResult.MatchAsync<IActionResult>(
             async ticket => await HandleTicketCreationSuccess(ticket),
-            error => Task.FromResult<IActionResult>(Problem(error)));
+            error => Task.FromResult(Problem(error)));
     }
 
-    private async Task<IActionResult> HandleTicketCreationSuccess(Customer ticket)
+    private Task<IActionResult> HandleTicketCreationSuccess(Customer ticket)
     {
         var customerResponse = _mapper.Map<CustomerResponse>(ticket);
-        return Ok(customerResponse);
+        return Task.FromResult<IActionResult>(Ok(customerResponse));
     }
 }

@@ -3,10 +3,8 @@ using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Common.Interfaces.Services;
 using Ceyehat.Infrastructure.Authentication;
-using Ceyehat.Infrastructure.Persistence;
 using Ceyehat.Infrastructure.Persistence.Repositories;
 using Ceyehat.Infrastructure.Services;
-using Mapster;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,8 +27,7 @@ public static class DependencyInjection
         return services;
     }
 
-    private static IServiceCollection AddPersistence(
-        this IServiceCollection services)
+    private static void AddPersistence(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IAircraftRepository, AircraftRepository>();
@@ -42,8 +39,6 @@ public static class DependencyInjection
         services.AddScoped<ICityRepository, CityRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         services.AddScoped<IPriceRepository, PriceRepository>();
-
-        return services;
     }
 
     private static IServiceCollection AddAuth(

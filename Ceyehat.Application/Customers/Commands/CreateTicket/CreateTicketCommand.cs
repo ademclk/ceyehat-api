@@ -3,7 +3,7 @@ using MediatR;
 using ErrorOr;
 
 namespace Ceyehat.Application.Customers.Commands.CreateTicket;
-public record CreateTicketCommand(
+public abstract record CreateTicketCommand(
     string? Email,
     string? FlightId
 ) : IRequest<ErrorOr<Customer>>;

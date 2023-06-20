@@ -2,20 +2,20 @@ namespace Ceyehat.Domain.Enums;
 
 public enum Currency
 {
-    USD,
-    EUR,
-    GBP,
-    CHF,
-    JPY,
-    CAD,
-    AUD,
-    NZD,
-    SEK,
-    NOK,
-    DKK,
-    CZK,
-    HUF,
-    PLN,
-    RUB,
-    TRY
+    Usd,
+    Eur,
+    Gbp,
+    Chf,
+    Jpy,
+    Cad,
+    Aud,
+    Nzd,
+    Sek,
+    Nok,
+    Dkk,
+    Czk,
+    Huf,
+    Pln,
+    Rub,
+    Try
 }

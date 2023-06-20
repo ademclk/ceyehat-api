@@ -1,10 +1,6 @@
-using Ceyehat.Contracts.Aircrafts;
-using Ceyehat.Contracts.Airports;
-using Ceyehat.Domain.Enums;
-
 namespace Ceyehat.Contracts.Flights;
 
-public record FlightResponse(
+public abstract record FlightResponse(
     string? Id,
     string? FlightNumber,
     DateTime ScheduledDeparture,

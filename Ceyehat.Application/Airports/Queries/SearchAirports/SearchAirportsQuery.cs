@@ -4,6 +4,6 @@ using ErrorOr;
 
 namespace Ceyehat.Application.Airports.Queries.SearchAirports;
 
-public record SearchAirportsQuery(
+public abstract record SearchAirportsQuery(
     string? SearchTerm
 ) : IRequest<ErrorOr<List<AirportDto>>>;

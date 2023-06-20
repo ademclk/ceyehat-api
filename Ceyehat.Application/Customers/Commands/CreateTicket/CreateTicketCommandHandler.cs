@@ -28,7 +28,7 @@ public class CreateTicketCommandHandler : IRequestHandler<CreateTicketCommand, E
             null,
             bookingId!);
 
-        customer!.AddFlightTicket(flightTicket);
+        customer.AddFlightTicket(flightTicket);
 
         await _customerRepository.UpdateCustomerAsync(customer);
 

@@ -1,7 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Text;
 using Ceyehat.Application.Authentication.Common;
 using Ceyehat.Application.Common.Interfaces.Authentication;
 using Ceyehat.Application.Common.Interfaces.Services;
@@ -31,7 +30,6 @@ public class JwtTokenGenerator : IJwtTokenGenerator
     {
         var token = new Token()
         {
-            ExpireDate = _dateTimeProvider.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
         };
 
         using RSA rsa = RSA.Create(); // Create an RSA key pair
@@ -57,8 +55,8 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             claims: claims,
             signingCredentials: signingCredentials);
 
-        token.AccessToken = new JwtSecurityTokenHandler().WriteToken(securityToken);
-        token.RefreshToken = GenerateRefreshToken();
+        new JwtSecurityTokenHandler().WriteToken(securityToken);
+        GenerateRefreshToken();
 
         return token;
     }

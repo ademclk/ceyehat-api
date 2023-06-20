@@ -15,7 +15,7 @@ public class AirportRepository : IAirportRepository
         _dbContext = dbContext;
     }
 
-    public async Task<List<AirportDto>> SearchAirportsAsync(string searchTerm)
+    public async Task<List<AirportDto>> SearchAirportsAsync(string? searchTerm)
     {
 
         var airports = await (

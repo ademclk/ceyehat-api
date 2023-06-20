@@ -4,6 +4,6 @@ using ErrorOr;
 
 namespace Ceyehat.Application.Countries.Queries.GetCountryById;
 
-public record GetCountryByIdQuery(
+public abstract record GetCountryByIdQuery(
     string Id
     ) : IRequest<ErrorOr<Country>>;

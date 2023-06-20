@@ -30,7 +30,7 @@ public class CustomerMappingConfig : IRegister
 
         config.NewConfig<FlightTicket, FlightTicketResponse>()
             .Map(dest => dest.Id, src => src.Id.Value)
-            .Map(dest => dest.BookingId, src => src.BookingId!.Value);
+            .Map(dest => dest.BookingId, src => src.BookingId.Value);
 
         config.NewConfig<BoardingPass, BoardingPassResponse>()
             .Map(dest => dest.Id, src => src.Id.Value);

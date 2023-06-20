@@ -1,11 +1,10 @@
 using Ceyehat.Domain.AirportAggregate;
-using Ceyehat.Domain.CityAggregate.ValueObjects;
 using MediatR;
 using ErrorOr;
 
 namespace Ceyehat.Application.Airports.Commands.CreateAirport;
 
-public record CreateAirportCommand(
+public abstract record CreateAirportCommand(
     string? Name,
     string? IataCode,
     string? IcaoCode,

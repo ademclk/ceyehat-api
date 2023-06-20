@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
-using Ceyehat.Application.Airports.Queries.SearchAirports;
 using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using ErrorOr;

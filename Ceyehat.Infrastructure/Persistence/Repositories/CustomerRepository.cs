@@ -1,8 +1,5 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
-using Ceyehat.Application.Customers.Common;
 using Ceyehat.Domain.CustomerAggregate;
-using Ceyehat.Domain.CustomerAggregate.Entities;
-using Ceyehat.Domain.CustomerAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ceyehat.Infrastructure.Persistence.Repositories;

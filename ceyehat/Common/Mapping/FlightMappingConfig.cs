@@ -1,8 +1,5 @@
-using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Application.Flights.Commands.CreateFlight;
 using Ceyehat.Contracts.Flights;
-using Ceyehat.Domain.AircraftAggregate.ValueObjects;
-using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.Enums;
 using Ceyehat.Domain.FlightAggregate;
 using Mapster;

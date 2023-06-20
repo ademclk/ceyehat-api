@@ -30,6 +30,6 @@ public class AircraftController : ApiController
 
         return createAircraftResult.Match<IActionResult>(
             aircraft => Ok(_mapper.Map<AircraftResponse>(aircraft)),
-            error => Problem(error));
+            Problem);
     }
 }

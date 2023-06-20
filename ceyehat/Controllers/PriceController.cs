@@ -29,7 +29,7 @@ public class PriceController : ApiController
 
         return createPriceResult.Match<IActionResult>(
             price => Ok(_mapper.Map<PriceResponse>(price)),
-            error => Problem(error));
+            Problem);
     }
 
 

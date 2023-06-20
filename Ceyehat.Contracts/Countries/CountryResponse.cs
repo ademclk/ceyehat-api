@@ -2,7 +2,7 @@ using Ceyehat.Domain.Enums;
 
 namespace Ceyehat.Contracts.Countries;
 
-public record CountryResponse(
+public abstract record CountryResponse(
     string Id,
     string? UnLocode,
     string? Name,

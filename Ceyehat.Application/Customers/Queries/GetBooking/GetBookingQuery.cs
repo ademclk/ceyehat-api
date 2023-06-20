@@ -4,5 +4,5 @@ using ErrorOr;
 
 namespace Ceyehat.Application.Customers.Queries.GetBooking;
 
-public record GetBookingQuery(
+public abstract record GetBookingQuery(
     string? Email) : IRequest<ErrorOr<List<BookingDtoResponse>>>;

@@ -1,9 +1,6 @@
-using Ceyehat.Domain.AircraftAggregate.ValueObjects;
-using Ceyehat.Domain.Enums;
-
 namespace Ceyehat.Contracts.Seats;
 
-public record SeatResponse(
+public abstract record SeatResponse(
     string? Id,
     string? SeatNumber,
     string SeatClass,

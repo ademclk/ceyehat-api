@@ -4,5 +4,5 @@ using ErrorOr;
 
 namespace Ceyehat.Application.Customers.Queries.GetFlightTicket;
 
-public record GetFlightTicketQuery(
+public abstract record GetFlightTicketQuery(
     string? Email) : IRequest<ErrorOr<List<FlightTicketDtoResponse>>>;

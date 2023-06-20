@@ -1,9 +1,8 @@
 using Ceyehat.Domain.Enums;
-using Ceyehat.Domain.UserAggregate.ValueObjects;
 
 namespace Ceyehat.Contracts.Customers;
 
-public record CustomerResponse(
+public abstract record CustomerResponse(
     string? Id,
     string? Name,
     string? Surname,
@@ -19,7 +18,7 @@ public record CustomerResponse(
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
-public record BookingResponse(
+public abstract record BookingResponse(
     string? Id,
     string? SeatId,
     float Price,
@@ -27,12 +26,12 @@ public record BookingResponse(
     PassengerType PassengerType,
     string? FlightId);
 
-public record FlightTicketResponse(
+public abstract record FlightTicketResponse(
     string? Id,
     string? BoardingPassId,
     string? BookingId);
 
-public record BoardingPassResponse(
+public abstract record BoardingPassResponse(
     string? Id,
     string? BoardingGroup,
     string? BoardingGate,

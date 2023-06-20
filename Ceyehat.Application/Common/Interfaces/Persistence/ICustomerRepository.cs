@@ -1,5 +1,4 @@
 using Ceyehat.Domain.CustomerAggregate;
-using Ceyehat.Domain.CustomerAggregate.Entities;
 
 namespace Ceyehat.Application.Common.Interfaces.Persistence;
 

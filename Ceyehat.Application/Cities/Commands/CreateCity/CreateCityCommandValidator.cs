@@ -1,7 +1,5 @@
 using Ceyehat.Domain.CityAggregate;
-using Ceyehat.Domain.CityAggregate.Entities;
 using FluentValidation;
-using FluentValidation.Validators;
 
 namespace Ceyehat.Application.Cities.Commands.CreateCity;
 

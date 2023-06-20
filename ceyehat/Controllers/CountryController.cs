@@ -1,4 +1,3 @@
-using Ceyehat.Application.Countries.Commands;
 using Ceyehat.Application.Countries.Commands.CreateCountry;
 using Ceyehat.Contracts.Countries;
 using MapsterMapper;
@@ -31,6 +30,6 @@ public class CountryController : ApiController
 
         return createCountryResult.Match<IActionResult>(
             country => Ok(_mapper.Map<CountryResponse>(country)),
-            error => Problem(error));
+            Problem);
     }
 }

@@ -4,6 +4,6 @@ using ErrorOr;
 
 namespace Ceyehat.Application.Cities.Queries.GetCityById;
 
-public record GetCityByIdQuery(
+public abstract record GetCityByIdQuery(
     string Id
 ) : IRequest<ErrorOr<City>>;

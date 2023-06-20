@@ -10,15 +10,12 @@ namespace ceyehat.Common.Errors;
 
 public class CeyehatProblemDetailsFactory : ProblemDetailsFactory
 {
-    private readonly Action<ProblemDetailsContext>? _configure;
     private readonly ApiBehaviorOptions _options;
 
     public CeyehatProblemDetailsFactory(
-        IOptions<ApiBehaviorOptions> options,
-        IOptions<ProblemDetailsOptions>? problemDetailsOptions = null)
+        IOptions<ApiBehaviorOptions> options)
     {
-        _options = options?.Value ?? throw new ArgumentNullException(nameof(options));
-        _configure = problemDetailsOptions?.Value?.CustomizeProblemDetails;
+        _options = options.Value ?? throw new ArgumentNullException(nameof(options));
     }
 
     public override ProblemDetails CreateProblemDetails(
@@ -90,13 +87,13 @@ public class CeyehatProblemDetailsFactory : ProblemDetailsFactory
             problemDetails.Type ??= clientErrorData.Link;
         }
 
-        var traceId = Activity.Current?.Id ?? httpContext?.TraceIdentifier;
-        if (traceId != null)
+        var traceId = Activity.Current?.Id ?? httpContext.TraceIdentifier;
+        if (true)
         {
             problemDetails.Extensions["traceId"] = traceId;
         }
 
-        if (httpContext?.Items[HttpContextItemKeys.Errors] is List<Error> errors)
+        if (httpContext.Items[HttpContextItemKeys.Errors] is List<Error> errors)
         {
             problemDetails.Extensions.Add("errorCodes", errors.Select(e => e.Code));
         }

@@ -1,9 +1,7 @@
 using Ceyehat.Application.Airports.Commands.CreateAirport;
-using Ceyehat.Application.Common.DTOs;
 using Ceyehat.Contracts.Airports;
 using Ceyehat.Domain.AirportAggregate;
 using Mapster;
-using Microsoft.AspNetCore.SignalR;
 
 namespace ceyehat.Common.Mapping;
 

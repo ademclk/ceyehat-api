@@ -1,5 +1,3 @@
-using Ceyehat.Contracts.Cities;
-using Ceyehat.Domain.AircraftAggregate.ValueObjects;
 using Ceyehat.Domain.AirlineAggregate.ValueObjects;
 using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.CityAggregate;
@@ -7,7 +5,6 @@ using Ceyehat.Domain.CityAggregate.ValueObjects;
 using Ceyehat.Domain.CountryAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Neighborhood = Ceyehat.Domain.CityAggregate.Entities.Neighborhood;
 
 namespace Ceyehat.Infrastructure.Persistence.Configurations;
 
@@ -38,28 +35,28 @@ public class CityConfigurations : IEntityTypeConfiguration<City>
                 db.Property(d => d.Name)
                     .HasMaxLength(256);
 
-                db.OwnsMany(d => d.Neighborhoods, db =>
+                db.OwnsMany(d => d.Neighborhoods, neighborDb =>
                 {
-                    db.ToTable("Neighborhoods");
+                    neighborDb.ToTable("Neighborhoods");
 
-                    db.HasKey(n => n.Id);
+                    neighborDb.HasKey(n => n.Id);
 
-                    db.Property(n => n.Id)
+                    neighborDb.Property(n => n.Id)
                         .ValueGeneratedNever()
                         .HasConversion(
                             n => n.Value,
                             value => NeighborhoodId.Create(value));
 
-                    db.Property(n => n.Name)
+                    neighborDb.Property(n => n.Name)
                         .HasMaxLength(256);
 
-                    db.Property(n => n.AirlineId)
+                    neighborDb.Property(n => n.AirlineId)
                         .ValueGeneratedNever()
                         .HasConversion(
                             n => n!.Value,
                             value => AirlineId.Create(value));
 
-                    db.Property(n => n.AirportId)
+                    neighborDb.Property(n => n.AirportId)
                         .ValueGeneratedNever()
                         .HasConversion(
                             n => n!.Value,

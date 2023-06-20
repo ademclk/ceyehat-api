@@ -1,11 +1,10 @@
-using Ceyehat.Contracts.Airlines;
 using Ceyehat.Domain.AirlineAggregate;
 using MediatR;
 using ErrorOr;
 
 namespace Ceyehat.Application.Airlines.Commands.CreateAirline;
 
-public record CreateAirlineCommand(
+public abstract record CreateAirlineCommand(
     string? Name,
     string? IataCode,
     string? IcaoCode,
@@ -15,5 +14,5 @@ public record CreateAirlineCommand(
     AirlineAddressCommand Address
 ) : IRequest<ErrorOr<Airline>>;
 
-public record AirlineAddressCommand(
+public abstract record AirlineAddressCommand(
     string? CityId);

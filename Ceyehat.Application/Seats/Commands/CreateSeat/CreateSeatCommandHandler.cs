@@ -1,6 +1,5 @@
 using Ceyehat.Application.Common.Interfaces.Persistence;
 using Ceyehat.Domain.AircraftAggregate.ValueObjects;
-using Ceyehat.Domain.AirportAggregate.ValueObjects;
 using Ceyehat.Domain.FlightAggregate.ValueObjects;
 using Ceyehat.Domain.SeatAggregate;
 using ErrorOr;
